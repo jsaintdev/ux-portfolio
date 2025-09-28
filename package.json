@@ -1,12 +1,14 @@
 {
-  "name": "ux-portfolio",
+  "name": "justinsaintdev",
   "version": "1.0.0",
-  "description": "Source code for my personal portfolio site",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serve -l ${PORT} public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "serve": "^14.2.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }

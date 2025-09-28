@@ -1,0 +1,23 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json.*
+
+# Logs
+logs
+*.log
+*.log.*
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Build artifacts (if you add build tools later)
+dist/
+build/
+
+# Env files (if you ever add secrets)
+.env
+.env.*
