@@ -27,9 +27,8 @@
 
   --subtitle-size: clamp(16px, 2.4vmax, 34px);  /* responsive h2 font-size */
   --subtitle-line: 1.28;                        /* line-height ratio for subtitle */
-  --subtitle-max: clamp(28ch, 60ch, 72ch);      /* max width of subtitle text block */
+  --subtitle-max-width: clamp(28ch, 60ch, 72ch);      /* max width of subtitle text block */
 
-  /* ---- Logo / Navigation ---- */
   --logo-size: clamp(18px, 4vmax, 48px);        /* responsive logo font-size (18–48px) */
   --nav-link-size: clamp(14px, 2.4vmax, 24px);  /* responsive nav link font-size (14–24px) */
   --nav-gap: clamp(16px, 4vmax, 96px);          /* responsive spacing between nav links (16–96px) */
@@ -253,7 +252,7 @@ body {
   line-height: var(--subtitle-line);
   font-weight: 400;
   display: block;
-  max-width: var(--subtitle-max);
+  max-width: var(--subtitle-max-width);
 }
 
 .nowrap {
