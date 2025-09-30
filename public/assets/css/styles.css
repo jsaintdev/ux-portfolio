@@ -8,7 +8,8 @@
   --bg: #010101;      /* primary background (near-black) */
   --bg-alt: #345150;  /* alternate background (dark grey) */
   --text: #ffffff;    /* primary text (white) */
-  --mint: #02bc82;    /* accent color (mint green) */
+  --mint:  #33D39D;    /* logo color (mint) */
+  --green: #02bc82;   /* accent color (green) */
   --muted: #bbbbbd;   /* secondary text (light grey) */
 
   /* ---- Layout & Sizing ---- */
@@ -17,30 +18,31 @@
   --space: clamp(14px, 2vw, 24px);    /* fluid spacing unit: scales between 14–24px depending on viewport */
 
   /* ---- Typography ---- */
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+  --font: 'Alan Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 
   /* ---- Scaled sizes ---- */
   --avatar-size: clamp(140px, 15vmax, 320px);   /* responsive avatar */
 
-  --title-size: clamp(22px, 5vmax, 72px);       /* responsive h1 font-size */
-  --title-line: 1.15;                           /* line-height ratio for h1 */
+  --title-size: clamp(17px, 3vmax, 40px);       /* responsive h1 font-size */
+  --title-line: 1.2;                           /* line-height ratio for h1 */
 
   --subtitle-size: clamp(16px, 2.4vmax, 34px);  /* responsive h2 font-size */
   --subtitle-line: 1.28;                        /* line-height ratio for subtitle */
   --subtitle-max-width: clamp(28ch, 60ch, 72ch);      /* max width of subtitle text block */
 
-  --logo-size: clamp(18px, 4vmax, 48px);        /* responsive logo font-size (18–48px) */
-  --nav-link-size: clamp(14px, 2.4vmax, 24px);  /* responsive nav link font-size (14–24px) */
-  --nav-gap: clamp(16px, 4vmax, 96px);          /* responsive spacing between nav links (16–96px) */
+  --logo-size: clamp(16px, 3vmax, 32px);        /* responsive logo font-size (18–48px) */
+  --nav-link-size: clamp(16px, 3vmax, 32px);  /* responsive nav link font-size (14–24px) */
+  --nav-gap: clamp(16px, 3vmax, 96px);          /* responsive spacing between nav links (16–96px) */
 }
 
 /* ============================ MOBILE SIZE TUNING ============================ */
 /* Adjusts root font/image scale for small portrait screens */
-@media (max-width: 768px) and (orientation: portrait) {
+@media (max-width: 1024px) and (orientation: portrait) {
   :root {
-    --avatar-size: clamp(160px, 18vmax, 320px);
-    --title-size: clamp(26px, 6vmax, 64px);
-    --subtitle-size: clamp(18px, 3vmax, 32px);
+    --avatar-size: clamp(160px, 24vmax, 600px);
+    --title-size: clamp(18px, 5vmax, 72px);
+    --subtitle-size: clamp(12px, 3.5vmax, 48px);
+    --nav-link-size: clamp(24px, 5vmax, 48px);
   }
 }
 
@@ -86,8 +88,21 @@ body {
 @media (orientation: landscape) {
 
   /* ---- Topbar ---- */
-  .nav {
-    display: flex;                /* Display topbar links */
+  .nav{
+    display: flex;                  /* Show topbar links */
+    align-items: center;
+    gap: var(--nav-gap);
+  }
+  .nav__main{
+    display: flex;                  /* Arrange main nav links in a row */
+    flex-direction: row;
+    align-items: center;
+    gap: var(--nav-gap);
+    flex: 0 0 auto;
+  }
+  .nav__link--contact{
+    margin-top: 0;                  /* Reset margin for contact link */
+    align-self: auto;
   }
   .hamburger {
     display: none;                /* Hide hamburger menu button */
@@ -116,6 +131,39 @@ body {
   .hamburger {
     display: block;             /* Show hamburger menu button */
   }
+
+  /* ---- Mobile Nav Window ---- */
+  .nav__main {
+    flex: 1;                      /* Align main nav links to the center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav__link--contact {
+    align-self: center;         /* Center the contact link at the bottom of the nav */
+    margin-top: auto;
+  }
+  
+  .is-nav-open .nav {
+    display: flex;                 /* Show nav links if hamburger icon is clicked */
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    background: var(--bg);
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .is-nav-open {
+    overflow: hidden;             /* Prevent background scrolling when nav is open */
+  }
+
 
   /* ---- Hero Section ---- */
   .hero {
@@ -151,7 +199,8 @@ body {
 
 /* ---- Elements---- */
 .topbar__logo {
-  font-weight: 700;                      /* Style for logo text */
+  color: var(--green);                  /* Style for logo text */
+  font-weight: 700;
   letter-spacing: .02em;
   font-size: var(--logo-size);
   white-space: nowrap;
@@ -174,6 +223,24 @@ body {
   margin: 4px 0;
 }
 
+.hamburger[aria-expanded="true"] .hamburger__bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);                         /* Animates hamburger to "X" when menu is open */
+}
+.hamburger[aria-expanded="true"] .hamburger__bar:nth-child(2) {
+  opacity: 0;                                                       /* Hides middle bar when menu is open */
+}
+.hamburger[aria-expanded="true"] .hamburger__bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);                       /* Animates hamburger to "X" when menu is open */
+}
+.hamburger__bar {
+  transition: transform 180ms ease, opacity 150ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hamburger__bar { transition: none !important; }                  /* Disables hamburger animation if user prefers reduced motion */
+}
+
+
 /* ---- Text Styles---- */
 
 .nav__link {
@@ -182,9 +249,8 @@ body {
   font-size: var(--nav-link-size);
 }
 
-.nav__link--mint {
-  color: var(--mint);                    /* Mint accent color for emphasized text */
-  font-weight: 700;
+.nav__link--contact {
+  color: var(--mint);                    /* Accent color for emphasized text */
 }
 
 /* ================================ SECTIONS ================================ */
@@ -264,7 +330,7 @@ body {
   margin: 0;
 }
 
-.hero__line--mint {
+.hero__line--highlight {
   color: var(--mint);                   /* Mint accent color for emphasized text */   
   font-weight: 700;
 }

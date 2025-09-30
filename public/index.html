@@ -9,7 +9,10 @@
   <!-- Title shown in browser tab -->
   <title>Justin Saint – UX Designer</title>
 
-  <!-- External stylesheet -->
+  <!-- External stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
@@ -19,23 +22,7 @@
 
     <!-- Topbar (part of Section 1) -->
     <header class="topbar">
-      <div class="topbar__inner">
-        <!-- Logo -->
-        <div class="topbar__logo">JUSTIN SAINT</div>
-
-        <!-- Navigation Links -->
-        <nav class="nav">
-          <a href="#work" class="nav__link">Work</a>
-          <a href="#creative" class="nav__link">Creative</a>
-          <a href="#about" class="nav__link">About</a>
-          <a href="#contact" class="nav__link nav__link--mint">CONTACT</a>
-        </nav>
-
-        <!-- Hamburger button for mobile -->
-        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span class="hamburger__bar"></span><span class="hamburger__bar"></span><span class="hamburger__bar"></span>
-        </button>
-      </div>
+      <div data-include="partials/nav.html"></div>
     </header>
 
     <!-- Hero content -->
@@ -47,20 +34,24 @@
 
         <!-- Title and Subtitle text-->
         <div class="hero__text">
-          <h1 class="hero__title">Hi, I’m Justin!</h1>
+          <h1 class="hero__title">Hi, I’m Justin! 👋🏽</h1>
           <h2 class="hero__subtitle">
-            <span class="hero__line">A <span class="hero__line--mint">UX Designer</span></span>
-            <span class="hero__line">using my background in</span>
-            <span class="hero__line">visual art, performance,</span>
-            <span class="hero__line">and communications</span>
-            <span class="hero__line">to create elegant and</span>
-            <span class="hero__line">engaging experiences</span>
+            <span class="hero__line">A <span class="hero__line--highlight">UX Designer</span></span>
+            <span class="hero__line">blending art🎨</span>
+            <span class="hero__line">performance🎭</span>
+            <span class="hero__line">and communications✍️</span>
+            <span class="hero__line">into elegant, engaging</span>
+            <span class="hero__line">experiences</span>
           </h2>
         </div>
 
       </div>
     </div>
   </section>
+
+  <script src="./assets/js/nav.js" defer></script>
+
+  
 </body>
 
 </html>
