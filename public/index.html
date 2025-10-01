@@ -8,19 +8,15 @@
 
   <!-- Title shown in browser tab -->
   <title>Justin Saint – UX Designer</title>
+  <script src="./assets/js/header.js" defer></script>
 
-  <!-- External stylesheets -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
 <body>
-  <!-- SECTION 1: Topbar + Hero (fills viewport) -->
+  <!-- SECTION 1: Topbar + Hero -->
   <section class="section section--hero">
 
-    <!-- Topbar (part of Section 1) -->
+    <!-- Topbar -->
     <header class="topbar">
       <div data-include="partials/nav.html"></div>
     </header>
@@ -49,9 +45,22 @@
     </div>
   </section>
 
+  <!-- SECTION 2: Featured Projects -->
+  <section id="work" class="section section--work">
+
+    <div class="work__header">
+      <h2 class="work__title">Featured Projects</h2>
+      <p class="work__subtitle">A selection of my recent work</p>
+
+      <div class="work__cards">
+
+      </div>
+
+  </section>
+
   <script src="./assets/js/nav.js" defer></script>
 
-  
+
 </body>
 
 </html>

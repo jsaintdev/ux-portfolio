@@ -13,9 +13,9 @@
   --muted: #bbbbbd;   /* secondary text (light grey) */
 
   /* ---- Layout & Sizing ---- */
-  --container: 1200px;                /* max content width for centered layouts */
-  --header-h: 72px;                   /* fixed header height */
-  --space: clamp(14px, 2vw, 24px);    /* fluid spacing unit: scales between 14–24px depending on viewport */
+  --container: clamp(960px, 88vw, 1800px);      /* max width for site content */
+  --header-h: clamp(100px, 10vh, 200px);           /* header height */
+  --space: clamp(14px, 2vw, 24px);              /* spacing unit */
 
   /* ---- Typography ---- */
   --font: 'Alan Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -183,13 +183,19 @@ body {
   height: var(--header-h);               /* Sets a fixed height for topbar */   
 }
 
+.topbar__brand{
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+}
+
 .topbar__inner {
   height: 100%;                          /* Holds and arranges the topbar elements */
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space);
-  padding-block: 0;
+  padding-block: var(--space);
   flex-wrap: nowrap;
 }
 
@@ -198,14 +204,10 @@ body {
 }
 
 /* ---- Elements---- */
-.topbar__logo {
-  color: var(--green);                  /* Style for logo text */
-  font-weight: 700;
-  letter-spacing: .02em;
-  font-size: var(--logo-size);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.topbar__logo{
+  height: calc(var(--logo-size) * 1.5);                        /* Aligns logo image size with text */
+  width: auto;
+  display:block;
 }
 
 .hamburger {
