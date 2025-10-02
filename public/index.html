@@ -10,7 +10,9 @@
   <title>Justin Saint – UX Designer</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="preload" href="./assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/css/styles.css"></noscript>
+
 
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,9 +49,8 @@
           <h1 class="hero__title">Hi, I’m Justin! <span class="wave">👋🏽</span></h1>
           <h2 class="hero__subtitle">
             <span class="hero__line">A <span class="hero__line--highlight">UX Designer</span></span>
-            <span class="hero__line">blending art🎨</span>
-            <span class="hero__line">performance🎭</span>
-            <span class="hero__line">and communications✍️</span>
+            <span class="hero__line">blending art 🎨</span>
+            <span class="hero__line">and communications ✍️</span>
             <span class="hero__line">into elegant, engaging</span>
             <span class="hero__line">experiences</span>
           </h2>
@@ -78,42 +79,18 @@
     </div>
   </div>
 
-  <!-- PANEL 2: Featured Project – RAPS -->
-  <div class="panel panel--split-duo-right" data-rank="2">
+  <!-- PANEL 2: Hackathon (left-tight) -->
+  <div class="panel panel--left-tight" data-rank="2">
     <div class="panel__inner">
-      <!-- Left image (square) -->
-      <img src="./assets/img/main/raps-1.jpg" alt="RAPS Cat Sanctuary cat photo one"
-        class="panel__img panel__img--left">
-
-      <!-- Project Card -->
       <article class="project-card">
-        <h3 class="project-card__title">RAPS Cat Sanctuary</h3>
+        <h3 class="project-card__title">QDS Hackathon</h3>
         <p class="project-card__desc">
-          Supporting 500+ rescued cats through design, communications, and community.
+          Led design & comms in a fast-paced, cross-functional team—community impact + shipped outcomes.
         </p>
-        <a href="./projects/raps/index.html" class="project-card__link">view case study →</a>
+        <a href="./projects/hackathon/index.html" class="project-card__link">view case study →</a>
       </article>
-
-      <!-- Right image (landscape) -->
-      <img src="./assets/img/main/raps-2.jpg" alt="RAPS Cat Sanctuary cat photo two"
-        class="panel__img panel__img--right">
-    </div>
-  </div>
-
-  <!-- PANEL 3: Featured Project – VO Makeovers -->
-  <div class="panel panel--left-tight" data-rank="3">
-    <div class="panel__inner">
-      <!-- Project Card -->
-      <article class="project-card">
-        <h3 class="project-card__title">VO Makeovers</h3>
-        <p class="project-card__desc">
-          Transforming voiceover demos with clean, professional branding and design.
-        </p>
-        <a href="./projects/vo-makeovers/index.html" class="project-card__link">view case study →</a>
-      </article>
-
-      <!-- Project Image -->
-      <img src="./assets/img/main/voiceover.jpeg" alt="Voiceover microphone and recording setup" class="panel__img">
+      <img src="./assets/img/main/hackathon.jpg" alt="QDS hackathon team working"
+          class="panel__img" />
     </div>
   </div>
 

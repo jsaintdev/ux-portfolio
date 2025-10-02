@@ -4,84 +4,79 @@
 
 /* =================================== TOKENS =================================== */
 :root {
-  /* ---- Color Scheme ---- */
-  --bg: #2A3F42;      /* primary background */
-  --bg-alt: #192627;  /* alternate background */
-  --text: #ffffff;    /* primary text (white) */
+
+  /* ------------------------------ Color Scheme -------------------------------- */
+  --bg: #2A3F42;            /* primary background */
+  --bg-alt: #192627;        /* alternate background */
+  --text: #ffffff;          /* primary text (white) */
   --highlight:  #33D39D;    /* highlight color (mint) */
-  --card-bg: #3B9F84;  /* card background */
+  --accent: #ff8a3d;        /* accent color (orange) */
+  --card-bg: #3B9F84;       /* card background */
 
-  /* ---- Project Colors ---- */
-  --oddfellows: #0F2055;
-  --raps: #7cc142;
+  /* ------------------------------- Typography --------------------------------- */
+  --font-body: "Atkinson Hyperlegible Mono", monospace;   /* font for content */
+  --font-display: "Alan Sans", sans-serif;                /* font for emphasis */
+  --font-serif: "Bona Nova SC", serif;                    /* font for titles */
 
-  /* ---- Layout & Sizing ---- */
+  /* ---------------------------- Layout & Sizing ------------------------------- */
+
+  /* Global */ 
   --container: clamp(960px, 88vw, 1800px);      /* max width for site content */
-  --header-h: clamp(100px, 10vh, 200px);           /* header height */
+  --header-h: clamp(100px, 10vh, 200px);        /* header height */
   --space: clamp(14px, 2vw, 24px);              /* spacing unit */
 
-  /* ---- Typography ---- */
-  --font-body: "Atkinson Hyperlegible Mono", monospace;
-  --font-display: "Alan Sans", sans-serif;
-  --font-serif: "Bona Nova SC", serif;
-
-  /* ---- Scaled sizes ---- */
   /* Nav */
-  --logo-size: clamp(24px, 4.5vmax, 48px);        /* responsive logo font-size (18–48px) */
-  --nav-link-size: clamp(16px, 3vmax, 32px);  /* responsive nav link font-size (14–24px) */
-  --nav-gap: clamp(16px, 3vmax, 96px);          /* responsive spacing between nav links (16–96px) */
+  --logo-size: clamp(24px, 4.5vmax, 48px);      /* logo size */
+  --nav-link-size: clamp(16px, 3vmax, 32px);    /* nav link font-size */
+  --nav-gap: clamp(16px, 3vmax, 96px);          /* spacing between nav links */
 
-  /* Hero */
-  --avatar-size: clamp(140px, 15vmax, 320px);   /* responsive avatar */
+  /* Section Hero */
+  --avatar-size: clamp(140px, 15vmax, 320px);       /* avatar size */
 
-  --title-size: clamp(17px, 3vmax, 36px);       /* responsive h1 font-size */
-  --title-line: 1.2;                           /* line-height ratio for h1 */
+  --title-size: clamp(17px, 3vmax, 36px);           /* title font-size */
+  --title-line: 1.2;                                /* title line-height */
 
-  --subtitle-size: clamp(16px, 2.4vmax, 30px);  /* responsive h2 font-size */
-  --subtitle-line: 1.28;                        /* line-height ratio for subtitle */
-  --subtitle-max-width: clamp(28ch, 60ch, 72ch);      /* max width of subtitle text block */
+  --subtitle-size: clamp(16px, 2.4vmax, 30px);      /* subtitle font-size */
+  --subtitle-line: 1.28;                            /* subtitle line-height */
+  --subtitle-max-width: clamp(28ch, 60ch, 72ch);    /* max width of subtitle text block */
 
-  /* Featured + Play */
-  /* Card Text */
-  --card-title-size: clamp(18px, 2vmax, 26px);
-  --card-title-line: 1.15;
+  /* Panel */
+  --panel-height-ratio: 0.825;                  /* panel container height */
+  --image-height-ratio: 0.8;                    /* panel image height */
+  --card-size-ratio:    0.4;                    /* project card size */
+  --padding-ratio:      0.03;                   /* vertical padding inside panel */
 
-  --card-desc-size: clamp(12px, 1.4vmax, 16px);
-  --card-desc-line: 1.4;
+  --img-aspect: 1170 / 750;                     /* aspect ratio for project images */
 
-  --card-link-size: clamp(0.9rem, 1.1vmax, 1rem);
-
-  /* ---- Panel ratios ---- */
-  --panel-height-ratio: 0.825;
-  --image-height-ratio: 0.8;
-  --padding-ratio:      0.03;
-  --card-size-ratio:    0.4;
-  
-  --img-aspect: 1170 / 750;   /* aspect ratio for project images */
-
-  /* ---- Responsive panel sizes ---- */
   --panel-height:       clamp(600px, calc(var(--panel-height-ratio) * 100vh), 1000px);
   --padding-vertical:   calc(var(--panel-height) * var(--padding-ratio));
   --image-height:       calc(var(--panel-height) * var(--image-height-ratio));
   --card-size:          calc(var(--panel-height) * var(--card-size-ratio));
 
-  /* ---- Spacing ---- */
-  --gutter: 80px;         /* standard horizontal padding/gutter */
-  --gutter-tight: 40px;   /* tight horizontal padding/gutter */
-  --gutter-flush: 0px;    /* flush to edge, no horizontal padding/gutter */
+  --gutter: 80px;         /* standard gutter between card and image */
+  --gutter-tight: 40px;   /* less space between card and image */
+  --gutter-flush: 0px;    /* no space between card and image */
 
-  --card-padding: 50px;   /* padding inside project cards */
-
-  --overlap-min: 25%;     /* min overlap of card over image */
-  --overlap-max: 33%;     /* max overlap of card over image */
   --overlap: 27%;         /* default overlap of card over image */
+  --overlap-min: 25%;     /* less overlap of card over image */
+  --overlap-max: 33%;     /* more overlap of card over image */
+
+  /* Panel Project Card */
+  --card-title-size: clamp(18px, 2vmax, 26px);      /* card title font-size */
+  --card-title-line: 1.15;                          /* card title line-height */
+  --card-desc-size: clamp(12px, 1.4vmax, 16px);     /* card description font-size */
+  --card-desc-line: 1.4;                            /* card description line-height */
+  --card-link-size: clamp(0.9rem, 1.1vmax, 1rem);   /* card link font-size */
+  --card-padding: 50px;                             /* padding inside project card */                
+
 }
 
-/* ========================================================================== */
-/*                                    BASE                                    */
-/* ========================================================================== */
+/* ============================================================================== */
+/*                                        BASE                                    */
+/* ============================================================================== */
 
-/* ============================== GLOBAL RESETS ============================= */
+/* =============================== GLOBAL RESETS ================================ */
+
 * {
   box-sizing: border-box;            /* Apply border-box sizing to all elements */
 }
@@ -95,37 +90,47 @@ body {
   margin: 0;                         /* remove default browser margin */
   background: var(--bg);             /* apply site-wide background color */
   color: var(--text);                /* set default text color */
-  font-family: var(--font-body);          /* use the global font stack */
+  font-family: var(--font-body);     /* use the global font stack */
   line-height: 1.6;                  /* increase readability with taller line height */
 }
 
-/* ============================= ACCESSIBILITY ============================== */
-/* Highlights interactive elements with a mint focus ring for readability */
+/* =============================== ACCESSIBILITY ================================ */
+
 :focus-visible {
-  outline: 3px solid var(--highlight);
+  outline: 3px solid var(--accent); /* Visible focus indicator for keyboard users */
   outline-offset: 3px;
   border-radius: 8px;
 }
 
-/* ========================================================================== */
-/*                                   LAYOUT                                   */
-/* ========================================================================== */
+/* ============================================================================== */
+/*                                       LAYOUT                                   */
+/* ============================================================================== */
 
-/* ================================ TOPBAR ================================== */
+/* ============================ SHARED CONSTRAINTS ============================== */
 
-/* ---- Containers ---- */
+.topbar__inner,
+.hero__inner {
+  max-width: var(--container);                /* Aligns hero content with topbar */
+  margin: 0 auto;
+  padding-inline: var(--space);
+}
+
+/* ================================== TOPBAR ==================================== */
+
+/* -------------------------------- Containers ---------------------------------- */
+
 .topbar {
-  height: var(--header-h);               /* Sets a fixed height for topbar */   
+  height: var(--header-h);              /* The main topbar container */ 
 }
 
-.topbar__brand{
-  display:inline-flex;
-  align-items:center;
-  gap: 10px;
+.nav {
+  gap: var(--nav-gap);                  /* spacing between nav links */
 }
+
+/* --------------------------------- Structure ---------------------------------- */
 
 .topbar__inner {
-  height: 100%;                          /* Holds and arranges the topbar elements */
+  height: 100%;                          /* Holds the logo and the nav links */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,19 +139,16 @@ body {
   flex-wrap: nowrap;
 }
 
-.nav {
-  gap: clamp(24px, 5vw, var(--nav-gap));
-}
+/* --------------------------------- Elements ----------------------------------- */
 
-/* ---- Elements---- */
 .topbar__logo{
-  height: var(--logo-size);                        /* Aligns logo image size with text */
+  height: var(--logo-size);             /* Aligns logo image size with text */
   width: auto;
   display:block;
 }
 
 .hamburger {
-  background: none;
+  background: none;                     /* Hamburger button on portrait orientations */
   border: 0;
   padding: 10px;
   cursor: pointer;
@@ -158,68 +160,57 @@ body {
   height: 2px;
   background: var(--text);
   margin: 4px 0;
+  transition: transform 180ms ease, opacity 150ms ease; 
 }
+
+/* -------------------------------- Text Styles --------------------------------- */
+
+.nav__link {
+  color: var(--text);                          /* Styles nav links */
+  font-family: var(--font-serif);
+  font-size: var(--nav-link-size);
+  text-decoration: none;
+}
+
+.nav__link--contact {
+  color: var(--highlight);                    /* Highlights contact link */
+}
+
+/* ------------------------------- Interactive ---------------------------------- */
 
 .hamburger[aria-expanded="true"] .hamburger__bar:nth-child(1) {
   transform: translateY(6px) rotate(45deg);                         /* Animates hamburger to "X" when menu is open */
 }
+
 .hamburger[aria-expanded="true"] .hamburger__bar:nth-child(2) {
   opacity: 0;                                                       /* Hides middle bar when menu is open */
 }
+
 .hamburger[aria-expanded="true"] .hamburger__bar:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);                       /* Animates hamburger to "X" when menu is open */
 }
-.hamburger__bar {
-  transition: transform 180ms ease, opacity 150ms ease;
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .hamburger__bar { transition: none !important; }                  /* Disables hamburger animation if user prefers reduced motion */
-}
+/* ================================= SECTIONS =================================== */
 
+/* -------------------------------- Containers ---------------------------------- */
 
-/* ---- Text Styles---- */
-
-.nav__link {
-  color: var(--text);
-  font-family: var(--font-serif);
-  text-decoration: none;
-  font-size: var(--nav-link-size);
-}
-
-.nav__link--contact {
-  color: var(--highlight);                    /* Accent color for emphasized text */
-}
-
-/* ================================ SECTIONS ================================ */
 .section {
-  min-height: 100vh;              /* Each section takes up full viewport height */  
+  min-height: 100vh;                /* Each section takes up full viewport height */  
 }
 
-/* ---------- HOME PAGE ---------- */ 
+/* --------------------------------- Structure ---------------------------------- */
+
 .section--hero {                  
-  display: grid;                  /* Grid layout for Main page hero section */
+  display: grid;                              /* Grid layout for Main page hero section */
   grid-template-rows: auto 1fr;
 }
 
-.section--hero .hero {
-  padding-bottom: calc(var(--space) * 0.5);
-}
+/* ================================== PANELS ==================================== */
 
-.section--hero .hero__inner {
-  transform: translateY(-5vh); /* bump upward, adjust % as needed */
-}
+/* -------------------------------- Containers ---------------------------------- */
 
-.topbar__inner,
-.hero__inner {
-  max-width: var(--container);    /* Aligns hero content with topbar */
-  margin: 0 auto;
-  padding-inline: var(--space);
-}
-
-/* ================================ PANELS ================================ */
 .panel {
-  background: var(--bg-alt);
+  background: var(--bg-alt);                  /* Main container for each panel */
   height: var(--panel-height);
   padding-block: var(--padding-vertical);
   padding-inline: var(--gutter);
@@ -227,44 +218,65 @@ body {
   align-items: center;
 }
 
+/* --------------------------------- Structure ---------------------------------- */
+
 .panel + .panel {
-  margin-top: calc(var(--padding-vertical) * -1);
+  margin-top: calc(var(--padding-vertical) * -1);   /* overlap adjacent panels */
 }
 
+/* Featured Panel 1 */
+
 .panel[data-rank="1"] {
-  --peek-1: clamp(40px, 6vh, 140px);                               /* how far it overlaps upward */
-  --panel-height: clamp(620px, 70vh, 900px);       /* smaller than your default */
-  margin-top: calc(var(--peek-1) * -1);            /* pull panel up into hero */
+  --peek-1: clamp(40px, 6vh, 140px);              /* raises the first panel and adds padding below */
+  --panel-height: clamp(620px, 70vh, 900px);
+  margin-top: calc(var(--peek-1) * -1);
   padding-bottom: calc(var(--padding-vertical) + var(--peek-1));
 }
 
 .panel[data-rank="1"] .panel__inner {
-  transform: translateY(calc(var(--peek-1) * -1));
+  transform: translateY(calc(var(--peek-1) * -1));  /* raises inner content to adjust for the extra padding */
 }
 
-.panel[data-rank="1"] .panel__img   { position: relative; z-index: 2; }
-.panel[data-rank="1"] .project-card { position: relative; z-index: 3; }
+/* --------------------------------- Elements ----------------------------------- */
 
-/* ========================================================================== */
-/*                                   MODULES                                  */
-/* ========================================================================== */
+/* Featured Panel 1 */
 
-/* ================================== HERO ================================== */
+.panel[data-rank="1"] .panel__img {
+  position: relative;                           /* raises the first panel image even more */
+  z-index: 2;
+}
 
-/* ---- Containers ---- */
+.panel[data-rank="1"] .project-card {
+  position: relative;                           /* ensures card is above image */
+  z-index: 3;
+}
+
+/* ============================================================================== */
+/*                                      MODULES                                   */
+/* ============================================================================== */
+
+/* =================================== HERO ===================================== */
+
+/* -------------------------------- Containers ---------------------------------- */
+
 .hero {
-  display: grid;                        /* Fills the viewport and sets padding*/
+  display: grid;                        /* Main container for hero content */
   padding: var(--space);
+  padding-bottom: calc(var(--space) * 0.5);
 }
+
+/* --------------------------------- Structure ---------------------------------- */
 
 .hero__inner {
-  width: 100%;                          /* Holds and arranges hero elements in a grid */
+  width: 100%;                          /* Grid layout for hero content, slightly raised */
   display: grid;
   gap: clamp(16px, 3vw, 32px);
-  align-items: center;                   
+  align-items: center;      
+  transform: translateY(-5vh);             
 }
 
-/* ---- Elements ---- */
+/* --------------------------------- Elements ----------------------------------- */
+
 .hero__avatar {
   width: var(--avatar-size);            /* Headshot image */
   height: var(--avatar-size);
@@ -272,38 +284,15 @@ body {
   display: block;
 }
 
-/* ---- Animations ---- */
-.wave {
-  display: inline-block;
-  transform-origin: 70% 70%;
-}
-
-.wave.animate {
-  animation: wave 1.5s ease-in-out forwards;
-}
-
-@keyframes wave {
-  0%   { transform: rotate(0deg); }
-  15%  { transform: rotate(14deg); }
-  30%  { transform: rotate(-8deg); }
-  45%  { transform: rotate(14deg); }
-  60%  { transform: rotate(-4deg); }
-  75%  { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* ---- Text Styles ---- */
 .hero__text {
   width: 100%;                          /* Holds and arranges title and subtitle text */
   max-width: 100%;
 }
 
-.hero__title,
-.hero__subtitle {
-  font-family: var(--font-display);
-}
+/* -------------------------------- Text Styles --------------------------------- */
 
 .hero__title {
+  font-family: var(--font-display);
   margin: 0 0 2rem;                     /* Title text */
   font-size: var(--title-size);
   line-height: var(--title-line);
@@ -312,6 +301,7 @@ body {
 }
 
 .hero__subtitle {
+  font-family: var(--font-display);
   margin: .5rem 0 0;                    /* Subtitle text */
   font-size: var(--subtitle-size);
   line-height: var(--subtitle-line);
@@ -320,18 +310,38 @@ body {
   max-width: var(--subtitle-max-width);
 }
 
-.nowrap {
-  white-space: nowrap;                  /* Prevents line breaks */
-}
-
 .hero__line {
   display: block;                       /* Force each line into its own row */
   margin: 0;
 }
 
+.nowrap {
+  white-space: nowrap;                  /* Prevents line breaks */
+}
+
 .hero__line--highlight {
-  color: var(--highlight);                   /* Mint accent color for emphasized text */   
+  color: var(--highlight);              /* Mint accent color for emphasized text */   
   font-weight: 700;
+}
+
+/* ------------------------------- Interactive ---------------------------------- */
+.wave {
+  display: inline-block;                      /* Makes hand emoji wave */
+  transform-origin: 70% 70%;
+}
+
+.wave.animate {
+  animation: wave 1.5s ease-in-out forwards;  /* Trigger wave animation */
+}
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }           /* Wave keyframes */
+  15%  { transform: rotate(14deg); }
+  30%  { transform: rotate(-8deg); }
+  45%  { transform: rotate(14deg); }
+  60%  { transform: rotate(-4deg); }
+  75%  { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
 }
 
 /* ============================= FEATURED + PLAY ============================= */
@@ -387,12 +397,6 @@ body {
 /* Card glide-in: start slightly higher, then settle when panel enters view */
 .project-card { transform: translateY(-10px); opacity: 0; }
 .panel.is-in .project-card { transform: translateY(0); opacity: 1; transition: transform 260ms ease, opacity 220ms ease; }
-
-@media (prefers-reduced-motion: reduce) {
-  .panel .panel__img { transition: none !important; }
-  .panel.is-in .project-card { transition: none !important; }
-  .project-card { transform: none; opacity: 1; }
-}
 
 /* ---- Text Styles ---- */
 .project-card__title {
@@ -636,39 +640,36 @@ body {
 }
 
 
-/* ========================================================================== */
-/*                                    STATE                                   */
-/* ========================================================================== */
+/* ============================================================================== */
+/*                                       STATE                                    */
+/* ============================================================================== */
 
-/* ============================ AXIS-BASED LAYOUT =========================== */
+/* ================================= LANDSCAPE ================================= */
 
-/* ---------- LANDSCAPE (DEFAULT) ---------- */ 
-/* Applies when viewport width is greater than height */
+@media (orientation: landscape) and (min-width: 768px) {
 
-@media (orientation: landscape) {
-
-  /* ---- Topbar ---- */
+  /* --------------------------------- Topbar ---------------------------------- */
   .nav{
-    display: flex;                  /* Show topbar links */
+    display: flex;                /* Show topbar links */
     align-items: center;
     gap: var(--nav-gap);
   }
   .nav__main{
-    display: flex;                  /* Arrange main nav links in a row */
+    display: flex;                /* Arrange main nav links in a row */
     flex-direction: row;
     align-items: center;
     gap: var(--nav-gap);
     flex: 0 0 auto;
   }
   .nav__link--contact{
-    margin-top: 0;                  /* Reset margin for contact link */
+    margin-top: 0;                /* Reset margin for contact link */
     align-self: auto;
   }
   .hamburger {
     display: none;                /* Hide hamburger menu button */
   }
 
-  /* ---- Hero Section ---- */
+ /* ---------------------------------- Hero ----------------------------------- */
   .hero {
     place-items: center start;    /* center vertically, left-align horizontally */
   }
@@ -677,8 +678,31 @@ body {
     justify-items: start;
     text-align: left;
   }
-
 }
+
+/* ============================ COMPACT LANDSCAPE ============================== */
+
+@media (orientation: landscape) and (min-width: 768px) and (max-width: 1439px) {
+  :root {
+    /* TO DO: adjust tokens */
+
+    /* Nav */
+    --logo-size: clamp(24px, 4.5vmax, 48px);          /* logo size */
+    --nav-link-size: clamp(16px, 3vmax, 32px);        /* nav link font-size */
+    --nav-gap: clamp(16px, 3vmax, 96px);              /* spacing between nav links */
+
+    /* Hero */
+    --avatar-size: clamp(140px, 15vmax, 320px);       /* avatar size */
+
+    --title-size: clamp(17px, 3vmax, 36px);           /* title font-size */
+    --title-line: 1.2;                                /* title line-height */
+
+    --subtitle-size: clamp(16px, 2.4vmax, 30px);      /* subtitle font-size */
+    --subtitle-line: 1.28;                            /* subtitle line-height */
+    --subtitle-max-width: clamp(28ch, 60ch, 72ch);    /* max width of subtitle text block */
+  }
+}
+
 
 /* ---------- PORTRAIT (MOBILE) ---------- */ 
 /* Applies when viewport height is greater than width */
@@ -897,89 +921,18 @@ body {
     
 }
 
-/* ===== Mobile LANDSCAPE tuning: shrink panels, tighten spacing, smaller card text */
-@media (max-height: 820px) and (orientation: landscape) {
-  :root {
+/* ============================== ACCESSIBILITY =============================== */
 
-    --avatar-size: clamp(120px, 20vh, 200px);
-    --title-size: clamp(18px, 2.4vh, 24px);
-    --subtitle-size: clamp(12px, 2vh, 24px);
-    --nav-link-size: clamp(15px, 3vh, 20px);
-    
-    /* overall scale */
-    --panel-land-max: 96vw;        /* cap inner width for ALL panels */
-    --land-gap: min(3vw, 18px);
+/* Reduces or disables animations for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger__bar { transition: none !important; }                /* Disables hamburger animation */
 
-    /* shrink vertical scale */
-    --panel-height-ratio: 0.68;    /* was 0.825 */
-    --padding-ratio:      0.02;    /* was 0.03 */
-    --image-height-ratio: 0.70;    /* was 0.8 */
-    --card-size-ratio:    0.34;    /* was 0.4 */
-
-    /* smaller card typography */
-    --card-title-size: clamp(16px, 2vw, 20px);
-    --card-desc-size:  clamp(12px, 1.6vw, 14px);
-    --card-link-size:  clamp(12px, 1.6vw, 14px);
-
-    --card-padding: clamp(30px, 3vw, 40px); /* reduce padding inside cards */
-  }
-
-  .hero__inner {
-    gap: clamp(8px, 1.5vw, 16px); /* reduce vertical gap between avatar, title, subtitle */
-  }
-
-  .hero__title {
-    margin-bottom: 0.5rem; /* tighten title-subtitle spacing */
-  }
-
-  /* apply to ALL panels */
-  .panel {
-    padding-inline: var(--land-gap);
-    height: auto !important;
-    min-height: 0 !important;
-    padding-block:  calc(var(--panel-height) * var(--padding-ratio));
-  }
-
-  /* constrain inner width + gaps for ALL layouts */
-  .panel .panel__inner {
-    max-width: var(--panel-land-max);
-    width: 100%;
-    margin: 0 auto;
-    gap: var(--land-gap);
-  }
-
-  /* make images obey the new scale */
-  .panel .panel__img {
-    height: var(--image-height);
-    width: 100%;
-    max-width: 100%;
-    object-fit: cover;
-  }
-
-  /* split-duo: clamp columns so images/cards don't sprawl */
-  :root {
-    --img-wide-w-land:   clamp(280px, 34vw, 520px); /* 4:3 image */
-    --img-square-w-land: clamp(220px, 26vw, 380px); /* 1:1 image */
-    --card-size:         clamp(220px, 28vw, 320px); /* override absolute card size in grids */
-  }
-  .panel.panel--split-duo-right .panel__inner {
-    grid-template-columns: var(--img-square-w-land) var(--card-size) var(--img-wide-w-land);
-    justify-content: center;
-    align-items: center;
-  }
-  .panel.panel--split-duo-left .panel__inner {
-    grid-template-columns: var(--img-wide-w-land) var(--card-size) var(--img-square-w-land);
-    justify-content: center;
-    align-items: center;
-  }
-
-    .panel[data-rank="1"] {
-    --peek-1: clamp(8px, 2vh, 24px); /* tighter overlap just for short screens */
-    margin-top: calc(var(--peek-1) * -1);
-    padding-bottom: var(--peek-1);
-  }
+  .panel .panel__img { transition: none !important; }             /* Disables image filter animation */
+  .panel.is-in .project-card { transition: none !important; }     /* Disables card glide-in animation */
+  .project-card { transform: none; opacity: 1; }                  /* Disables card hover animation */
+  .wave.animate { animation: none !important; }                   /* Disables wave animation */
 }
 
-
-
-/* =================== END =================== */
+/* ============================================================================== */
+/*                                        END                                     */
+/* ============================================================================== */
