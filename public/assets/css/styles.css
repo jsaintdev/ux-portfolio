@@ -77,17 +77,6 @@
   --overlap: 27%;         /* default overlap of card over image */
 }
 
-/* ============================ MOBILE SIZE TUNING ============================ */
-/* Adjusts root font/image scale for small portrait screens */
-@media (max-width: 1024px) and (orientation: portrait) {
-  :root {
-    --avatar-size: clamp(160px, 24vmax, 600px);
-    --title-size: clamp(18px, 5vmax, 72px);
-    --subtitle-size: clamp(12px, 3.5vmax, 48px);
-    --nav-link-size: clamp(24px, 5vmax, 48px);
-  }
-}
-
 /* ========================================================================== */
 /*                                    BASE                                    */
 /* ========================================================================== */
@@ -218,6 +207,65 @@ body {
     text-align: center;
   }
 
+  /* ---- Panels ---- */
+  .panel {
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+  }
+  
+  .panel[data-rank="1"],
+  .panel[data-rank="2"],
+  .panel[data-rank="3"],
+  .panel[data-rank="4"] {
+    width: 100vw;
+    height: 100vw;
+    min-height: auto;
+    padding: 0;
+    position: relative;
+  }
+
+  .panel[data-rank] .panel__inner {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center; /* center card */
+  }
+
+  .panel[data-rank="1"] .panel__img,
+  .panel[data-rank="2"] .panel__img--left,
+  .panel[data-rank="3"] .panel__img,
+  .panel[data-rank="4"] .panel__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .panel[data-rank="2"] .panel__img--right {
+    display: none;
+  }
+
+  .panel[data-rank="1"] .project-card,
+  .panel[data-rank="2"] .project-card,
+  .panel[data-rank="3"] .project-card,
+  .panel[data-rank="4"] .project-card {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 75vw;
+    height: 75vw;
+    max-width: 320px;
+    max-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 /* ================================ TOPBAR ================================== */
@@ -526,7 +574,7 @@ body {
   margin-top: auto;
 }
 
-/* ---------- Layout - Single Image ---------- */
+/* ---------- Panel - Single Image ---------- */
 
 /* Tight -- Card close to image */
 .panel.panel--left-tight,                   /* RIGHT NOT IN USE */
@@ -639,7 +687,7 @@ body {
   left: var(--gutter);
 }
 
-/* ---------- Layout - Two Images ---------- */
+/* ---------- Panel - Two Images ---------- */
 
 /* Center-Duo -- the card is centered between two images, with space on the sides */
 .panel.panel--center-duo {
@@ -736,7 +784,7 @@ body {
 .panel.panel--split-duo-right .panel__img--right { aspect-ratio: 4 / 3; }
 
 
-/* ---------- Layout - Multiple Images ---------- */
+/* ---------- Panel - Multiple Images ---------- */
 
 /* Gallery-span -- expanded panel (2x height) for dense multi-image layouts */
 .panel.panel--gallery-span {
@@ -748,5 +796,105 @@ body {
 /* ========================================================================== */
 /*                                    STATE                                   */
 /* ========================================================================== */
+
+/* ===== Portrait featured panels: force square & center ===== */
+@media (max-width: 768px), (orientation: portrait) {
+
+    :root {
+    --avatar-size: clamp(180px, 40vw, 280px);
+    --title-size: clamp(28px, 8vw, 40px);
+    --subtitle-size: clamp(20px, 6vw, 30px); 
+  }
+  /* 1) Square panels without 100vw drift */
+  .panel[data-rank] {
+    width: 100%;
+    aspect-ratio: 1 / 1;      /* square */
+    height: auto;             /* let aspect ratio control height */
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 2) Full-bleed image behind */
+  .panel[data-rank] .panel__img,
+  .panel[data-rank] .panel__img--left,
+  .panel[data-rank] .panel__img--right {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: none !important;
+  }
+
+  /* 3) Inner grid centers card */
+  .panel[data-rank] .panel__inner {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding-inline: 0;
+  }
+
+  /* 4) Card: fixed square size, fully centered */
+  .panel[data-rank] .project-card {
+    width: clamp(220px, 75vw, 320px);
+    height: clamp(220px, 75vw, 320px);
+    margin: 0 auto;
+    z-index: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* 5) Cancel desktop offsets from overlap/split variants */
+  .panel.panel--right-overlap .project-card,
+  .panel.panel--left-overlap  .project-card {
+    left: auto !important;
+    right: auto !important;
+  }
+  .panel.panel--right-overlap .panel__inner,
+  .panel.panel--left-overlap  .panel__inner,
+  .panel.panel--split-duo-right .panel__inner,
+  .panel.panel--split-duo-left  .panel__inner {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+  }
+
+  /* 6) RAPS: hide right image; use square left */
+  .panel[data-rank="1"] {
+    --peek-1: clamp(16px, 5vw, 48px);
+    margin-top: calc(var(--peek-1) * -1);
+    padding-bottom: var(--peek-1);
+  }
+
+  .panel[data-rank="1"] .panel__inner {
+    transform: none !important;
+  }
+
+  .panel[data-rank] .project-card {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin: 0 auto;
+  transform: translateY(-10px);   /* matches your global default */
+}
+
+  .panel[data-rank="2"] .panel__img--right { display: none !important; }
+  .panel[data-rank="2"] .panel__img--left  { display: block !important; }
+
+    .panel[data-rank="2"] .project-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* keep the glide (-10px) but center first */
+  transform: translate(-50%, -50%) translateY(-10px);
+
+  /* 7) Remove panel gutter on mobile (fixes right-side strip) */
+  .panel { padding-inline: 0; }
+    }
+    
+}
 
 /* =================== END =================== */
