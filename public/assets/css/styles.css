@@ -111,163 +111,6 @@ body {
 /*                                   LAYOUT                                   */
 /* ========================================================================== */
 
-/* ============================ AXIS-BASED LAYOUT =========================== */
-
-/* ---------- LANDSCAPE (DEFAULT) ---------- */ 
-/* Applies when viewport width is greater than height */
-
-@media (orientation: landscape) {
-
-  /* ---- Topbar ---- */
-  .nav{
-    display: flex;                  /* Show topbar links */
-    align-items: center;
-    gap: var(--nav-gap);
-  }
-  .nav__main{
-    display: flex;                  /* Arrange main nav links in a row */
-    flex-direction: row;
-    align-items: center;
-    gap: var(--nav-gap);
-    flex: 0 0 auto;
-  }
-  .nav__link--contact{
-    margin-top: 0;                  /* Reset margin for contact link */
-    align-self: auto;
-  }
-  .hamburger {
-    display: none;                /* Hide hamburger menu button */
-  }
-
-  /* ---- Hero Section ---- */
-  .hero {
-    place-items: center start;    /* center vertically, left-align horizontally */
-  }
-  .hero__inner {
-    grid-template-columns: 1fr;   /* single column layout, aligned left */
-    justify-items: start;
-    text-align: left;
-  }
-
-}
-
-/* ---------- PORTRAIT (MOBILE) ---------- */ 
-/* Applies when viewport height is greater than width */
-
-@media (orientation: portrait) {
-
-  /* ---- Topbar ---- */
-  .nav {
-    display: none;              /*  Hide topbar links */
-  }
-  .hamburger {
-    display: block;             /* Show hamburger menu button */
-  }
-
-  /* ---- Mobile Nav Window ---- */
-  .nav__main {
-    flex: 1;                      /* Align main nav links to the center */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .nav__link--contact {
-    align-self: center;         /* Center the contact link at the bottom of the nav */
-    margin-top: auto;
-  }
-  
-  .is-nav-open .nav {
-    display: flex;                 /* Show nav links if hamburger icon is clicked */
-    position: fixed;
-    inset: var(--header-h) 0 0 0;
-    background: var(--bg);
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .is-nav-open {
-    overflow: hidden;             /* Prevent background scrolling when nav is open */
-  }
-
-
-  /* ---- Hero Section ---- */
-  .hero {
-    place-items: center;        /* center both vertically and horizontally */
-  }
-  .hero__inner {
-    grid-template-columns: 1fr; /* single column layout, centered */
-    justify-items: center;
-    text-align: center;
-  }
-
-  /* ---- Panels ---- */
-  .panel {
-    width: 100vw;
-    height: 100vw;
-    overflow: hidden;
-  }
-  
-  .panel[data-rank="1"],
-  .panel[data-rank="2"],
-  .panel[data-rank="3"],
-  .panel[data-rank="4"] {
-    width: 100vw;
-    height: 100vw;
-    min-height: auto;
-    padding: 0;
-    position: relative;
-  }
-
-  .panel[data-rank] .panel__inner {
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center; /* center card */
-  }
-
-  .panel[data-rank="1"] .panel__img,
-  .panel[data-rank="2"] .panel__img--left,
-  .panel[data-rank="3"] .panel__img,
-  .panel[data-rank="4"] .panel__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-  }
-
-  .panel[data-rank="2"] .panel__img--right {
-    display: none;
-  }
-
-  .panel[data-rank="1"] .project-card,
-  .panel[data-rank="2"] .project-card,
-  .panel[data-rank="3"] .project-card,
-  .panel[data-rank="4"] .project-card {
-    position: relative;
-    z-index: 2;
-    margin: auto;
-    width: 75vw;
-    height: 75vw;
-    max-width: 320px;
-    max-height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-  }
-}
-
 /* ================================ TOPBAR ================================== */
 
 /* ---- Containers ---- */
@@ -797,6 +640,163 @@ body {
 /*                                    STATE                                   */
 /* ========================================================================== */
 
+/* ============================ AXIS-BASED LAYOUT =========================== */
+
+/* ---------- LANDSCAPE (DEFAULT) ---------- */ 
+/* Applies when viewport width is greater than height */
+
+@media (orientation: landscape) {
+
+  /* ---- Topbar ---- */
+  .nav{
+    display: flex;                  /* Show topbar links */
+    align-items: center;
+    gap: var(--nav-gap);
+  }
+  .nav__main{
+    display: flex;                  /* Arrange main nav links in a row */
+    flex-direction: row;
+    align-items: center;
+    gap: var(--nav-gap);
+    flex: 0 0 auto;
+  }
+  .nav__link--contact{
+    margin-top: 0;                  /* Reset margin for contact link */
+    align-self: auto;
+  }
+  .hamburger {
+    display: none;                /* Hide hamburger menu button */
+  }
+
+  /* ---- Hero Section ---- */
+  .hero {
+    place-items: center start;    /* center vertically, left-align horizontally */
+  }
+  .hero__inner {
+    grid-template-columns: 1fr;   /* single column layout, aligned left */
+    justify-items: start;
+    text-align: left;
+  }
+
+}
+
+/* ---------- PORTRAIT (MOBILE) ---------- */ 
+/* Applies when viewport height is greater than width */
+
+@media (orientation: portrait) {
+
+  /* ---- Topbar ---- */
+  .nav {
+    display: none;              /*  Hide topbar links */
+  }
+  .hamburger {
+    display: block;             /* Show hamburger menu button */
+  }
+
+  /* ---- Mobile Nav Window ---- */
+  .nav__main {
+    flex: 1;                      /* Align main nav links to the center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav__link--contact {
+    align-self: center;         /* Center the contact link at the bottom of the nav */
+    margin-top: auto;
+  }
+  
+  .is-nav-open .nav {
+    display: flex;                 /* Show nav links if hamburger icon is clicked */
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    background: var(--bg);
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .is-nav-open {
+    overflow: hidden;             /* Prevent background scrolling when nav is open */
+  }
+
+
+  /* ---- Hero Section ---- */
+  .hero {
+    place-items: center;        /* center both vertically and horizontally */
+  }
+  .hero__inner {
+    grid-template-columns: 1fr; /* single column layout, centered */
+    justify-items: center;
+    text-align: center;
+  }
+
+  /* ---- Panels ---- */
+  .panel {
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+  }
+  
+  .panel[data-rank="1"],
+  .panel[data-rank="2"],
+  .panel[data-rank="3"],
+  .panel[data-rank="4"] {
+    width: 100vw;
+    height: 100vw;
+    min-height: auto;
+    padding: 0;
+    position: relative;
+  }
+
+  .panel[data-rank] .panel__inner {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center; /* center card */
+  }
+
+  .panel[data-rank="1"] .panel__img,
+  .panel[data-rank="2"] .panel__img--left,
+  .panel[data-rank="3"] .panel__img,
+  .panel[data-rank="4"] .panel__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .panel[data-rank="2"] .panel__img--right {
+    display: none;
+  }
+
+  .panel[data-rank="1"] .project-card,
+  .panel[data-rank="2"] .project-card,
+  .panel[data-rank="3"] .project-card,
+  .panel[data-rank="4"] .project-card {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 75vw;
+    height: 75vw;
+    max-width: 320px;
+    max-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+}
+
 /* ===== Portrait featured panels: force square & center ===== */
 @media (max-width: 768px), (orientation: portrait) {
 
@@ -864,7 +864,7 @@ body {
 
   /* 6) RAPS: hide right image; use square left */
   .panel[data-rank="1"] {
-    --peek-1: clamp(16px, 5vw, 48px);
+    --peek-1: clamp(24px, 10vw, 96px);
     margin-top: calc(var(--peek-1) * -1);
     padding-bottom: var(--peek-1);
   }
@@ -896,5 +896,74 @@ body {
     }
     
 }
+
+/* ===== Mobile LANDSCAPE tuning: shrink panels, tighten spacing, smaller card text */
+@media (max-height: 520px) and (orientation: landscape) {
+  :root {
+    /* overall scale */
+    --panel-land-max: 96vw;        /* cap inner width for ALL panels */
+    --land-gap: min(3vw, 18px);
+
+    /* shrink vertical scale */
+    --panel-height-ratio: 0.68;    /* was 0.825 */
+    --padding-ratio:      0.02;    /* was 0.03 */
+    --image-height-ratio: 0.70;    /* was 0.8 */
+    --card-size-ratio:    0.34;    /* was 0.4 */
+
+    /* smaller card typography */
+    --card-title-size: clamp(16px, 2vw, 20px);
+    --card-desc-size:  clamp(12px, 1.6vw, 14px);
+    --card-link-size:  clamp(12px, 1.6vw, 14px);
+  }
+
+  /* apply to ALL panels */
+  .panel {
+    padding-inline: var(--land-gap);
+    height: auto !important;
+    min-height: 0 !important;
+    padding-block:  calc(var(--panel-height) * var(--padding-ratio));
+  }
+
+  /* constrain inner width + gaps for ALL layouts */
+  .panel .panel__inner {
+    max-width: var(--panel-land-max);
+    width: 100%;
+    margin: 0 auto;
+    gap: var(--land-gap);
+  }
+
+  /* make images obey the new scale */
+  .panel .panel__img {
+    height: var(--image-height);
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  /* split-duo: clamp columns so images/cards don't sprawl */
+  :root {
+    --img-wide-w-land:   clamp(280px, 34vw, 520px); /* 4:3 image */
+    --img-square-w-land: clamp(220px, 26vw, 380px); /* 1:1 image */
+    --card-size:         clamp(220px, 28vw, 320px); /* override absolute card size in grids */
+  }
+  .panel.panel--split-duo-right .panel__inner {
+    grid-template-columns: var(--img-square-w-land) var(--card-size) var(--img-wide-w-land);
+    justify-content: center;
+    align-items: center;
+  }
+  .panel.panel--split-duo-left .panel__inner {
+    grid-template-columns: var(--img-wide-w-land) var(--card-size) var(--img-square-w-land);
+    justify-content: center;
+    align-items: center;
+  }
+
+    .panel[data-rank="1"] {
+    --peek-1: clamp(8px, 2vh, 24px); /* tighter overlap just for short screens */
+    margin-top: calc(var(--peek-1) * -1);
+    padding-bottom: var(--peek-1);
+  }
+}
+
+
 
 /* =================== END =================== */
