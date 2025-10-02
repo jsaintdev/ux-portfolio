@@ -901,7 +901,7 @@ body {
 @media (max-height: 520px) and (orientation: landscape) {
   :root {
 
-    -avatar-size: clamp(75px, 12vh, 120px);
+    --avatar-size: clamp(75px, 12vh, 120px);
     --title-size: clamp(18px, 2.4vh, 24px);
     --subtitle-size: clamp(12px, 2vh, 24px);
     --nav-link-size: clamp(15px, 3vh, 20px);
