@@ -900,6 +900,12 @@ body {
 /* ===== Mobile LANDSCAPE tuning: shrink panels, tighten spacing, smaller card text */
 @media (max-height: 520px) and (orientation: landscape) {
   :root {
+
+    -avatar-size: clamp(75px, 12vh, 120px);
+    --title-size: clamp(18px, 2.4vh, 24px);
+    --subtitle-size: clamp(12px, 2vh, 24px);
+    --nav-link-size: clamp(15px, 3vh, 20px);
+    
     /* overall scale */
     --panel-land-max: 96vw;        /* cap inner width for ALL panels */
     --land-gap: min(3vw, 18px);
@@ -914,6 +920,16 @@ body {
     --card-title-size: clamp(16px, 2vw, 20px);
     --card-desc-size:  clamp(12px, 1.6vw, 14px);
     --card-link-size:  clamp(12px, 1.6vw, 14px);
+
+    --card-padding: clamp(30px, 3vw, 40px); /* reduce padding inside cards */
+  }
+
+  .hero__inner {
+    gap: clamp(8px, 1.5vw, 16px); /* reduce vertical gap between avatar, title, subtitle */
+  }
+
+  .hero__title {
+    margin-bottom: 0.5rem; /* tighten title-subtitle spacing */
   }
 
   /* apply to ALL panels */
