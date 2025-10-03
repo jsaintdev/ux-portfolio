@@ -224,7 +224,46 @@ body {
   margin-top: calc(var(--padding-vertical) * -1);   /* overlap adjacent panels */
 }
 
-/* Featured Panel 1 */
+.panel__inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  padding-inline: var(--space);
+}
+
+/* ............................ Single Image Panels ............................. */
+
+/* Tight (card next to image with minimal gap) */
+
+.panel.panel--left-tight,
+.panel.panel--right-tight {
+  padding-inline: var(--gutter-tight);            /* less space between card and image */
+}
+
+.panel.panel--left-tight .panel__inner {
+  display: grid;                                  /* card on left, image on right */
+  grid-template-columns: var(--card-size) auto;
+  column-gap: var(--space);
+  align-items: center;
+  justify-content: center;
+}
+
+.panel.panel--right-tight .panel__inner {
+  display: grid;                                  /* not in use */
+  grid-template-columns: auto var(--card-size);
+  column-gap: var(--space);
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* .............................. Panel Variants ................................ */
+
+/* Featured Panel 1 (overlaps the hero section) */
 
 .panel[data-rank="1"] {
   --peek-1: clamp(40px, 6vh, 140px);              /* raises the first panel and adds padding below */
@@ -238,6 +277,13 @@ body {
 }
 
 /* --------------------------------- Elements ----------------------------------- */
+
+.panel__img {
+  height: var(--image-height);
+  aspect-ratio: var(--image-aspect);
+  width: auto;
+  object-fit: cover;
+}
 
 /* Featured Panel 1 */
 
@@ -347,15 +393,7 @@ body {
 /* ============================= FEATURED + PLAY ============================= */
 
 /* ---- Containers ---- */
-.panel__inner{
-  max-width: var(--container);
-  margin: 0 auto;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space);
-  padding-inline: var(--space);
-}
+
 
 /* ---- Elements ---- */
 .panel .project-card {
@@ -374,13 +412,6 @@ body {
   justify-content: space-between;
   height: 100%;
   transition: background-color 200ms ease, transform 260ms ease, opacity 220ms ease;
-}
-
-.panel__img {
-  height: var(--image-height);
-  aspect-ratio: var(--image-aspect);
-  width: auto;
-  object-fit: cover;
 }
 
 /* ---- Animations ---- */
@@ -422,28 +453,6 @@ body {
 }
 
 /* ---------- Panel - Single Image ---------- */
-
-/* Tight -- Card close to image */
-.panel.panel--left-tight,                   /* RIGHT NOT IN USE */
-.panel.panel--right-tight {
-  padding-inline: var(--gutter-tight);
-}
-
-.panel.panel--left-tight .panel__inner {
-  display: grid;
-  grid-template-columns: var(--card-size) auto;
-  column-gap: var(--space);
-  align-items: center;
-  justify-content: center;
-}
-
-.panel.panel--right-tight .panel__inner {
-  display: grid;
-  grid-template-columns: auto var(--card-size);
-  column-gap: var(--space);
-  align-items: center;
-  justify-content: center;
-}
 
 /* Overlap -- Card overlapping image */
 .panel.panel--left-overlap .project-card,
