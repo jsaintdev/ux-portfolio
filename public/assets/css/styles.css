@@ -68,7 +68,6 @@
   --card-desc-line: 1.4;                            /* card description line-height */
   --card-link-size: clamp(12px, 0.9vw, 14px);   /* card link font-size */
   --card-padding: 40px;                             /* padding inside project card */                
-
 }
 
 /* ============================================================================== */
@@ -836,7 +835,8 @@ body {
     :root {
     --avatar-size: clamp(180px, 40vw, 280px);
     --title-size: clamp(28px, 8vw, 40px);
-    --subtitle-size: clamp(20px, 6vw, 30px); 
+    --subtitle-size: clamp(20px, 6vw, 30px);
+    --card-size: clamp(100px, 25vw, 250px);
   }
   /* 1) Square panels without 100vw drift */
   .panel[data-rank] {
