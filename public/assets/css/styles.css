@@ -62,12 +62,12 @@
   --overlap-max: 33%;     /* more overlap of card over image */
 
   /* Panel Project Card */
-  --card-title-size: clamp(18px, 2vmax, 26px);      /* card title font-size */
+  --card-title-size: clamp(14px, 1.2vw, 18px);     /* card title font-size */
   --card-title-line: 1.15;                          /* card title line-height */
-  --card-desc-size: clamp(12px, 1.4vmax, 16px);     /* card description font-size */
+  --card-desc-size: clamp(12px, 0.9vw, 14px);     /* card description font-size */
   --card-desc-line: 1.4;                            /* card description line-height */
-  --card-link-size: clamp(0.9rem, 1.1vmax, 1rem);   /* card link font-size */
-  --card-padding: 50px;                             /* padding inside project card */                
+  --card-link-size: clamp(12px, 0.9vw, 14px);   /* card link font-size */
+  --card-padding: 40px;                             /* padding inside project card */                
 
 }
 
