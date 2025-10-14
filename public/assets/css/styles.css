@@ -836,7 +836,7 @@ body {
     --avatar-size: clamp(180px, 40vw, 280px);
     --title-size: clamp(28px, 8vw, 40px);
     --subtitle-size: clamp(20px, 6vw, 30px);
-    --card-size: clamp(100px, 25vw, 250px);
+    --card-size: clamp(100px, 75vw, 250px);
   }
   /* 1) Square panels without 100vw drift */
   .panel[data-rank] {
@@ -873,8 +873,8 @@ body {
 
   /* 4) Card: fixed square size, fully centered */
   .panel[data-rank] .project-card {
-    width: clamp(220px, 75vw, 320px);
-    height: clamp(220px, 75vw, 320px);
+    width: var(--card-size);
+    height: var(--card-size);
     margin: 0 auto;
     z-index: 2;
     text-align: center;
