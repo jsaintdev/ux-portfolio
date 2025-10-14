@@ -32,7 +32,30 @@
 
     <!-- Topbar -->
     <header class="topbar">
-      <div data-include="partials/nav.html"></div>
+      <div class="topbar__inner">
+        <!-- Logo -->
+        <div class="topbar__brand">
+          <img class="topbar__logo" src="./assets/img/logo.png" alt="Justin Saint logo">
+        </div>
+
+        <!-- Navigation -->
+        <nav id="site-nav" class="nav">
+          <div class="nav__main">
+            <a href="#projects" class="nav__link">projects</a>
+            <a href="./creative/index.html" class="nav__link">creative</a>
+            <a href="./about/index.html" class="nav__link">about</a>
+          </div>
+          <a id="contact-copy" class="nav__link nav__link--contact" href="#" role="button">
+            Copy Email
+          </a>
+        </nav>
+
+        <!-- Hamburger -->
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+          <span class="hamburger__bar"></span><span class="hamburger__bar"></span><span class="hamburger__bar"></span>
+        </button>
+      </div>
+
     </header>
 
     <!-- Hero content -->
@@ -48,6 +71,7 @@
           <h2 class="hero__subtitle">
             <span class="hero__line">A <span class="hero__line--highlight">UX Designer</span></span>
             <span class="hero__line">blending art 🎨</span>
+            <span class="hero__line">storytelling 🎭</span>
             <span class="hero__line">and communications ✍️</span>
             <span class="hero__line">into elegant, engaging</span>
             <span class="hero__line">experiences</span>
@@ -59,55 +83,58 @@
   </section>
 
   <!-- PANEL 1: Featured Project – Oddfellows -->
-  <div class="panel panel--right-overlap" data-rank="1">
-    <div class="panel__inner">
-      <!-- Project Image -->
-      <div>
-        <img src="./assets/img/main/oddfellows.jpg" alt="Oddfellows project prototype" class="panel__img">
+  <section id="projects">
+    <div class="panel panel--right-overlap" data-rank="1">
+      <div class="panel__inner">
+        <!-- Project Image -->
+        <div>
+          <img src="./assets/img/main/oddfellows.jpg" alt="Oddfellows project prototype" class="panel__img">
+        </div>
+
+        <!-- Project Card -->
+        <article class="project-card">
+          <h3 class="project-card__title">Event Booking System</h3>
+          <p class="project-card__desc">
+            Digitizing an event booking process to reduce volunteer workload and boost bookings.
+          </p>
+          <a href="https://www.figma.com/proto/zIr9uoP5eGfBeo9fVuYgt0/COMP-4800-VOF-Admin-Wireframe?node-id=113-2007&p=f&t=amnaEiT1bH3S176k-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=113%3A2007&show-proto-sidebar=1"
+            target="_blank" class="project-card__link">view prototype →</a>
+        </article>
       </div>
-
-      <!-- Project Card -->
-      <article class="project-card">
-        <h3 class="project-card__title">Event Booking System</h3>
-        <p class="project-card__desc">
-          Digitizing an event booking process to reduce volunteer workload and boost bookings.
-        </p>
-        <a href="./projects/oddfellows/index.html" class="project-card__link">view case study →</a>
-      </article>
     </div>
-  </div>
 
-  <!-- PANEL 2: Hackathon (left-tight) -->
-  <div class="panel panel--left-tight" data-rank="2">
-    <div class="panel__inner">
-      <article class="project-card">
-        <h3 class="project-card__title">BCIT School Hackathon</h3>
-        <p class="project-card__desc">
-          How I raised $12K and led 62 volunteers to host a hybrid hackathon for 180+ participants.
-        </p>
-        <a href="./projects/hackathon/index.html" class="project-card__link">view case study →</a>
-      </article>
-      <img src="./assets/img/main/hackathon.jpg" alt="QDS hackathon team working"
-          class="panel__img" />
+    <!-- PANEL 2: Hackathon (left-tight) -->
+    <div class="panel panel--left-tight" data-rank="2">
+      <div class="panel__inner">
+        <article class="project-card">
+          <h3 class="project-card__title">BCIT School Hackathon</h3>
+          <p class="project-card__desc">
+            How I raised $12K and led 62 volunteers to host a hybrid hackathon for 180+ participants.
+          </p>
+          <a href="./assets/docs/hackathon-report.pdf" target="_blank" class="project-card__link">view report →</a>
+        </article>
+        <img src="./assets/img/main/hackathon.jpg" alt="QDS hackathon team working" class="panel__img" />
+      </div>
     </div>
-  </div>
 
-  <!-- PANEL 4: Play / Other Work Intro -->
-  <div class="panel panel--center-overlay" data-rank="3">
-    <div class="panel__inner">
-      <!-- Background Image -->
-      <img src="./assets/img/main/creative.png" alt="Collage representing play and creative projects" class="panel__img">
+    <!-- PANEL 4: Play / Other Work Intro -->
+    <div class="panel panel--center-overlay" data-rank="3">
+      <div class="panel__inner">
+        <!-- Background Image -->
+        <img src="./assets/img/main/creative.png" alt="Collage representing play and creative projects"
+          class="panel__img">
 
-      <!-- Project Card -->
-      <article class="project-card">
-        <h3 class="project-card__title">Creative Work</h3>
-        <p class="project-card__desc">
-          Past gigs and creative moments that shaped my journey.
-        </p>
-        <a href="./play/index.html" class="project-card__link">explore other work →</a>
-      </article>
+        <!-- Project Card -->
+        <article class="project-card">
+          <h3 class="project-card__title">Creative Work</h3>
+          <p class="project-card__desc">
+            Past gigs and creative moments that shaped my journey.
+          </p>
+          <a href="./creative/index.html" class="project-card__link">explore other work →</a>
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- JavaScript -->
   <script src="./assets/js/nav.js" defer></script>

@@ -65,6 +65,7 @@
     enhanceCards();
     wireHoverColor();
     observeInView();
+    colorizeCreativeOnScroll();  
   });
 })();
 
@@ -87,4 +88,54 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   observer.observe(wave);
+
+    // 4) Mobile portrait: desaturate off-screen, saturate as image center nears viewport center (creative panels only)
+  function colorizeCreativeOnScroll() {
+    const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!isPortrait || prefersReduced) return;
+
+    const imgs = Array.from(document.querySelectorAll('.panel--play .panel__img'));
+    if (!imgs.length) return;
+
+    let ticking = false;
+
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+    const update = () => {
+      const vh = window.innerHeight;
+      const viewportCenter = vh / 2;
+
+      // How far from center should we start/stop the effect?
+      // Using 60% of viewport as the falloff radius feels natural.
+      const radius = vh * 0.6;
+
+      imgs.forEach(img => {
+        const r = img.getBoundingClientRect();
+        const imgCenter = r.top + r.height / 2;
+        const dist = Math.abs(imgCenter - viewportCenter);
+
+        // Map distance → progress (1 at center, 0 when beyond radius)
+        const progress = clamp(1 - dist / radius, 0, 1);
+
+        // Write to CSS variable (drives grayscale filter)
+        img.style.setProperty('--sat-progress', progress.toFixed(3));
+      });
+
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    // Initialize & wire
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
 });

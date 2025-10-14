@@ -28,6 +28,29 @@
 
     // Once nav is injected, initialize the menu logic
     initNav();
+
+    // Copy Email to Clipboard with feedback
+    const contactCopy = document.getElementById('contact-copy');
+    if (contactCopy) {
+      const email = 'justinsaintdev@gmail.com';
+      contactCopy.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(email);
+          const original = contactCopy.textContent;
+          contactCopy.textContent = 'Copied!';
+          contactCopy.classList.add('copied');
+
+          setTimeout(() => {
+            contactCopy.textContent = original;
+            contactCopy.classList.remove('copied');
+          }, 1500);
+        } catch (err) {
+          console.error('Clipboard copy failed:', err);
+        }
+      });
+    }
+
   });
 
   // Mobile nav functionality

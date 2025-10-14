@@ -930,6 +930,15 @@ body {
     
 }
 
+/* Creative panels default to grayscale; JS drives --sat-progress [0..1] */
+@media (orientation: portrait) {
+  .panel--play .panel__img {
+    --sat-progress: 0;                 /* 0 = fully desaturated, 1 = full color */
+    filter: grayscale(calc(1 - var(--sat-progress)));
+    transition: filter 180ms ease;     /* small ease for subtle smoothing */
+  }
+}
+
 /* ============================== ACCESSIBILITY =============================== */
 
 /* Reduces or disables animations for users who prefer less motion */
