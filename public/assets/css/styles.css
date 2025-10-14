@@ -426,6 +426,17 @@ body {
 
 /* Card glide-in: start slightly higher, then settle when panel enters view */
 .project-card { transform: translateY(-10px); opacity: 0; }
+
+.project-card--static {
+  cursor: default;
+}
+
+.project-card--static:hover,
+.project-card--static:focus {
+  background-color: var(--card-bg); /* no hover lightening */
+  transform: none;                  /* prevent hover “lift” */
+}
+
 .panel.is-in .project-card { transform: translateY(0); opacity: 1; transition: transform 260ms ease, opacity 220ms ease; }
 
 /* ---- Text Styles ---- */
