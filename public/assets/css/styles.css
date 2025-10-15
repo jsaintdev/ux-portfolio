@@ -193,6 +193,23 @@ p {
   transform: translateY(-6px) rotate(-45deg);                       /* Animates hamburger to "X" when menu is open */
 }
 
+.footer {
+  background-color: #2A3F42;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer__inner {
+  max-width: var(--container-width, 1200px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
 /* ================================= SECTIONS =================================== */
 
 /* -------------------------------- Containers ---------------------------------- */
