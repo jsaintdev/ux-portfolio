@@ -93,6 +93,10 @@ body {
   line-height: 1.6;                  /* increase readability with taller line height */
 }
 
+p {
+  font-family: var(--font-body);
+}
+
 /* =============================== ACCESSIBILITY ================================ */
 
 :focus-visible {
@@ -251,7 +255,7 @@ body {
 }
 
 .panel.panel--right-tight .panel__inner {
-  display: grid;                                  /* not in use */
+  display: grid;                                  
   grid-template-columns: auto var(--card-size);
   column-gap: var(--space);
   align-items: center;
