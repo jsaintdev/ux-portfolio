@@ -30,7 +30,7 @@
   --nav-link-size: clamp(16px, 3vmax, 32px);    /* nav link font-size */
   --nav-gap: clamp(16px, 3vmax, 96px);          /* spacing between nav links */
 
-  /* Section Hero */
+  /* panel Hero */
   --avatar-size: clamp(140px, 15vmax, 320px);       /* avatar size */
 
   --title-size: clamp(17px, 3vmax, 36px);           /* title font-size */
@@ -40,18 +40,18 @@
   --subtitle-line: 1.28;                            /* subtitle line-height */
   --subtitle-max-width: clamp(28ch, 60ch, 72ch);    /* max width of subtitle text block */
 
-  /* Panel */
-  --panel-height-ratio: 0.825;                  /* panel container height */
-  --image-height-ratio: 0.8;                    /* panel image height */
+  /* featured */
+  --featured-height-ratio: 0.825;                  /* featured container height */
+  --image-height-ratio: 0.8;                    /* featured image height */
   --card-size-ratio:    0.4;                    /* project card size */
-  --padding-ratio:      0.03;                   /* vertical padding inside panel */
+  --padding-ratio:      0.03;                   /* vertical padding inside featured */
 
   --img-aspect: 1170 / 750;                     /* aspect ratio for project images */
 
-  --panel-height:       clamp(600px, calc(var(--panel-height-ratio) * 100vh), 1000px);
-  --padding-vertical:   calc(var(--panel-height) * var(--padding-ratio));
-  --image-height:       calc(var(--panel-height) * var(--image-height-ratio));
-  --card-size:          calc(var(--panel-height) * var(--card-size-ratio));
+  --featured-height:       clamp(600px, calc(var(--featured-height-ratio) * 100vh), 1000px);
+  --padding-vertical:   calc(var(--featured-height) * var(--padding-ratio));
+  --image-height:       calc(var(--featured-height) * var(--image-height-ratio));
+  --card-size:          calc(var(--featured-height) * var(--card-size-ratio));
 
   --gutter: 80px;         /* standard gutter between card and image */
   --gutter-tight: 40px;   /* less space between card and image */
@@ -61,7 +61,7 @@
   --overlap-min: 25%;     /* less overlap of card over image */
   --overlap-max: 33%;     /* more overlap of card over image */
 
-  /* Panel Project Card */
+  /* featured Project Card */
   --card-title-size: clamp(14px, 1.2vw, 18px);     /* card title font-size */
   --card-title-line: 1.15;                          /* card title line-height */
   --card-desc-size: clamp(12px, 0.9vw, 14px);     /* card description font-size */
@@ -210,28 +210,28 @@ p {
   gap: 0.5rem;
 }
 
-/* ================================= SECTIONS =================================== */
-
-/* -------------------------------- Containers ---------------------------------- */
-
-.section {
-  min-height: 100vh;                /* Each section takes up full viewport height */  
-}
-
-/* --------------------------------- Structure ---------------------------------- */
-
-.section--hero {                  
-  display: grid;                              /* Grid layout for Main page hero section */
-  grid-template-rows: auto 1fr;
-}
-
-/* ================================== PANELS ==================================== */
+/* ================================= panelS =================================== */
 
 /* -------------------------------- Containers ---------------------------------- */
 
 .panel {
-  background: var(--bg-alt);                  /* Main container for each panel */
-  height: var(--panel-height);
+  min-height: 100vh;                /* Each panel takes up full viewport height */  
+}
+
+/* --------------------------------- Structure ---------------------------------- */
+
+.panel--hero {                  
+  display: grid;                              /* Grid layout for Main page hero panel */
+  grid-template-rows: auto 1fr;
+}
+
+/* ================================== FEATURED ==================================== */
+
+/* -------------------------------- Containers ---------------------------------- */
+
+.featured {
+  background: var(--bg-alt);                  /* Main container for each featured */
+  height: var(--featured-height);
   padding-block: var(--padding-vertical);
   padding-inline: var(--gutter);
   display: grid;
@@ -240,11 +240,11 @@ p {
 
 /* --------------------------------- Structure ---------------------------------- */
 
-.panel + .panel {
-  margin-top: calc(var(--padding-vertical) * -1);   /* overlap adjacent panels */
+.featured + .featured {
+  margin-top: calc(var(--padding-vertical) * -1);   /* overlap adjacent featured */
 }
 
-.panel__inner{
+.featured__inner{
   max-width: var(--container);
   margin: 0 auto;
   display: grid;
@@ -254,16 +254,16 @@ p {
   padding-inline: var(--space);
 }
 
-/* ............................ Single Image Panels ............................. */
+/* ............................ Single Image featured ............................. */
 
 /* Tight (card next to image with minimal gap) */
 
-.panel.panel--left-tight,
-.panel.panel--right-tight {
+.featured.featured--left-tight,
+.featured.featured--right-tight {
   padding-inline: var(--gutter-tight);            /* less space between card and image */
 }
 
-.panel.panel--left-tight .panel__inner {
+.featured.featured--left-tight .featured__inner {
   display: grid;                                  /* card on left, image on right */
   grid-template-columns: var(--card-size) auto;
   column-gap: var(--space);
@@ -271,7 +271,7 @@ p {
   justify-content: center;
 }
 
-.panel.panel--right-tight .panel__inner {
+.featured.featured--right-tight .featured__inner {
   display: grid;                                  
   grid-template-columns: auto var(--card-size);
   column-gap: var(--space);
@@ -281,38 +281,38 @@ p {
 
 
 
-/* .............................. Panel Variants ................................ */
+/* .............................. featured Variants ................................ */
 
-/* Featured Panel 1 (overlaps the hero section) */
+/* Featured featured 1 (overlaps the hero panel) */
 
-.panel[data-rank="1"] {
-  --peek-1: clamp(40px, 6vh, 140px);              /* raises the first panel and adds padding below */
-  --panel-height: clamp(620px, 70vh, 900px);
+.featured[data-rank="1"] {
+  --peek-1: clamp(40px, 6vh, 140px);              /* raises the first featured and adds padding below */
+  --featured-height: clamp(620px, 70vh, 900px);
   margin-top: calc(var(--peek-1) * -1);
   padding-bottom: calc(var(--padding-vertical) + var(--peek-1));
 }
 
-.panel[data-rank="1"] .panel__inner {
+.featured[data-rank="1"] .featured__inner {
   transform: translateY(calc(var(--peek-1) * -1));  /* raises inner content to adjust for the extra padding */
 }
 
 /* --------------------------------- Elements ----------------------------------- */
 
-.panel__img {
+.featured__img {
   height: var(--image-height);
   aspect-ratio: var(--image-aspect);
   width: auto;
   object-fit: cover;
 }
 
-/* Featured Panel 1 */
+/* Featured featured 1 */
 
-.panel[data-rank="1"] .panel__img {
-  position: relative;                           /* raises the first panel image even more */
+.featured[data-rank="1"] .featured__img {
+  position: relative;                           /* raises the first featured image even more */
   z-index: 2;
 }
 
-.panel[data-rank="1"] .project-card {
+.featured[data-rank="1"] .project-card {
   position: relative;                           /* ensures card is above image */
   z-index: 3;
 }
@@ -416,7 +416,7 @@ p {
 
 
 /* ---- Elements ---- */
-.panel .project-card {
+.featured .project-card {
   width:  var(--card-size);         /* Turns project cards into squares */
   height: var(--card-size);
 }
@@ -442,10 +442,10 @@ p {
 }
 
 /* Image: start grayscale; color on card hover */
-.panel .panel__img { filter: grayscale(100%); transition: filter 240ms ease; }
-.panel.is-card-hover .panel__img { filter: none; }
+.featured .featured__img { filter: grayscale(100%); transition: filter 240ms ease; }
+.featured.is-card-hover .featured__img { filter: none; }
 
-/* Card glide-in: start slightly higher, then settle when panel enters view */
+/* Card glide-in: start slightly higher, then settle when featured enters view */
 .project-card { transform: translateY(-10px); opacity: 0; }
 
 .project-card--static {
@@ -458,7 +458,7 @@ p {
   transform: none;                  /* prevent hover “lift” */
 }
 
-.panel.is-in .project-card { transform: translateY(0); opacity: 1; transition: transform 260ms ease, opacity 220ms ease; }
+.featured.is-in .project-card { transform: translateY(0); opacity: 1; transition: transform 260ms ease, opacity 220ms ease; }
 
 /* ---- Text Styles ---- */
 .project-card__title {
@@ -483,57 +483,57 @@ p {
   margin-top: auto;
 }
 
-/* ---------- Panel - Single Image ---------- */
+/* ---------- featured - Single Image ---------- */
 
 /* Overlap -- Card overlapping image */
-.panel.panel--left-overlap .project-card,
-.panel.panel--right-overlap .project-card {
+.featured.featured--left-overlap .project-card,
+.featured.featured--right-overlap .project-card {
   position: relative;
 }
 
-.panel.panel--left-overlap .project-card {
+.featured.featured--left-overlap .project-card {
   position: relative;
   right: calc(var(--card-size) * -0.5);
 }
 
-.panel.panel--right-overlap .project-card {
+.featured.featured--right-overlap .project-card {
   position: relative;
   left: calc(var(--card-size) * -0.5);
 }
 
-.panel.panel--right-overlap .panel__inner{
+.featured.featured--right-overlap .featured__inner{
   grid-template-columns: auto var(--card-size);
   justify-content: center;
   column-gap: var(--space);
 }
 
-.panel.panel--left-overlap .panel__inner {
+.featured.featured--left-overlap .featured__inner {
   grid-template-columns: auto var(--card-size);
   justify-content: center;
   column-gap: var(--space);
 }
 
 /* Split -- image and card are in equally sized columns */
-.panel.panel--left-split,
-.panel.panel--right-split {
+.featured.featured--left-split,
+.featured.featured--right-split {
   grid-template-columns: 1fr 1fr;   /* RIGHT NOT IN USE */
   column-gap: var(--space);
 }
 
-.panel.panel--left-split .panel__img,
-.panel.panel--right-split .panel__img {
-  height: calc(var(--panel-height) - 2 * var(--padding-vertical));
+.featured.featured--left-split .featured__img,
+.featured.featured--right-split .featured__img {
+  height: calc(var(--featured-height) - 2 * var(--padding-vertical));
 }
 
-/* [Center/Top/Bottom]-Overlay -- the image fills the panel, card aligns to c/t/b */
-.panel.panel--center-overlay {
+/* [Center/Top/Bottom]-Overlay -- the image fills the featured, card aligns to c/t/b */
+.featured.featured--center-overlay {
   position: relative;
   padding-inline: var(--gutter-flush);
 }
 
-.panel.panel--center-overlay .panel__inner,
-.panel.panel--top-overlay .panel__inner,
-.panel.panel--bottom-overlay .panel__inner {
+.featured.featured--center-overlay .featured__inner,
+.featured.featured--top-overlay .featured__inner,
+.featured.featured--bottom-overlay .featured__inner {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -541,83 +541,83 @@ p {
   position: relative;
 }
 
-.panel.panel--center-overlay .panel__img {
-  height: calc(var(--panel-height) - 2 * var(--padding-vertical));
+.featured.featured--center-overlay .featured__img {
+  height: calc(var(--featured-height) - 2 * var(--padding-vertical));
   width: 100%;
   aspect-ratio: auto;
 }
 
-.panel.panel--center-overlay .project-card {
+.featured.featured--center-overlay .project-card {
   position: absolute;
   inset: 0;
   margin: auto;
 }
 
-.panel.panel--top-overlay .project-card {
+.featured.featured--top-overlay .project-card {
   align-self: start;                            /* NOT IN USE */
 }
 
-.panel.panel--bottom-overlay .project-card {
+.featured.featured--bottom-overlay .project-card {
   align-self: end;
 }
 
-.panel.panel--bottom-overlay .panel__img {
-  height: calc(var(--panel-height) - 2 * var(--padding-vertical));
+.featured.featured--bottom-overlay .featured__img {
+  height: calc(var(--featured-height) - 2 * var(--padding-vertical));
   width: 100%;
   aspect-ratio: auto;
   object-fit: cover;
 }
 
-.panel.panel--bottom-overlay .project-card {
+.featured.featured--bottom-overlay .project-card {
   position: absolute;
   bottom: var(--padding-vertical);
   left: var(--gutter);
 }
 
-/* ---------- Panel - Two Images ---------- */
+/* ---------- featured - Two Images ---------- */
 
 /* Center-Duo -- the card is centered between two images, with space on the sides */
-.panel.panel--center-duo {
+.featured.featured--center-duo {
   grid-template-columns: 1fr auto var(--card-size) auto 1fr;
   column-gap: var(--space);
 }
 
-.panel.panel--center-duo .panel__img {
+.featured.featured--center-duo .featured__img {
   height: var(--image-height);
 }
 
 /* Center-stack -- the card is centered between two images of equal height */
-.panel.panel--center-stack {
+.featured.featured--center-stack {
   grid-template-rows: auto var(--card-size) auto;
   row-gap: var(--gutter-tight);
 }
 
-.panel.panel--center-stack .panel__img {
-  height: calc((var(--panel-height) - 2 * var(--padding-vertical) - var(--card-size) - var(--gutter-tight)) / 2);
+.featured.featured--center-stack .featured__img {
+  height: calc((var(--featured-height) - 2 * var(--padding-vertical) - var(--card-size) - var(--gutter-tight)) / 2);
 }
 
 /* Split-duo-[Left/Right] -- card is centered between a landscape image and a square image */
-.panel.panel--split-duo-left,
-.panel.panel--split-duo-right {
+.featured.featured--split-duo-left,
+.featured.featured--split-duo-right {
   display: grid;
   grid-template-columns: 1fr auto var(--card-size) auto 1fr;
   column-gap: var(--space);
   align-items: center;
 }
 
-.panel.panel--split-duo-left .panel__img,
-.panel.panel--split-duo-right .panel__img {
+.featured.featured--split-duo-left .featured__img,
+.featured.featured--split-duo-right .featured__img {
   height: var(--image-height);
   width: 100%;
   object-fit: cover;
 }
 
 /* Split-Duo-Left (Square on Right) */
-.panel.panel--split-duo-left {
+.featured.featured--split-duo-left {
   padding-left: var(--gutter-flush);
 }
 
-.panel.panel--split-duo-left .panel__inner {
+.featured.featured--split-duo-left .featured__inner {
   display: grid;
   grid-template-columns:
     calc(var(--image-height) * (4 / 3))
@@ -628,25 +628,25 @@ p {
   justify-content: center;
 }
 
-.panel.panel--split-duo-left .project-card {
+.featured.featured--split-duo-left .project-card {
   grid-column: auto;
 }
 
-.panel.panel--split-duo-left .panel__img {
+.featured.featured--split-duo-left .featured__img {
   height: var(--image-height);
   width: 100%;
   object-fit: cover;
 }
 
-.panel.panel--split-duo-left .panel__img--left  { aspect-ratio: 4 / 3; }
-.panel.panel--split-duo-left .panel__img--right { aspect-ratio: 1 / 1; }
+.featured.featured--split-duo-left .featured__img--left  { aspect-ratio: 4 / 3; }
+.featured.featured--split-duo-left .featured__img--right { aspect-ratio: 1 / 1; }
 
 /* Split-Duo-Right (Square on left) */
-.panel.panel--split-duo-right {
+.featured.featured--split-duo-right {
   padding-right: var(--gutter-flush);
 }
 
-.panel.panel--split-duo-right .panel__inner {
+.featured.featured--split-duo-right .featured__inner {
   display: grid;
   grid-template-columns:
     calc(var(--image-height) * 1)
@@ -657,25 +657,25 @@ p {
   justify-content: center;
 }
 
-.panel.panel--split-duo-right .project-card {
+.featured.featured--split-duo-right .project-card {
   grid-column: auto;
 }
 
-.panel.panel--split-duo-right .panel__img {
+.featured.featured--split-duo-right .featured__img {
   height: var(--image-height);
   width: 100%;
   object-fit: cover;
 }
 
-.panel.panel--split-duo-right .panel__img--left  { aspect-ratio: 1 / 1; }
-.panel.panel--split-duo-right .panel__img--right { aspect-ratio: 4 / 3; }
+.featured.featured--split-duo-right .featured__img--left  { aspect-ratio: 1 / 1; }
+.featured.featured--split-duo-right .featured__img--right { aspect-ratio: 4 / 3; }
 
 
-/* ---------- Panel - Multiple Images ---------- */
+/* ---------- featured - Multiple Images ---------- */
 
-/* Gallery-span -- expanded panel (2x height) for dense multi-image layouts */
-.panel.panel--gallery-span {
-  min-height: calc(var(--panel-height) * 2);
+/* Gallery-span -- expanded featured (2x height) for dense multi-image layouts */
+.featured.featured--gallery-span {
+  min-height: calc(var(--featured-height) * 2);
   padding-block: calc(var(--padding-vertical) / 2);
 }
 
@@ -790,7 +790,7 @@ p {
   }
 
 
-  /* ---- Hero Section ---- */
+  /* ---- Hero panel ---- */
   .hero {
     place-items: center;        /* center both vertically and horizontally */
   }
@@ -800,17 +800,17 @@ p {
     text-align: center;
   }
 
-  /* ---- Panels ---- */
-  .panel {
+  /* ---- featureds ---- */
+  .featured {
     width: 100vw;
     height: 100vw;
     overflow: hidden;
   }
   
-  .panel[data-rank="1"],
-  .panel[data-rank="2"],
-  .panel[data-rank="3"],
-  .panel[data-rank="4"] {
+  .featured[data-rank="1"],
+  .featured[data-rank="2"],
+  .featured[data-rank="3"],
+  .featured[data-rank="4"] {
     width: 100vw;
     height: 100vw;
     min-height: auto;
@@ -818,7 +818,7 @@ p {
     position: relative;
   }
 
-  .panel[data-rank] .panel__inner {
+  .featured[data-rank] .featured__inner {
     max-width: 100%;
     width: 100%;
     height: 100%;
@@ -826,10 +826,10 @@ p {
     place-items: center; /* center card */
   }
 
-  .panel[data-rank="1"] .panel__img,
-  .panel[data-rank="2"] .panel__img--left,
-  .panel[data-rank="3"] .panel__img,
-  .panel[data-rank="4"] .panel__img {
+  .featured[data-rank="1"] .featured__img,
+  .featured[data-rank="2"] .featured__img--left,
+  .featured[data-rank="3"] .featured__img,
+  .featured[data-rank="4"] .featured__img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -838,14 +838,14 @@ p {
     z-index: 1;
   }
 
-  .panel[data-rank="2"] .panel__img--right {
+  .featured[data-rank="2"] .featured__img--right {
     display: none;
   }
 
-  .panel[data-rank="1"] .project-card,
-  .panel[data-rank="2"] .project-card,
-  .panel[data-rank="3"] .project-card,
-  .panel[data-rank="4"] .project-card {
+  .featured[data-rank="1"] .project-card,
+  .featured[data-rank="2"] .project-card,
+  .featured[data-rank="3"] .project-card,
+  .featured[data-rank="4"] .project-card {
     position: relative;
     z-index: 2;
     margin: auto;
@@ -861,7 +861,7 @@ p {
   }
 }
 
-/* ===== Portrait featured panels: force square & center ===== */
+/* ===== Portrait featured featureds: force square & center ===== */
 @media (max-width: 768px), (orientation: portrait) {
 
     :root {
@@ -870,8 +870,8 @@ p {
     --subtitle-size: clamp(20px, 6vw, 30px);
     --card-size: clamp(100px, 75vw, 250px);
   }
-  /* 1) Square panels without 100vw drift */
-  .panel[data-rank] {
+  /* 1) Square featureds without 100vw drift */
+  .featured[data-rank] {
     width: 100%;
     aspect-ratio: 1 / 1;      /* square */
     height: auto;             /* let aspect ratio control height */
@@ -881,9 +881,9 @@ p {
   }
 
   /* 2) Full-bleed image behind */
-  .panel[data-rank] .panel__img,
-  .panel[data-rank] .panel__img--left,
-  .panel[data-rank] .panel__img--right {
+  .featured[data-rank] .featured__img,
+  .featured[data-rank] .featured__img--left,
+  .featured[data-rank] .featured__img--right {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -894,7 +894,7 @@ p {
   }
 
   /* 3) Inner grid centers card */
-  .panel[data-rank] .panel__inner {
+  .featured[data-rank] .featured__inner {
     max-width: 100%;
     width: 100%;
     height: 100%;
@@ -904,7 +904,7 @@ p {
   }
 
   /* 4) Card: fixed square size, fully centered */
-  .panel[data-rank] .project-card {
+  .featured[data-rank] .project-card {
     width: var(--card-size);
     height: var(--card-size);
     margin: 0 auto;
@@ -914,31 +914,31 @@ p {
   }
 
   /* 5) Cancel desktop offsets from overlap/split variants */
-  .panel.panel--right-overlap .project-card,
-  .panel.panel--left-overlap  .project-card {
+  .featured.featured--right-overlap .project-card,
+  .featured.featured--left-overlap  .project-card {
     left: auto !important;
     right: auto !important;
   }
-  .panel.panel--right-overlap .panel__inner,
-  .panel.panel--left-overlap  .panel__inner,
-  .panel.panel--split-duo-right .panel__inner,
-  .panel.panel--split-duo-left  .panel__inner {
+  .featured.featured--right-overlap .featured__inner,
+  .featured.featured--left-overlap  .featured__inner,
+  .featured.featured--split-duo-right .featured__inner,
+  .featured.featured--split-duo-left  .featured__inner {
     grid-template-columns: 1fr !important;
     justify-items: center !important;
   }
 
   /* 6) RAPS: hide right image; use square left */
-  .panel[data-rank="1"] {
+  .featured[data-rank="1"] {
     --peek-1: clamp(24px, 10vw, 96px);
     margin-top: calc(var(--peek-1) * -1);
     padding-bottom: var(--peek-1);
   }
 
-  .panel[data-rank="1"] .panel__inner {
+  .featured[data-rank="1"] .featured__inner {
     transform: none !important;
   }
 
-  .panel[data-rank] .project-card {
+  .featured[data-rank] .project-card {
   position: relative;
   top: auto;
   left: auto;
@@ -946,25 +946,25 @@ p {
   transform: translateY(-10px);   /* matches your global default */
 }
 
-  .panel[data-rank="2"] .panel__img--right { display: none !important; }
-  .panel[data-rank="2"] .panel__img--left  { display: block !important; }
+  .featured[data-rank="2"] .featured__img--right { display: none !important; }
+  .featured[data-rank="2"] .featured__img--left  { display: block !important; }
 
-    .panel[data-rank="2"] .project-card {
+    .featured[data-rank="2"] .project-card {
   position: absolute;
   top: 50%;
   left: 50%;
   /* keep the glide (-10px) but center first */
   transform: translate(-50%, -50%) translateY(-10px);
 
-  /* 7) Remove panel gutter on mobile (fixes right-side strip) */
-  .panel { padding-inline: 0; }
+  /* 7) Remove featured gutter on mobile (fixes right-side strip) */
+  .featured { padding-inline: 0; }
     }
     
 }
 
-/* Creative panels default to grayscale; JS drives --sat-progress [0..1] */
+/* Creative featureds default to grayscale; JS drives --sat-progress [0..1] */
 @media (orientation: portrait) {
-  .panel--play .panel__img {
+  .featured--play .featured__img {
     --sat-progress: 0;                 /* 0 = fully desaturated, 1 = full color */
     filter: grayscale(calc(1 - var(--sat-progress)));
     transition: filter 180ms ease;     /* small ease for subtle smoothing */
@@ -977,8 +977,8 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .hamburger__bar { transition: none !important; }                /* Disables hamburger animation */
 
-  .panel .panel__img { transition: none !important; }             /* Disables image filter animation */
-  .panel.is-in .project-card { transition: none !important; }     /* Disables card glide-in animation */
+  .featured .featured__img { transition: none !important; }             /* Disables image filter animation */
+  .featured.is-in .project-card { transition: none !important; }     /* Disables card glide-in animation */
   .project-card { transform: none; opacity: 1; }                  /* Disables card hover animation */
   .wave.animate { animation: none !important; }                   /* Disables wave animation */
 }

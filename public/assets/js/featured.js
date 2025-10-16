@@ -1,4 +1,4 @@
-// panels.js
+// featured.js
 (() => {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -31,15 +31,15 @@
     });
   }
 
-  // 2) Hover grayscale → color (toggle a class on the panel so sibling image reacts)
+  // 2) Hover grayscale → color (toggle a class on featured so sibling image reacts)
   function wireHoverColor() {
-    document.querySelectorAll('.panel').forEach(panel => {
-      const card = panel.querySelector('.project-card');
+    document.querySelectorAll('.featured').forEach(featured => {
+      const card = featured.querySelector('.project-card');
       if (!card) return;
-      card.addEventListener('mouseenter', () => panel.classList.add('is-card-hover'));
-      card.addEventListener('mouseleave', () => panel.classList.remove('is-card-hover'));
-      card.addEventListener('focusin',   () => panel.classList.add('is-card-hover'));
-      card.addEventListener('focusout',  () => panel.classList.remove('is-card-hover'));
+      card.addEventListener('mouseenter', () => featured.classList.add('is-card-hover'));
+      card.addEventListener('mouseleave', () => featured.classList.remove('is-card-hover'));
+      card.addEventListener('focusin',   () => featured.classList.add('is-card-hover'));
+      card.addEventListener('focusout',  () => featured.classList.remove('is-card-hover'));
     });
   }
 
@@ -49,16 +49,16 @@
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const panel = entry.target;
+        const featured = entry.target;
         if (entry.isIntersecting) {
-          panel.classList.add('is-in');
+          featured.classList.add('is-in');
         } else {
-          panel.classList.remove('is-in'); // reset so it replays when re-entering
+          featured.classList.remove('is-in'); // reset so it replays when re-entering
         }
       });
     }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
 
-    document.querySelectorAll('.panel').forEach(p => io.observe(p));
+    document.querySelectorAll('.featured').forEach(p => io.observe(p));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -89,13 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(wave);
 
-    // 4) Mobile portrait: desaturate off-screen, saturate as image center nears viewport center (creative panels only)
+    // 4) Mobile portrait: desaturate off-screen, saturate as image center nears viewport center (creative featured only)
   function colorizeCreativeOnScroll() {
     const isPortrait = window.matchMedia('(orientation: portrait)').matches;
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!isPortrait || prefersReduced) return;
 
-    const imgs = Array.from(document.querySelectorAll('.panel--play .panel__img'));
+    const imgs = Array.from(document.querySelectorAll('.featured--play .featured__img'));
     if (!imgs.length) return;
 
     let ticking = false;
