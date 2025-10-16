@@ -1,94 +1,61 @@
 @charset "UTF-8";
 /* ABSTRACTS (tokens first) */
-/* ---------- SCSS authoring tokens ---------- */
-/* ---------- Runtime tokens (your original :root) ---------- */
+/* Responsive Sizing Breakpoints */
 :root {
-  /* Color */
+  /* Color Scheme*/
   --bg: #2A3F42;
   --bg-alt: #192627;
   --text: #ffffff;
   --highlight: #33D39D;
   --accent: #ff8a3d;
   --card-bg: #3B9F84;
-  /* Type */
+  /* Fonts */
   --font-body: "Atkinson Hyperlegible Mono", monospace;
   --font-display: "Alan Sans", sans-serif;
   --font-serif: "Bona Nova SC", serif;
-  /* Global sizing */
-  --container: clamp(960px, 88vw, 1800px);
-  --header-h: clamp(100px, 10vh, 200px);
-  --space: clamp(14px, 2vw, 24px);
-  /* Nav */
-  --logo-size: clamp(24px, 4.5vmax, 48px);
-  --nav-link-size: clamp(16px, 3vmax, 32px);
-  --nav-gap: clamp(16px, 3vmax, 96px);
-  /* Hero */
-  --avatar-size: clamp(140px, 15vmax, 320px);
-  --title-size: clamp(17px, 3vmax, 36px);
-  --title-line: 1.2;
-  --subtitle-size: clamp(16px, 2.4vmax, 30px);
-  --subtitle-line: 1.28;
-  --subtitle-max-width: clamp(28ch, 60ch, 72ch);
-  /* Featured */
-  --featured-height-ratio: 0.825;
-  --image-height-ratio: 0.8;
-  --card-size-ratio: 0.4;
-  --padding-ratio: 0.03;
-  --img-aspect: 1170 / 750;
-  --featured-height: clamp(600px, calc(var(--featured-height-ratio) * 100vh), 1000px);
-  --padding-vertical: calc(var(--featured-height) * var(--padding-ratio));
-  --image-height: calc(var(--featured-height) * var(--image-height-ratio));
-  --card-size: calc(var(--featured-height) * var(--card-size-ratio));
-  --gutter: 80px;
-  --gutter-tight: 40px;
-  --gutter-flush: 0px;
-  --overlap: 27%;
-  --overlap-min: 25%;
-  --overlap-max: 33%;
-  /* Card type */
-  --card-title-size: clamp(14px, 1.2vw, 18px);
-  --card-title-line: 1.15;
-  --card-desc-size: clamp(12px, 0.9vw, 14px);
-  --card-desc-line: 1.4;
-  --card-link-size: clamp(12px, 0.9vw, 14px);
-  --card-padding: 40px;
 }
 
-/* expose maps for grid mixins */
-/* abstracts/_mixins.scss */
-/* Fluid clamp between min/max over a viewport range */
-/* Visually hidden (accessible) */
-/* Focus ring (matches your tokens by default) */
-/* Truncation */
-/* Media helpers (optional: complement grid.up) */
-/* Centering + container */
-/* Image/object cover */
-/* Motion-safe toggle */
-/* Quick spacing that respects your --space scale */
 /* ABSTRACTS (tokens first) */
-/* abstracts/_grid.scss */
-/* deps */
-/* ---------- internals ---------- */
-/* media-up helper */
-/* ---------- column math ---------- */
-/* Returns a percentage width for N columns at a given breakpoint */
-/* ---------- layout primitives ---------- */
-/* Grid container with the right column count per breakpoint */
-/* Flex row that plays nicely with span() widths */
-/* Span N columns (works for flex or grid child widths) */
-/* Grid child that spans N tracks in the template (optional) */
-/* ---------- quick presets ---------- */
-/* 12 / 8 / 4 responsive container (no content—just sets tracks) */
-/* Example:
-.container { @include grid.responsive-grid(); }
-.card { @include grid.span(4, desktop); @include grid.span(4, tablet); @include grid.span(2, mobile); }
-*/
+/* BASE: Mobile (6 column) */
+:root {
+  --cols: 6;
+  --unit: calc(100vw / var(--cols));
+  --col: calc(var(--unit) * (4 / 5));
+  --gutter: calc(var(--unit) * (1 / 5));
+  --margin: calc(var(--gutter) / 2);
+  --container: 100vw;
+}
+
+/* TABLET (8 columns) */
+@media (min-width: 768px) {
+  :root {
+    --cols: 8;
+  }
+}
+/* DESKTOP (12 columns) */
+@media (min-width: 1440px) {
+  :root {
+    --cols: 12;
+  }
+}
+/* ============================================================================== */
+/* =                                   SIZING                                   = */
+/* ============================================================================== */
+/* For responsive font sizes and spacing */
+/* ============================================================================== */
+/* =                               COLUMN LAYOUT                                = */
+/* ============================================================================== */
+/* (Helper) Sets an element's width to be equal to n columns */
+/* Applies different column widths for different breakpoints */
+/* Removes horizontal margins and padding */
+/* ============================================================================== */
+/* =                               ACCESSIBILITY                                = */
+/* ============================================================================== */
+/* Hides content visually but keeps it accessible to screen readers */
+/* Draws a custom focus outline when an element is focused */
 /* BASE */
-/* base/_reset.scss */
 /* Global box-sizing */
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
@@ -100,14 +67,11 @@ body {
 
 /* Base body styles */
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  line-height: 1.6;
 }
 
-/* base/_a11y.scss */
 /* Keyboard focus visible outline */
 :focus-visible {
   outline: 3px solid var(--accent);
@@ -116,17 +80,20 @@ body {
 }
 
 /* LAYOUT */
-/* layout/_constraints.scss */
 .topbar__inner,
-.hero__inner {
+.hero__inner,
+.featured__inner {
   max-width: var(--container);
-  margin-left: auto;
-  margin-right: auto;
-  padding-inline: var(--space);
-  /* max-width, centered, side padding */
+  margin-inline: var(--margin);
 }
 
-/* layout/_topbar.scss */
+:root {
+  --header-h: clamp(100px, 10vh, 200px);
+  --logo-size: clamp(24px, 4.5vmax, 48px);
+  --nav-link-size: clamp(16px, 3vmax, 32px);
+  --nav-gap: clamp(16px, 3vmax, 96px);
+}
+
 /* Containers */
 .topbar {
   height: var(--header-h);
@@ -234,7 +201,21 @@ body {
   grid-template-rows: auto 1fr;
 }
 
-/* layout/_featured.scss */
+:root {
+  --featured-height-ratio: 0.825;
+  --image-height-ratio: 0.8;
+  --card-size-ratio: 0.4;
+  --padding-ratio: 0.03;
+  --img-aspect: 1170 / 750;
+  --featured-height: clamp(600px, calc(var(--featured-height-ratio) * 100vh), 1000px);
+  --padding-vertical: calc(var(--featured-height) * var(--padding-ratio));
+  --image-height: calc(var(--featured-height) * var(--image-height-ratio));
+  --card-size: calc(var(--featured-height) * var(--card-size-ratio));
+  --overlap: 27%;
+  --overlap-min: 25%;
+  --overlap-max: 33%;
+}
+
 /* Containers */
 .featured {
   background: var(--bg-alt);
@@ -673,7 +654,15 @@ body {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* components/_hero.scss */
+:root {
+  --avatar-size: clamp(140px, 15vmax, 320px);
+  --title-size: clamp(17px, 3vmax, 36px);
+  --title-line: 1.2;
+  --subtitle-size: clamp(16px, 2.4vmax, 30px);
+  --subtitle-line: 1.28;
+  --subtitle-max-width: clamp(28ch, 60ch, 72ch);
+}
+
 /* Containers */
 .hero {
   display: grid;
@@ -763,7 +752,15 @@ body {
     text-align: center;
   }
 }
-/* components/_project-card.scss */
+:root {
+  --card-title-size: clamp(14px, 1.2vw, 18px);
+  --card-title-line: 1.15;
+  --card-desc-size: clamp(12px, 0.9vw, 14px);
+  --card-desc-line: 1.4;
+  --card-link-size: clamp(12px, 0.9vw, 14px);
+  --card-padding: 40px;
+}
+
 /* Container inside featured */
 .featured .project-card {
   width: var(--card-size);

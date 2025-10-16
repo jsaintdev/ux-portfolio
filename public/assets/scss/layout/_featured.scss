@@ -1,5 +1,20 @@
-/* layout/_featured.scss */
-@use "../abstracts/grid" as grid;
+:root {
+  --featured-height-ratio: 0.825;
+  --image-height-ratio: 0.8;
+  --card-size-ratio: 0.4;
+  --padding-ratio: 0.03;
+
+  --img-aspect: 1170 / 750;
+
+  --featured-height: clamp(600px, calc(var(--featured-height-ratio) * 100vh), 1000px);
+  --padding-vertical: calc(var(--featured-height) * var(--padding-ratio));
+  --image-height: calc(var(--featured-height) * var(--image-height-ratio));
+  --card-size: calc(var(--featured-height) * var(--card-size-ratio));
+
+  --overlap: 27%;
+  --overlap-min: 25%;
+  --overlap-max: 33%;
+}
 
 /* Containers */
 .featured {

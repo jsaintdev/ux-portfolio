@@ -1,7 +1,8 @@
 /* ABSTRACTS (tokens first) */
-@use "abstracts/tokens" as *;
+@use "abstracts/tokens" as tokens;
+@use "abstracts/responsive";
 @use "abstracts/mixins" as mixins;
-@use "abstracts/grid" as grid;
+
 
 /* BASE */
 @use "base/reset";

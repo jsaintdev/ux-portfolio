@@ -1,9 +1,5 @@
-/* base/_reset.scss */
-
 /* Global box-sizing */
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
@@ -15,9 +11,7 @@ body {
 
 /* Base body styles */
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  line-height: 1.6;
 }

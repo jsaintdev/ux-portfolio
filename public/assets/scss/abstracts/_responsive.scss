@@ -1,0 +1,22 @@
+@use "./tokens" as tokens;
+
+/* BASE: Mobile (6 column) */
+:root {
+  --cols: 6;
+
+  --unit: calc(100vw / var(--cols));
+  --col:    calc(var(--unit) * (4 / 5));
+  --gutter: calc(var(--unit) * (1 / 5));
+  --margin: calc(var(--gutter) / 2);
+  --container: 100vw;
+}
+
+/* TABLET (8 columns) */
+@media (min-width: map-get(tokens.$breakpoints, tablet)) {
+  :root { --cols: 8; }
+}
+
+/* DESKTOP (12 columns) */
+@media (min-width: map-get(tokens.$breakpoints, desktop)) {
+  :root { --cols: 12; }
+}

@@ -1,19 +1,11 @@
-/* ---------- SCSS authoring tokens ---------- */
+/* Responsive Sizing Breakpoints */
 $breakpoints: (
-  mobile: 0,         // ≤ tablet-1
-  tablet: 768px,     // tablets
-  desktop: 1440px    // large/landscape
+  tablet: 768px,
+  desktop: 1440px
 );
 
-$columns-per-bp: (
-  mobile: 4,
-  tablet: 8,
-  desktop: 12
-);
-
-/* ---------- Runtime tokens (your original :root) ---------- */
 :root {
-  /* Color */
+  /* Color Scheme*/
   --bg: #2A3F42;
   --bg-alt: #192627;
   --text: #ffffff;
@@ -21,59 +13,10 @@ $columns-per-bp: (
   --accent: #ff8a3d;
   --card-bg: #3B9F84;
 
-  /* Type */
+  /* Fonts */
   --font-body: "Atkinson Hyperlegible Mono", monospace;
   --font-display: "Alan Sans", sans-serif;
   --font-serif: "Bona Nova SC", serif;
-
-  /* Global sizing */
-  --container: clamp(960px, 88vw, 1800px);
-  --header-h: clamp(100px, 10vh, 200px);
-  --space: clamp(14px, 2vw, 24px);
-
-  /* Nav */
-  --logo-size: clamp(24px, 4.5vmax, 48px);
-  --nav-link-size: clamp(16px, 3vmax, 32px);
-  --nav-gap: clamp(16px, 3vmax, 96px);
-
-  /* Hero */
-  --avatar-size: clamp(140px, 15vmax, 320px);
-  --title-size: clamp(17px, 3vmax, 36px);
-  --title-line: 1.2;
-  --subtitle-size: clamp(16px, 2.4vmax, 30px);
-  --subtitle-line: 1.28;
-  --subtitle-max-width: clamp(28ch, 60ch, 72ch);
-
-  /* Featured */
-  --featured-height-ratio: 0.825;
-  --image-height-ratio: 0.8;
-  --card-size-ratio: 0.4;
-  --padding-ratio: 0.03;
-
-  --img-aspect: 1170 / 750;
-
-  --featured-height: clamp(600px, calc(var(--featured-height-ratio) * 100vh), 1000px);
-  --padding-vertical: calc(var(--featured-height) * var(--padding-ratio));
-  --image-height: calc(var(--featured-height) * var(--image-height-ratio));
-  --card-size: calc(var(--featured-height) * var(--card-size-ratio));
-
-  --gutter: 80px;
-  --gutter-tight: 40px;
-  --gutter-flush: 0px;
-
-  --overlap: 27%;
-  --overlap-min: 25%;
-  --overlap-max: 33%;
-
-  /* Card type */
-  --card-title-size: clamp(14px, 1.2vw, 18px);
-  --card-title-line: 1.15;
-  --card-desc-size: clamp(12px, 0.9vw, 14px);
-  --card-desc-line: 1.4;
-  --card-link-size: clamp(12px, 0.9vw, 14px);
-  --card-padding: 40px;
+  
 }
 
-/* expose maps for grid mixins */
-$tokens-breakpoints: $breakpoints !default;
-$tokens-columns-per-bp: $columns-per-bp !default;

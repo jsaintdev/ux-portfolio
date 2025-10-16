@@ -1,7 +1,6 @@
-/* layout/_constraints.scss */
-@use "../abstracts/mixins" as mixins;
-
 .topbar__inner,
-.hero__inner {
-  @include mixins.container; /* max-width, centered, side padding */
+.hero__inner,
+.featured__inner {
+  max-width: var(--container);
+  margin-inline: var(--margin);
 }

@@ -1,4 +1,11 @@
-/* components/_project-card.scss */
+:root {
+    --card-title-size: clamp(14px, 1.2vw, 18px);
+  --card-title-line: 1.15;
+  --card-desc-size: clamp(12px, 0.9vw, 14px);
+  --card-desc-line: 1.4;
+  --card-link-size: clamp(12px, 0.9vw, 14px);
+  --card-padding: 40px;
+}
 
 /* Container inside featured */
 .featured .project-card {
