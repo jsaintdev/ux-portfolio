@@ -1,0 +1,372 @@
+/* layout/_featured.scss */
+@use "../abstracts/grid" as grid;
+
+/* Containers */
+.featured {
+  background: var(--bg-alt);
+  height: var(--featured-height);
+  padding-block: var(--padding-vertical);
+  padding-inline: var(--gutter);
+  display: grid;
+  align-items: center;
+}
+
+/* Structure */
+.featured + .featured {
+  margin-top: calc(var(--padding-vertical) * -1);
+}
+
+.featured__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  padding-inline: var(--space);
+}
+
+/* Single image: tight */
+.featured.featured--left-tight,
+.featured.featured--right-tight {
+  padding-inline: var(--gutter-tight);
+}
+
+.featured.featured--left-tight .featured__inner {
+  display: grid;
+  grid-template-columns: var(--card-size) auto;
+  column-gap: var(--space);
+  align-items: center;
+  justify-content: center;
+}
+
+.featured.featured--right-tight .featured__inner {
+  display: grid;
+  grid-template-columns: auto var(--card-size);
+  column-gap: var(--space);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Variants */
+.featured[data-rank="1"] {
+  --peek-1: clamp(40px, 6vh, 140px);
+  --featured-height: clamp(620px, 70vh, 900px);
+  margin-top: calc(var(--peek-1) * -1);
+  padding-bottom: calc(var(--padding-vertical) + var(--peek-1));
+}
+
+.featured[data-rank="1"] .featured__inner {
+  transform: translateY(calc(var(--peek-1) * -1));
+}
+
+/* Elements */
+.featured__img {
+  height: var(--image-height);
+  aspect-ratio: var(--image-aspect);
+  width: auto;
+  object-fit: cover;
+}
+
+.featured[data-rank="1"] .featured__img {
+  position: relative;
+  z-index: 2;
+}
+
+.featured[data-rank="1"] .project-card {
+  position: relative;
+  z-index: 3;
+}
+
+/* ---------- featured – Single Image ---------- */
+
+/* Overlap */
+.featured.featured--left-overlap .project-card,
+.featured.featured--right-overlap .project-card {
+  position: relative;
+}
+
+.featured.featured--left-overlap .project-card {
+  right: calc(var(--card-size) * -0.5);
+}
+.featured.featured--right-overlap .project-card {
+  left: calc(var(--card-size) * -0.5);
+}
+
+.featured.featured--right-overlap .featured__inner,
+.featured.featured--left-overlap  .featured__inner {
+  grid-template-columns: auto var(--card-size);
+  justify-content: center;
+  column-gap: var(--space);
+}
+
+/* Split (equal columns) */
+.featured.featured--left-split,
+.featured.featured--right-split {
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space);
+}
+.featured.featured--left-split .featured__img,
+.featured.featured--right-split .featured__img {
+  height: calc(var(--featured-height) - 2 * var(--padding-vertical));
+}
+
+/* Overlay (center/top/bottom) */
+.featured.featured--center-overlay {
+  position: relative;
+  padding-inline: var(--gutter-flush);
+}
+.featured.featured--center-overlay .featured__inner,
+.featured.featured--top-overlay .featured__inner,
+.featured.featured--bottom-overlay .featured__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+}
+.featured.featured--center-overlay .featured__img,
+.featured.featured--bottom-overlay .featured__img {
+  height: calc(var(--featured-height) - 2 * var(--padding-vertical));
+  width: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+.featured.featured--center-overlay .project-card {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+.featured.featured--top-overlay .project-card   { align-self: start; }
+.featured.featured--bottom-overlay .project-card{
+  align-self: end;
+  position: absolute;
+  bottom: var(--padding-vertical);
+  left: var(--gutter);
+}
+
+/* ---------- featured – Two Images ---------- */
+
+/* Center-Duo */
+.featured.featured--center-duo {
+  grid-template-columns: 1fr auto var(--card-size) auto 1fr;
+  column-gap: var(--space);
+}
+.featured.featured--center-duo .featured__img { height: var(--image-height); }
+
+/* Center-Stack */
+.featured.featured--center-stack {
+  grid-template-rows: auto var(--card-size) auto;
+  row-gap: var(--gutter-tight);
+}
+.featured.featured--center-stack .featured__img {
+  height: calc((var(--featured-height) - 2 * var(--padding-vertical) - var(--card-size) - var(--gutter-tight)) / 2);
+}
+
+/* Split-Duo (Left/Right) */
+.featured.featured--split-duo-left,
+.featured.featured--split-duo-right {
+  display: grid;
+  grid-template-columns: 1fr auto var(--card-size) auto 1fr;
+  column-gap: var(--space);
+  align-items: center;
+}
+.featured.featured--split-duo-left .featured__img,
+.featured.featured--split-duo-right .featured__img {
+  height: var(--image-height);
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Split-Duo-Left (square on right) */
+.featured.featured--split-duo-left { padding-left: var(--gutter-flush); }
+.featured.featured--split-duo-left .featured__inner {
+  display: grid;
+  grid-template-columns:
+    calc(var(--image-height) * (4 / 3))
+    var(--card-size)
+    calc(var(--image-height) * 1);
+  column-gap: var(--space);
+  align-items: center;
+  justify-content: center;
+}
+.featured.featured--split-duo-left .featured__img--left  { aspect-ratio: 4 / 3; }
+.featured.featured--split-duo-left .featured__img--right { aspect-ratio: 1 / 1; }
+
+/* Split-Duo-Right (square on left) */
+.featured.featured--split-duo-right { padding-right: var(--gutter-flush); }
+.featured.featured--split-duo-right .featured__inner {
+  display: grid;
+  grid-template-columns:
+    calc(var(--image-height) * 1)
+    var(--card-size)
+    calc(var(--image-height) * (4 / 3));
+  column-gap: var(--space);
+  align-items: center;
+  justify-content: center;
+}
+.featured.featured--split-duo-right .featured__img--left  { aspect-ratio: 1 / 1; }
+.featured.featured--split-duo-right .featured__img--right { aspect-ratio: 4 / 3; }
+
+/* ---------- featured – Multiple Images ---------- */
+.featured.featured--gallery-span {
+  min-height: calc(var(--featured-height) * 2);
+  padding-block: calc(var(--padding-vertical) / 2);
+}
+
+@media (orientation: portrait) {
+  .featured {
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+  }
+
+  .featured[data-rank="1"],
+  .featured[data-rank="2"],
+  .featured[data-rank="3"],
+  .featured[data-rank="4"] {
+    width: 100vw;
+    height: 100vw;
+    min-height: auto;
+    padding: 0;
+    position: relative;
+  }
+
+  .featured[data-rank] .featured__inner {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .featured[data-rank="1"] .featured__img,
+  .featured[data-rank="2"] .featured__img--left,
+  .featured[data-rank="3"] .featured__img,
+  .featured[data-rank="4"] .featured__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .featured[data-rank="2"] .featured__img--right { display: none; }
+
+  .featured[data-rank="1"] .project-card,
+  .featured[data-rank="2"] .project-card,
+  .featured[data-rank="3"] .project-card,
+  .featured[data-rank="4"] .project-card {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 75vw;
+    height: 75vw;
+    max-width: 320px;
+    max-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ===== Portrait featured: force square & center ===== */
+@media (max-width: 768px), (orientation: portrait) {
+  /* 1) Square featured without 100vw drift */
+  .featured[data-rank] {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 2) Full-bleed image behind */
+  .featured[data-rank] .featured__img,
+  .featured[data-rank] .featured__img--left,
+  .featured[data-rank] .featured__img--right {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: none !important;
+  }
+
+  /* 3) Center the card */
+  .featured[data-rank] .featured__inner {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding-inline: 0;
+  }
+
+  /* 4) Card size */
+  .featured[data-rank] .project-card {
+    width: var(--card-size);
+    height: var(--card-size);
+    margin: 0 auto;
+    z-index: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* 5) Cancel desktop offsets */
+  .featured.featured--right-overlap .project-card,
+  .featured.featured--left-overlap .project-card {
+    left: auto !important;
+    right: auto !important;
+  }
+  .featured.featured--right-overlap .featured__inner,
+  .featured.featured--left-overlap  .featured__inner,
+  .featured.featured--split-duo-right .featured__inner,
+  .featured.featured--split-duo-left  .featured__inner {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+  }
+
+  /* 6) Rank-specific tweaks */
+  .featured[data-rank="1"] {
+    --peek-1: clamp(24px, 10vw, 96px);
+    margin-top: calc(var(--peek-1) * -1);
+    padding-bottom: var(--peek-1);
+  }
+  .featured[data-rank="1"] .featured__inner { transform: none !important; }
+
+  .featured[data-rank] .project-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 auto;
+    transform: translateY(-10px); /* matches global default */
+  }
+
+  .featured[data-rank="2"] .featured__img--right { display: none !important; }
+  .featured[data-rank="2"] .featured__img--left  { display: block !important; }
+
+  .featured[data-rank="2"] .project-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+
+  /* 7) Remove featured gutter on mobile */
+  .featured { padding-inline: 0; }
+}
+
+/* Creative featured: JS drives --sat-progress [0..1] */
+@media (orientation: portrait) {
+  .featured--play .featured__img {
+    --sat-progress: 0;
+    filter: grayscale(calc(1 - var(--sat-progress)));
+    transition: filter 180ms ease;
+  }
+}

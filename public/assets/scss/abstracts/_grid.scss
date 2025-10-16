@@ -1,0 +1,68 @@
+/* abstracts/_grid.scss */
+
+/* deps */
+@use "./tokens" as t;
+
+/* ---------- internals ---------- */
+@function _bp-min($name) {
+  @return map-get(t.$tokens-breakpoints, $name);
+}
+
+@function _cols($name) {
+  @return map-get(t.$tokens-columns-per-bp, $name);
+}
+
+/* media-up helper */
+@mixin up($bp) {
+  @media (min-width: _bp-min($bp)) { @content; }
+}
+
+/* ---------- column math ---------- */
+/* Returns a percentage width for N columns at a given breakpoint */
+@function col($n, $bp: desktop) {
+  $total: _cols($bp);
+  @return if($total and $n > 0, percentage($n / $total), null);
+}
+
+/* ---------- layout primitives ---------- */
+/* Grid container with the right column count per breakpoint */
+@mixin grid-container($bp: desktop, $gap: var(--gutter)) {
+  display: grid;
+  grid-template-columns: repeat(_cols($bp), 1fr);
+  gap: $gap;
+}
+
+/* Flex row that plays nicely with span() widths */
+@mixin flex-row($gap: var(--gutter)) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+}
+
+/* Span N columns (works for flex or grid child widths) */
+@mixin span($n, $bp: desktop) {
+  $w: col($n, $bp);
+  @if $w {
+    width: $w;
+    max-width: $w;
+    flex: 0 0 $w; /* for flex rows */
+  }
+}
+
+/* Grid child that spans N tracks in the template (optional) */
+@mixin grid-span($n) {
+  grid-column: span $n;
+}
+
+/* ---------- quick presets ---------- */
+/* 12 / 8 / 4 responsive container (no content—just sets tracks) */
+@mixin responsive-grid($gap: var(--gutter)) {
+  @include grid-container(mobile, $gap);
+  @include up(tablet)  { grid-template-columns: repeat(_cols(tablet), 1fr); }
+  @include up(desktop) { grid-template-columns: repeat(_cols(desktop), 1fr); }
+}
+
+/* Example:
+.container { @include grid.responsive-grid(); }
+.card { @include grid.span(4, desktop); @include grid.span(4, tablet); @include grid.span(2, mobile); }
+*/

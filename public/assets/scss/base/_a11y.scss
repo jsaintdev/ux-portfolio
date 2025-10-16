@@ -1,0 +1,8 @@
+/* base/_a11y.scss */
+
+/* Keyboard focus visible outline */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}

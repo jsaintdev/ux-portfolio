@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "serve -l ${PORT} public"
+    "start": "serve -l ${PORT} public",
+    "dev:css": "sass --watch public/assets/scss/main.scss:public/assets/css/styles.css --style=expanded",
+    "build:css": "sass public/assets/scss/main.scss public/assets/css/styles.css --style=compressed"
+  },
+  "devDependencies": {
+    "sass": "^1.93.2"
   },
   "dependencies": {
     "serve": "^14.2.3"

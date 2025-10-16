@@ -1,0 +1,12 @@
+/* layout/_panel.scss */
+
+/* Containers */
+.panel {
+  min-height: 100vh;
+}
+
+/* Structure */
+.panel--hero {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
