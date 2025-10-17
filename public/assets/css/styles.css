@@ -1,6 +1,28 @@
 @charset "UTF-8";
 /* ABSTRACTS (tokens first) */
-/* Responsive Sizing Breakpoints */
+/* ============================================================================== */
+/* =                                BREAKPOINTS                                 = */
+/* ============================================================================== */
+/* ============================================================================== */
+/* =                                 FONT FACES                                 = */
+/* ============================================================================== */
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Variable.woff2") format("woff2"), url("../fonts/Satoshi-Variable.woff") format("woff"), url("../fonts/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-VariableItalic.woff2") format("woff2"), url("../fonts/Satoshi-VariableItalic.woff") format("woff"), url("../fonts/Satoshi-VariableItalic.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: italic;
+}
+/* ============================================================================== */
+/* =                                   TOKENS                                   = */
+/* ============================================================================== */
 :root {
   /* Color Scheme*/
   --bg: #2A3F42;
@@ -10,9 +32,10 @@
   --accent: #ff8a3d;
   --card-bg: #3B9F84;
   /* Fonts */
-  --font-body: "Atkinson Hyperlegible Mono", monospace;
-  --font-display: "Alan Sans", sans-serif;
-  --font-serif: "Bona Nova SC", serif;
+  --font-system: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --font-display: "Satoshi", "Inter", var(--font-system);
+  --font-body: "Inter", var(--font-system);
 }
 
 /* ABSTRACTS (tokens first) */
@@ -90,8 +113,7 @@ body {
 
 /* LAYOUT */
 .topbar__inner,
-.hero__inner,
-.featured__inner {
+.hero__inner {
   max-width: var(--container);
   margin-inline: var(--margin);
 }
@@ -157,6 +179,13 @@ body {
   align-items: center;
 }
 
+.featured__wrapper {
+  margin-inline: 0;
+  padding-inline: 0;
+  width: 100%;
+  min-width: 100vw;
+}
+
 /* Structure */
 .featured + .featured {
   margin-top: calc(var(--padding-vertical) * -1);
@@ -164,7 +193,7 @@ body {
 
 .featured__inner {
   max-width: var(--container);
-  margin: 0 auto;
+  margin: 0;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -619,7 +648,7 @@ body {
     gap: var(--nav-gap);
   }
   .nav__link {
-    font-size: calc(var(--row-height) / 2);
+    font-size: calc(var(--row-height) / 3);
   }
   .nav__link--contact {
     margin-top: 0;
@@ -707,8 +736,7 @@ body {
 .hero__title {
   font-family: var(--font-display);
   margin: 0 0 2rem;
-  font-size: var(--title-size);
-  line-height: var(--title-line);
+  font-size: var(--row-height);
   font-weight: 700;
   color: var(--text);
 }

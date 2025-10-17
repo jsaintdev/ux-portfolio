@@ -1,3 +1,5 @@
+@use "../abstracts/mixins" as mixins;
+
 :root {
   --featured-height-ratio: 0.825;
   --image-height-ratio: 0.8;
@@ -17,6 +19,7 @@
 }
 
 /* Containers */
+
 .featured {
   background: var(--bg-alt);
   height: var(--featured-height);
@@ -26,6 +29,12 @@
   align-items: center;
 }
 
+.featured__wrapper {
+  @include mixins.fullbleed;
+  width: 100%;
+  min-width: 100vw;
+}
+
 /* Structure */
 .featured + .featured {
   margin-top: calc(var(--padding-vertical) * -1);
@@ -33,7 +42,7 @@
 
 .featured__inner {
   max-width: var(--container);
-  margin: 0 auto;
+  margin: 0;
   display: grid;
   align-items: center;
   justify-content: center;
