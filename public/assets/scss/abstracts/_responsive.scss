@@ -12,7 +12,7 @@
 /* MOBILE */
 @media (max-width: map-get(tokens.$breakpoints, tablet)) {
     :root {
-        --row-height: calc(#{map-get(tokens.$breakpoints, mobile)} / var(--cols) * (4 / 5));
+        --row-height: calc(#{map-get(tokens.$breakpoints, mobile)} / var(--cols) * (4 / 5) * (2 / 3));
     }
 }
 

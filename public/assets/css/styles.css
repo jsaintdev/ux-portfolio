@@ -24,14 +24,47 @@
 /* =                                   TOKENS                                   = */
 /* ============================================================================== */
 :root {
-  /* Color Scheme*/
-  --bg: #2A3F42;
-  --bg-alt: #192627;
-  --text: #ffffff;
-  --highlight: #33D39D;
-  --accent: #ff8a3d;
-  --card-bg: #3B9F84;
-  /* Fonts */
+  /* =============================== COLOR PALETTE ================================ */
+  /* ---------------------------------- SURFACES ---------------------------------- */
+  --surface-1: #0F1819;
+  --surface-2: #192627;
+  --surface-3: #213235;
+  --surface-4: #2A3F42;
+  --surface-5: #35484B;
+  /* ------------------------------------ TEXT ------------------------------------ */
+  --text-1: #FFFFFF;
+  --text-2: #D6E1DF;
+  --text-3: #AAB7B5;
+  /* ---------------------------------- BRANDING ---------------------------------- */
+  --brand-100: #CFF5E7;
+  --brand-300: #7FD9BF;
+  --brand-400: #56B998;
+  --brand-500: #3B9F84;
+  --brand-600: #2F7D67;
+  --brand-700: #1F5545;
+  /* ---------------------------------- ACCENTS ----------------------------------- */
+  --accent-primary-400: #33D39D;
+  --accent-secondary-400: #FFB37A;
+  --accent-secondary-500: #FF8A3D;
+  --accent-secondary-600: #E26B1B;
+  /* ------------------------------- ACCESSIBILITY -------------------------------- */
+  --on-surface: var(--text-1);
+  --on-surface-subtle: var(--text-2);
+  --on-brand: #0B1715;
+  --on-accent: #0B1715;
+  --on-accent-strong: var(--text-1);
+  /* ============================================================================== */
+  /* =                               COLOR ALIASES                                = */
+  /* ============================================================================== */
+  --bg: var(--surface-4);
+  --bg-alt: var(--surface-2);
+  --bg-nav: var(--surface-1);
+  --text: var(--text-1);
+  --highlight: var(--accent-primary-400);
+  --accent: var(--accent-secondary-500);
+  --button-bg: var(--accent-secondary-600);
+  --card-bg: var(--brand-500);
+  /* =================================== FONTS ==================================== */
   --font-system: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
   --font-display: "Satoshi", "Inter", var(--font-system);
@@ -51,7 +84,7 @@
 /* MOBILE */
 @media (max-width: 768px) {
   :root {
-    --row-height: calc(344px / var(--cols) * (4 / 5));
+    --row-height: calc(344px / var(--cols) * (4 / 5) * (2 / 3));
   }
 }
 @media (max-width: 768px) and (orientation: landscape) {
@@ -95,6 +128,7 @@
 html,
 body {
   height: 100%;
+  margin: 0;
 }
 
 /* Base body styles */
@@ -565,7 +599,7 @@ body {
 }
 /* layout/_footer.scss */
 .footer {
-  background-color: #2A3F42;
+  background-color: var(--bg-nav);
   color: #fff;
   padding: 1.5rem 1rem;
   font-size: 0.9rem;
@@ -602,20 +636,28 @@ body {
 .nav__link {
   color: var(--text);
   font-family: var(--font-serif);
-  font-size: calc(var(--row-height) / 2);
+  font-size: calc(var(--row-height) * 0.6666666667);
   text-decoration: none;
 }
 .nav__link--contact {
-  color: var(--highlight);
+  background-color: var(--button-bg);
   align-self: center;
   margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1.25em;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .is-nav-open .nav {
   display: flex;
   position: fixed;
   inset: 0;
-  background: var(--bg-alt);
+  background: var(--bg-nav);
   flex-direction: column;
   gap: 20px;
   padding: 24px;
@@ -630,7 +672,7 @@ body {
 
 @media (min-width: 768px) {
   .nav__link {
-    font-size: calc(var(--row-height));
+    font-size: var(--row-height);
   }
 }
 @media (orientation: landscape) and (min-width: 768px) and (min-aspect-ratio: 4/3) {
@@ -761,16 +803,6 @@ body {
   font-weight: 700;
 }
 
-/* Interactive */
-.wave {
-  display: inline-block;
-  transform-origin: 70% 70%;
-}
-
-.wave.animate {
-  animation: wave 1.5s ease-in-out forwards;
-}
-
 @media (orientation: landscape) and (min-width: 768px) {
   .hero {
     place-items: center start;
@@ -786,6 +818,99 @@ body {
     place-items: center;
   }
   .hero__inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+:root {
+  --avatar-size: clamp(140px, 15vmax, 320px);
+  --title-size: clamp(17px, 3vmax, 36px);
+  --title-line: 1.2;
+  --subtitle-size: clamp(16px, 2.4vmax, 30px);
+  --subtitle-max-width: clamp(28ch, 60ch, 72ch);
+}
+
+/* Containers */
+.about {
+  display: grid;
+  padding: var(--space);
+  padding-top: calc(var(--row-height) * 2);
+  padding-bottom: var(--row-height);
+}
+
+/* Structure */
+.about__inner {
+  width: 100%;
+  display: grid;
+  gap: clamp(16px, 3vw, 32px);
+  align-items: center;
+}
+
+/* Elements */
+.about__avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  display: block;
+}
+
+.about__text {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Text */
+.about__title {
+  font-family: var(--font-display);
+  margin: 0 0 2rem;
+  font-size: calc(var(--row-height) * 0.6);
+  font-weight: 500;
+  color: var(--text);
+  padding-bottom: var(--row-height);
+}
+
+.about__subtitle {
+  font-family: var(--font-display);
+  font-size: calc(var(--row-height) / 2);
+  font-weight: 300;
+  display: block;
+  max-width: var(--subtitle-max-width);
+}
+
+.about__line {
+  display: block;
+  margin: 0;
+}
+
+.about__line--highlight {
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+@media (orientation: landscape) and (min-width: 768px) {
+  .about {
+    place-items: center start;
+  }
+  .about__inner {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    text-align: left;
+  }
+  /* Text */
+  .about__title {
+    font-family: var(--font-display);
+    margin: 0 0 2rem;
+    font-size: var(--row-height);
+    font-weight: 700;
+    color: var(--text);
+  }
+}
+@media (orientation: portrait) {
+  .about {
+    place-items: center;
+  }
+  .about__inner {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;

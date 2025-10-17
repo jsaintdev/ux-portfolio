@@ -1,4 +1,4 @@
-@use "../abstracts/mixins" as mixins;
+@use "../abstracts/mixins"as mixins;
 @use "../abstracts/tokens"as tokens;
 
 .nav {
@@ -20,13 +20,21 @@
 .nav__link {
     color: var(--text);
     font-family: var(--font-serif);
-    font-size: calc(var(--row-height) / 2);
+    font-size: calc(var(--row-height) * (2 / 3));
     text-decoration: none;
 
     &--contact {
-        color: var(--highlight);
+        background-color: var(--button-bg);
         align-self: center;
         margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em 1.25em;
+        border-radius: 9999px;
+        font-weight: 600;
+        text-align: center;
+        white-space: nowrap;
     }
 }
 
@@ -34,7 +42,7 @@
     display: flex;
     position: fixed;
     inset: 0;
-    background: var(--bg-alt);
+    background: var(--bg-nav);
     flex-direction: column;
     gap: 20px;
     padding: 24px;
@@ -49,7 +57,7 @@
 
 @media (min-width: map-get(tokens.$breakpoints, tablet)) {
     .nav__link {
-        font-size: calc(var(--row-height));
+        font-size: var(--row-height);
     }
 }
 
