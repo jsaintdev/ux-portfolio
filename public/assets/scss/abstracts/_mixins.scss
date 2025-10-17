@@ -1,3 +1,5 @@
+@use "./tokens" as tokens;
+
 /* ============================================================================== */
 /* =                                   SIZING                                   = */
 /* ============================================================================== */
@@ -27,13 +29,13 @@
         @include set-col($m);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: map-get(tokens.$breakpoints, tablet)) {
         @if $t !=null {
             @include set-col($t);
         }
     }
 
-    @media (min-width: 1440px) {
+    @media (min-width: map-get(tokens.$breakpoints, desktop)) {
         @if $d !=null {
             @include set-col($d);
         }
@@ -46,26 +48,3 @@
     padding-inline: 0;
 }
 
-/* ============================================================================== */
-/* =                               ACCESSIBILITY                                = */
-/* ============================================================================== */
-
-/* Hides content visually but keeps it accessible to screen readers */
-@mixin sr-only {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-}
-
-/* Draws a custom focus outline when an element is focused */
-@mixin focus-ring($color: var(--accent), $offset: 3px, $radius: 8px) {
-    outline: 3px solid $color;
-    outline-offset: $offset;
-    border-radius: $radius;
-}

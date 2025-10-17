@@ -3,7 +3,6 @@
 @use "abstracts/responsive";
 @use "abstracts/mixins" as mixins;
 
-
 /* BASE */
 @use "base/reset";
 @use "base/a11y";
@@ -16,6 +15,7 @@
 @use "layout/footer";
 
 /* COMPONENTS */
+@use "components/nav";
 @use "components/hamburger";
 @use "components/hero";
 @use "components/project-card";

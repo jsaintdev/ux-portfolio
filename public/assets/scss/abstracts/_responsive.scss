@@ -1,22 +1,40 @@
-@use "./tokens" as tokens;
+@use "./tokens"as tokens;
 
-/* BASE: Mobile (6 column) */
 :root {
-  --cols: 6;
-
-  --unit: calc(100vw / var(--cols));
-  --col:    calc(var(--unit) * (4 / 5));
-  --gutter: calc(var(--unit) * (1 / 5));
-  --margin: calc(var(--gutter) / 2);
-  --container: 100vw;
+    --cols: 4;
+    --unit: calc(100vw / var(--cols));
+    --col: calc(var(--unit) * (4 / 5));
+    --gutter: calc(var(--unit) * (1 / 5));
+    --margin: calc(var(--gutter) / 2);
+    --container: 100vw;
 }
 
-/* TABLET (8 columns) */
+/* MOBILE */
+@media (max-width: map-get(tokens.$breakpoints, tablet)) {
+    :root {
+        --row-height: calc(#{map-get(tokens.$breakpoints, mobile)} / var(--cols) * (4 / 5));
+    }
+}
+
+@media (max-width: map-get(tokens.$breakpoints, tablet)) and (orientation: landscape)  {
+    :root {
+        --cols: 6;
+        --row-height: calc(#{map-get(tokens.$breakpoints, mobile)} / var(--cols) * (4 / 5));
+    }
+}
+
+/* TABLET */
 @media (min-width: map-get(tokens.$breakpoints, tablet)) {
-  :root { --cols: 8; }
+    :root {
+        --cols: 10;
+        --row-height: calc(#{map-get(tokens.$breakpoints, tablet)} / var(--cols) * (4 / 5));
+    }
 }
 
 /* DESKTOP (12 columns) */
 @media (min-width: map-get(tokens.$breakpoints, desktop)) {
-  :root { --cols: 12; }
+    :root {
+        --cols: 16;
+        --row-height: calc(#{map-get(tokens.$breakpoints, desktop)} / var(--cols) * (4 / 5));
+    }
 }

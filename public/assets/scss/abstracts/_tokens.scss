@@ -1,7 +1,9 @@
 /* Responsive Sizing Breakpoints */
 $breakpoints: (
+  mobile: 344px,
   tablet: 768px,
-  desktop: 1440px
+  desktop: 1280px,
+  uhd: 1920px
 );
 
 :root {

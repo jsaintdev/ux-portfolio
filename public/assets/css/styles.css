@@ -16,9 +16,8 @@
 }
 
 /* ABSTRACTS (tokens first) */
-/* BASE: Mobile (6 column) */
 :root {
-  --cols: 6;
+  --cols: 4;
   --unit: calc(100vw / var(--cols));
   --col: calc(var(--unit) * (4 / 5));
   --gutter: calc(var(--unit) * (1 / 5));
@@ -26,18 +25,33 @@
   --container: 100vw;
 }
 
-/* TABLET (8 columns) */
+/* MOBILE */
+@media (max-width: 768px) {
+  :root {
+    --row-height: calc(344px / var(--cols) * (4 / 5));
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  :root {
+    --cols: 6;
+    --row-height: calc(344px / var(--cols) * (4 / 5));
+  }
+}
+/* TABLET */
 @media (min-width: 768px) {
   :root {
-    --cols: 8;
+    --cols: 10;
+    --row-height: calc(768px / var(--cols) * (4 / 5));
   }
 }
 /* DESKTOP (12 columns) */
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   :root {
-    --cols: 12;
+    --cols: 16;
+    --row-height: calc(1280px / var(--cols) * (4 / 5));
   }
 }
+/* ABSTRACTS (tokens first) */
 /* ============================================================================== */
 /* =                                   SIZING                                   = */
 /* ============================================================================== */
@@ -48,11 +62,6 @@
 /* (Helper) Sets an element's width to be equal to n columns */
 /* Applies different column widths for different breakpoints */
 /* Removes horizontal margins and padding */
-/* ============================================================================== */
-/* =                               ACCESSIBILITY                                = */
-/* ============================================================================== */
-/* Hides content visually but keeps it accessible to screen readers */
-/* Draws a custom focus outline when an element is focused */
 /* BASE */
 /* Global box-sizing */
 * {
@@ -87,20 +96,10 @@ body {
   margin-inline: var(--margin);
 }
 
-:root {
-  --header-h: clamp(100px, 10vh, 200px);
-  --logo-size: clamp(24px, 4.5vmax, 48px);
-  --nav-link-size: clamp(16px, 3vmax, 32px);
-  --nav-gap: clamp(16px, 3vmax, 96px);
-}
-
+/* ABSTRACTS (tokens first) */
 /* Containers */
 .topbar {
-  height: var(--header-h);
-}
-
-.nav {
-  gap: var(--nav-gap);
+  height: var(--row-height);
 }
 
 /* Structure */
@@ -116,79 +115,11 @@ body {
 
 /* Elements */
 .topbar__logo {
-  height: var(--logo-size);
+  height: var(--row-height);
   width: auto;
   display: block;
 }
 
-/* Text */
-.nav__link {
-  color: var(--text);
-  font-family: var(--font-serif);
-  font-size: var(--nav-link-size);
-  text-decoration: none;
-}
-
-.nav__link--contact {
-  color: var(--highlight);
-}
-
-@media (orientation: landscape) and (min-width: 768px) {
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: var(--nav-gap);
-  }
-  .nav__main {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--nav-gap);
-    flex: 0 0 auto;
-  }
-  .nav__link--contact {
-    margin-top: 0;
-    align-self: auto;
-  }
-  .hamburger {
-    display: none;
-  }
-}
-@media (orientation: portrait) {
-  .nav {
-    display: none;
-  }
-  .hamburger {
-    display: block;
-  }
-  .nav__main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-  .nav__link--contact {
-    align-self: center;
-    margin-top: auto;
-  }
-  .is-nav-open .nav {
-    display: flex;
-    position: fixed;
-    inset: var(--header-h) 0 0 0;
-    background: var(--bg);
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
-  .is-nav-open {
-    overflow: hidden;
-  }
-}
 /* layout/_panel.scss */
 /* Containers */
 .panel {
@@ -622,13 +553,88 @@ body {
 }
 
 /* COMPONENTS */
-/* components/_hamburger.scss */
+/* ABSTRACTS (tokens first) */
+.nav {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav__inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Text */
+.nav__link {
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: calc(var(--row-height) / 2);
+  text-decoration: none;
+}
+.nav__link--contact {
+  color: var(--highlight);
+  align-self: center;
+  margin-top: auto;
+}
+
+.is-nav-open .nav {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-alt);
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.is-nav-open {
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .nav__link {
+    font-size: calc(var(--row-height));
+  }
+}
+@media (orientation: landscape) and (min-width: 768px) and (min-aspect-ratio: 4/3) {
+  .nav {
+    width: calc(1280px / 2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gutter);
+  }
+  .nav__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--nav-gap);
+  }
+  .nav__link {
+    font-size: calc(var(--row-height) / 2);
+  }
+  .nav__link--contact {
+    margin-top: 0;
+    align-self: auto;
+  }
+}
+/* ABSTRACTS (tokens first) */
 /* Button */
 .hamburger {
   background: none;
   border: 0;
   padding: 10px;
   cursor: pointer;
+  z-index: 1001;
+  display: block;
 }
 
 /* Bars */
@@ -654,6 +660,11 @@ body {
   transform: translateY(-6px) rotate(-45deg);
 }
 
+@media (orientation: landscape) and (min-width: 768px) and (min-aspect-ratio: 4/3) {
+  .hamburger {
+    display: none;
+  }
+}
 :root {
   --avatar-size: clamp(140px, 15vmax, 320px);
   --title-size: clamp(17px, 3vmax, 36px);
