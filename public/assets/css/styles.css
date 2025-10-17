@@ -996,7 +996,6 @@ body {
 
 /* Featured image grayscale toggle */
 .featured .featured__img {
-  filter: grayscale(100%);
   transition: filter 240ms ease;
 }
 
