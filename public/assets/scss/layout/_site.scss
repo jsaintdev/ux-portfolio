@@ -73,10 +73,15 @@
   pointer-events: none;
 }
 
-@media (orientation: landscape) {
-  .temp {
-    height: calc(100vh + var(--gutter-h));
-  }
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+ .temp__img {
+  height: 50%;
+  width: auto;
+ }
+}
+
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+
 }
 
 // TEMP CLASS! DELETE AFTER DONE

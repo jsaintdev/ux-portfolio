@@ -17,7 +17,7 @@
 
 @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
   .panel {
-    height: calc(100svh - (var(--gutter-h) * 2));
+    min-height: calc(100svh - (var(--gutter-h) * 2));
   }
 }
 
