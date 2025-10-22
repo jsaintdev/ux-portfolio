@@ -5,6 +5,7 @@
 .panel {
   height: auto;
   padding-inline: var(--margin);
+  margin-bottom: var(--gutter-h);
 
   // The initial content on the main
   &--hero {

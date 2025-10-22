@@ -3,8 +3,9 @@
 @use "../abstracts/mixins"as mixins;
 
 .footer {
-  background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
+    background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
     @include mixins.fullbleed;
+    max-width: 100svw;
 
     &__inner {
         display: flex;
@@ -18,11 +19,20 @@
         padding-inline: var(--margin);
         cursor: pointer;
         transition: color 0.3s ease;
+
+        &:hover .footer__arrow,
+        .footer__arrow.nudge {
+            transform: translateX(50%) rotate(0deg);
+        }
+
+        &:hover .footer__connect {
+            background-color: var(--button-bg-hover);
+        }
     }
 
     &__header {
         @include mixins.font-sizes(24, 42, 54, 72);
-        margin-block: 0;
+        margin: 0.5em 0;
         display: flex;
         align-items: center;
     }
@@ -40,32 +50,24 @@
         @include mixins.font-sizes(24, 42, 54, 72);
         color: var(--text);
         transition: color 0.3s ease;
-        align-self: flex-end;
-        text-align: right;
         display: flex;
         align-items: center;
-        margin: 0;
+        margin-inline: 0;
 
         &.copied {
             color: var(--text);
         }
     }
 
-    &__connect:hover .footer__arrow,
-    .footer__arrow.nudge {
-        transform: translateX(50%) rotate(0deg);
-    }
-
-    &__connect:hover .footer__connect {
-        background-color: var(--button-bg-hover);
-    }
-
     &__endbar {
         @include mixins.set-cols(2);
+        display: flex;
+        margin-top: 1em;
+        margin-bottom: 0;
     }
 
     &__copyright {
-        @include mixins.font-sizes(12, 16, 20, 24);    
+        @include mixins.font-sizes(12, 16, 20, 24);
     }
 
     &__links {
@@ -74,7 +76,7 @@
     }
 
     &__link {
-        @include mixins.font-sizes(12, 16, 20, 24); 
+        @include mixins.font-sizes(12, 16, 20, 24);
         color: var(--text);
         text-decoration: none;
 
@@ -83,13 +85,14 @@
             color: var(--text-2);
             outline: none;
         }
-
     }
+
 }
 
 @media (orientation: landscape) {
 
     .footer {
+
         &__connect:hover .footer__arrow,
         .footer__arrow.nudge {
             transform: rotate(-90deg) translateY(50%);
@@ -103,11 +106,14 @@
             align-self: center;
         }
 
-        p {
-            margin-inline: 0;
+        &__endbar {
+            flex-direction: row;
+            margin: 0.5em 0;
+            margin-bottom: 0;
         }
-
     }
 }
 
-@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {}
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+
+}

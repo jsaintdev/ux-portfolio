@@ -25,6 +25,7 @@
     &__text {
         width: 100%;
         align-self: start;
+        margin-bottom: var(--gutter-h);
     }
 
     &__title {
@@ -40,7 +41,7 @@
         font-family: var(--font-display);
         font-weight: 400;
         display: block;
-        color: var(--text-2)
+        color: var(--text-2);
     }
 
     &__break {
@@ -63,8 +64,6 @@
         font-family: var(--font-arrow);
 
         font-size: calc(var(--gutter-h));
-        width: calc(var(--gutter-h) * 1.2);
-        height: calc(var(--gutter-h) * 1.2);
 
         display: inline-flex;
         align-items: flex-start;
@@ -84,7 +83,7 @@
 }
 
 // Adjusts settings for landscape
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
     .hero {
         align-items: center;
 
@@ -96,6 +95,7 @@
 
         &__text {
             justify-self: flex-start;
+            margin-bottom: calc(var(--gutter-h) * 0.5);
         }
 
         &__title {
