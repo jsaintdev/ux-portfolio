@@ -1,5 +1,11 @@
+// Max width for standard content
 .topbar__inner,
-.hero__inner {
+.hero__inner,
+.footer__inner {
   max-width: var(--container);
-  margin-inline: var(--margin);
+}
+
+// Margin for "fullbleed" containers
+.panel {
+  padding-inline: var(--margin);
 }

@@ -1,50 +1,122 @@
-@use "./tokens" as tokens;
+@use "sass:map";
+@use "./tokens"as tokens;
+@use "./background";
 
-/* ============================================================================== */
-/* =                                   SIZING                                   = */
-/* ============================================================================== */
+/* ============================== HELPER FUNCTIONS ============================== */
 
-/* For responsive font sizes and spacing */
-@function fluid($min, $max, $minvw: 320px, $maxvw: 1440px) {
-    $slope: (#{$max} - #{$min}) / (#{$maxvw} - #{$minvw});
-    $intercept: #{$min} - ($slope * #{$minvw});
-    @return clamp(#{$min}, #{$intercept} + #{$slope} * 100vw, #{$max});
+// Converts a pixel value into rem units, with 16px as a base
+@function rem($px) {
+  @return ($px * 0.0625) * 1rem;
+}
+
+// Accepts a target font size and viewport widths to generate a clamp()
+@function clamp-guard($s_p, $w_min, $w_max, $min_mult, $max_mult) {
+  $s_min: $s_p * $min_mult;
+  $s_max: $s_p * $max_mult;
+  $min-rem: rem($s_min);
+  $max-rem: rem($s_max);
+  @return clamp(#{$min-rem},
+    calc(#{$min-rem} + (#{($max-rem - $min-rem)}) * ((100vw - #{$w_min}) / #{($w_max - $w_min)})),
+    #{$max-rem});
 }
 
 /* ============================================================================== */
-/* =                               COLUMN LAYOUT                                = */
+/* =                                   MIXINS                                   = */
 /* ============================================================================== */
 
-/* (Helper) Sets an element's width to be equal to n columns */
-@mixin set-col($n) {
-    $col-width: calc(var(--col) * #{$n} + var(--gutter) * (#{$n} - 1));
-    width: $col-width;
-    max-width: $col-width;
-    flex: 0 0 $col-width;
+/* ============================== SITE BACKGROUND =============================== */
+
+// Creates a gradient layer for the main website background
+@mixin bg-layer($name, $gradient, $blend:multiply, $size:3840px 2160px, $opacity:1, $pos:center center, $repeat:repeat, $index: 0) {
+  .bg--#{$name} {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: $gradient;
+    background-position: $pos;
+    background-repeat: $repeat;
+    background-size: $size;
+    mix-blend-mode: $blend;
+    opacity: $opacity;
+    z-index: $index;
+  }
 }
 
-/* Applies different column widths for different breakpoints */
-@mixin col-media($m, $t: null, $d: null, $clamp: false) {
-    @if $m !=null {
-        @include set-col($m);
-    }
+/* ================================ FONT SIZING ================================= */
 
-    @media (min-width: map-get(tokens.$breakpoints, tablet)) {
-        @if $t !=null {
-            @include set-col($t);
-        }
-    }
+@mixin font-sizes($mob, $tab, $des, $uhd) {
+  $bp-mobile: map.get(tokens.$breakpoints, mobile);
+  $bp-tablet: map.get(tokens.$breakpoints, tablet);
+  $bp-desktop: map.get(tokens.$breakpoints, desktop);
+  $bp-uhd: map.get(tokens.$breakpoints, uhd);
+  $bp-mguard: map.get(tokens.$breakpoints, mobile-guard);
+  $bp-tguard: map.get(tokens.$breakpoints, tablet-guard);
 
-    @media (min-width: map-get(tokens.$breakpoints, desktop)) {
-        @if $d !=null {
-            @include set-col($d);
-        }
-    }
+  $lt-desktop: calc(#{$bp-desktop} - 0.02px);
+  $lt-uhd: calc(#{$bp-uhd} - 0.02px);
+
+  $mob-wmin: $bp-tablet - 64px;
+  $tab-wmin: $bp-desktop - 96px;
+  $des-wmin: $bp-uhd - 128px;
+
+  font-size: clamp-guard($mob, $mob-wmin, $bp-tablet, 0.97, 1);
+
+  @media (min-width: $bp-tablet) and (max-width: $lt-desktop) {
+    font-size: clamp-guard($tab, $tab-wmin, $bp-desktop, 0.97, 1);
+  }
+
+  @media (min-width: $bp-desktop) and (max-width: $lt-uhd) {
+    font-size: clamp-guard($des, $des-wmin, $bp-uhd, 0.97, 1);
+  }
+
+  @media (min-width: $bp-uhd) {
+    font-size: rem($uhd);
+  }
+
+  @media (hover: none) and (pointer: coarse) and (min-width: $bp-tguard) and (min-height: $bp-tguard) {
+    font-size: clamp-guard($des, $des-wmin, $bp-uhd, 0.97, 1);
+  }
+
+  @media (hover: none) and (pointer: coarse) and (max-height: $bp-mguard) {
+    font-size: rem($mob * 0.75);
+  }
 }
 
-/* Removes horizontal margins and padding */
+
+/* =============================== COLUMN SIZING ================================ */
+
+@mixin set-cols($cells: 2) {
+  display: flex;
+  flex-direction: column;
+  --width: calc(var(--cols) * var(--col) + (var(--cols) - 1) * var(--gutter));
+
+  >* {
+    width: 100%;
+    max-width: var(--width);
+    flex: 0 0 auto;
+
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+    justify-content: space-around;
+    --width: calc(((var(--cols) / #{$cells}) * var(--col)) + (((var(--cols) / #{$cells}) - 1) * var(--gutter)));
+
+    >* {
+      flex: 0 0 var(--width);
+      max-width: var(--width);
+
+    }
+  }
+}
+
+// Removes horizontal margins and padding
 @mixin fullbleed {
-    margin-inline: 0;
-    padding-inline: 0;
+  margin-inline: 0;
+  padding-inline: 0;
 }
-

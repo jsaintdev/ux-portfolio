@@ -4,7 +4,9 @@
 $breakpoints: (mobile: 344px,
   tablet: 768px,
   desktop: 1280px,
-  uhd: 1920px);
+  uhd: 1920px,
+  mobile-guard: 480px,
+  tablet-guard: 820px);
 
 /* ============================================================================== */
 /* =                                 FONT FACES                                 = */
@@ -34,63 +36,129 @@ $breakpoints: (mobile: 344px,
 /* ============================================================================== */
 :root {
 
-/* =============================== COLOR PALETTE ================================ */
+  /* =============================== COLOR PALETTE ================================ */
 
-/* ---------------------------------- SURFACES ---------------------------------- */
-  --surface-1: #0F1819;
-  --surface-2: #192627;
-  --surface-3: #213235;
-  --surface-4: #2A3F42;
-  --surface-5: #35484B;
+  /* ---------------------------------- SURFACES ---------------------------------- */
+  --bg-100: #526264;
+  --bg-200: #405053;
+  --bg-300: #35484B;
+  --bg-400: #2A3F42;
+  --bg-500: #213235;
+  --bg-600: #192627;
+  --bg-700: #0F1819;
+  --bg-800: #0C1213;
+  --bg-900: #080D0E;
 
-/* ------------------------------------ TEXT ------------------------------------ */
-  --text-1: #FFFFFF; 
+  --surface-100: #AFC2AF;
+  --surface-200: #7E9E7E;
+  --surface-300: #678867;
+  --surface-400: #577756;
+  --surface-500: #486448;
+  --surface-600: #3A523A;
+  --surface-700: #2D412D;
+  --surface-800: #1F2E1F;
+  --surface-900: #121C12;
+
+  /* ------------------------------------ TEXT ------------------------------------ */
+  --text-1: #FFFFFF;
   --text-2: #D6E1DF;
   --text-3: #AAB7B5;
+  --text-4: #89938F;
+  --text-5: #6A7471;
 
-/* ---------------------------------- BRANDING ---------------------------------- */
---brand-100: #CFF5E7;
---brand-300: #7FD9BF;
---brand-400: #56B998;
---brand-500: #3B9F84;
---brand-600: #2F7D67;
---brand-700: #1F5545;
+  --text-mint-1: #E4F1E7;
+  --text-mint-2: #CDDDCF;
+  --text-mint-3: #AFC4AE;
+  --text-mint-4: #B9C5B8;
+  --text-mint-5: #91B491;
 
-/* ---------------------------------- ACCENTS ----------------------------------- */
-  --accent-primary-400: #33D39D;
-  --accent-secondary-400: #FFB37A;
-  --accent-secondary-500: #FF8A3D;
-  --accent-secondary-600: #E26B1B;
+  /* ---------------------------------- BRANDING ---------------------------------- */
+  --logo: #33D39D;
 
-/* ------------------------------- ACCESSIBILITY -------------------------------- */
-  --on-surface: var(--text-1);
-  --on-surface-subtle: var(--text-2);
-  --on-brand: #0B1715;
-  --on-accent: #0B1715;
-  --on-accent-strong: var(--text-1);
+  --primary-100: #E3EFE3;
+  --primary-200: #C7DEC7;
+  --primary-300: #A9CAA9;
+  --primary-400: #95BA95;
+  --primary-500: #91B491;
+  --primary-600: #769776;
+  --primary-700: #5B7A5B;
+  --primary-800: #405E40;
+  --primary-900: #284028;
 
-/* ============================================================================== */
-/* =                               COLOR ALIASES                                = */
-/* ============================================================================== */
+  --secondary-100: #CFF5E7;
+  --secondary-200: #A6E7D1;
+  --secondary-300: #7FD9BF;
+  --secondary-400: #56B998;
+  --secondary-500: #3B9F84;
+  --secondary-600: #2F7D67;
+  --secondary-700: #1F5545;
+  --secondary-800: #153C30;
+  --secondary-900: #0C2820;
 
-  --bg: var(--surface-4);
-  --bg-alt: var(--surface-2);
-  --bg-nav: var(--surface-1);
+  /* ---------------------------------- ACCENTS ----------------------------------- */
 
+  --accent-orange-100: #FFE3CC;
+  --accent-orange-200: #FFC699;
+  --accent-orange-300: #FFAD70;
+  --accent-orange-400: #FFB37A;
+  --accent-orange-500: #FF8A3D;
+  --accent-orange-600: #E26B1B;
+  --accent-orange-700: #A64811;
+  --accent-orange-800: #7A310B;
+  --accent-orange-900: #4E1D06;
+
+  --accent-yellow-100: #FFF3CC;
+  --accent-yellow-200: #FFE799;
+  --accent-yellow-300: #F8D766;
+  --accent-yellow-400: #EFCB48;
+  --accent-yellow-500: #DDAE36;
+  --accent-yellow-600: #B88C25;
+  --accent-yellow-700: #946B18;
+  --accent-yellow-800: #6B4D0E;
+  --accent-yellow-900: #453108;
+
+  --accent-brown-100: #E8E2D4;
+  --accent-brown-200: #D8CBA7;
+  --accent-brown-300: #C6B47F;
+  --accent-brown-400: #B7A16B;
+  --accent-brown-500: #A18F63;
+  --accent-brown-600: #847551;
+  --accent-brown-700: #695D42;
+  --accent-brown-800: #4C4330;
+  --accent-brown-900: #322B1F;
+
+  /* ================================ SITE ALIASES ================================ */
+
+  /* ----------------------------------- COLORS ----------------------------------- */
+
+  // Surfaces
+  --bg: var(--bg-400);
+  --bg-alt: var(--bg-600);
+  --bg-nav: var(--bg-700);
+  --bg-footer: var(--surface-900);
+
+  // Text
   --text: var(--text-1);
 
-  --highlight: var(--accent-primary-400);
+  // Elements
+  --button-bg: var(--accent-orange-600);
+  --button-bg-hover: var(--accent-orange-700);
 
-  --accent: var(--accent-secondary-500);
+  --nav: var(--text-1);
+  --nav-hover: var(--primary-300);
 
-  --button-bg: var(--accent-secondary-600);
+  --hamburger: var(--primary-800);
+  --hero-arrow: var(--primary-400);
 
-  --card-bg: var(--brand-500);
+  // Accessibility
+  --accent: var(--accent-orange-500);
 
-/* =================================== FONTS ==================================== */
+  /* ----------------------------------- FONTS ------------------------------------ */
+
   --font-system: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
   --font-display: "Satoshi", "Inter", var(--font-system);
   --font-body: "Inter", var(--font-system);
+  --font-arrow: "Kablammo", var(--font-arrow);
 
 }

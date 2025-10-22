@@ -1,40 +1,86 @@
+@use "sass:map";
 @use "../abstracts/tokens"as tokens;
 
-/* Button */
+// The nav bar open button for smaller screens
 .hamburger {
-    background: none;
+    background: var(--hamburger);
     border: 0;
-    padding: 10px;
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+    border-radius: 10%;
     cursor: pointer;
     z-index: 1001;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__bar {
+        display: block;
+        width: 32px;
+        height: 3px;
+        background: var(--text);
+        margin: 3px 0;
+        transition: transform 180ms ease, opacity 150ms ease;
+        transform-origin: center;
+    }
+
+    &[aria-expanded="true"] {
+        .hamburger__bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger__bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+    }
 }
 
-/* Bars */
-.hamburger__bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text);
-    margin: 4px 0;
-    transition: transform 180ms ease, opacity 150ms ease;
-}
-
-/* Open state → X icon */
-.hamburger[aria-expanded="true"] .hamburger__bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
-
-.hamburger[aria-expanded="true"] .hamburger__bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger[aria-expanded="true"] .hamburger__bar:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-}
-
-@media (orientation: landscape) and (min-width: map-get(tokens.$breakpoints, tablet)) and (min-aspect-ratio: 4/3) {
+// Hides the hamburger in larger screens
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
     .hamburger {
         display: none;
+    }
+}
+
+// Shows the hamburger on smaller landscape screens
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+    .hamburger {
+        display: block;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) and (min-width: map.get(tokens.$breakpoints, tablet-guard)) and (min-height: map.get(tokens.$breakpoints, tablet-guard)) {
+    .hamburger {
+        width: 96px;
+        height: 96px;
+        padding: 16px;
+
+        &__bar {
+            width: 64px;
+            height: 6px;
+            margin: 6px 0;
+        }
+
+        &[aria-expanded="true"] {
+            .hamburger__bar:nth-child(1) {
+                transform: translateY(18px) rotate(45deg);
+            }
+
+            .hamburger__bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger__bar:nth-child(3) {
+                transform: translateY(-18px) rotate(-45deg);
+            }
+
+        }
     }
 }

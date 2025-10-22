@@ -1,18 +1,113 @@
-/* layout/_footer.scss */
+@use "sass:map";
+@use "../abstracts/tokens"as tokens;
+@use "../abstracts/mixins"as mixins;
 
 .footer {
-  background-color: var(--bg-nav);
-  color: #fff;
-  padding: 1.5rem 1rem;
-  font-size: 0.9rem;
+  background-color: color-mix(in srgb, var(--bg-footer) 33%, transparent);
+    @include mixins.fullbleed;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__connect {
+        @include mixins.set-cols(2);
+        max-width: var(--container);
+        background-color: var(--button-bg);
+        padding-inline: var(--margin);
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    &__header {
+        @include mixins.font-sizes(24, 42, 54, 72);
+        margin-block: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    &__arrow {
+        @include mixins.font-sizes(36, 60, 80, 90);
+        display: inline-block;
+        font-family: var(--font-arrow);
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+        transform: rotate(-90deg);
+    }
+
+    &__email {
+        @include mixins.font-sizes(24, 42, 54, 72);
+        color: var(--text);
+        transition: color 0.3s ease;
+        align-self: flex-end;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        margin: 0;
+
+        &.copied {
+            color: var(--text);
+        }
+    }
+
+    &__connect:hover .footer__arrow,
+    .footer__arrow.nudge {
+        transform: translateX(50%) rotate(0deg);
+    }
+
+    &__connect:hover .footer__connect {
+        background-color: var(--button-bg-hover);
+    }
+
+    &__endbar {
+        @include mixins.set-cols(2);
+    }
+
+    &__copyright {
+        @include mixins.font-sizes(12, 16, 20, 24);    
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    &__link {
+        @include mixins.font-sizes(12, 16, 20, 24); 
+        color: var(--text);
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--text-2);
+            outline: none;
+        }
+
+    }
 }
 
-.footer__inner {
-  max-width: var(--container-width, 1200px);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.5rem;
+@media (orientation: landscape) {
+
+    .footer {
+        &__connect:hover .footer__arrow,
+        .footer__arrow.nudge {
+            transform: rotate(-90deg) translateY(50%);
+        }
+
+        &__copyright {
+            justify-self: flex-start;
+        }
+
+        &__email {
+            align-self: center;
+        }
+
+        p {
+            margin-inline: 0;
+        }
+
+    }
 }
+
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {}

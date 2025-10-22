@@ -1,11 +1,15 @@
-/* utilities/_animations.scss */
+.is-nav-open .hero__title,
+.is-nav-open .hero__subtitle,
+.is-nav-open .hero__explore,
+.is-nav-open .hero__arrow {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: none !important;
+}
 
-@keyframes wave {
-  0%   { transform: rotate(0deg); }
-  15%  { transform: rotate(14deg); }
-  30%  { transform: rotate(-8deg); }
-  45%  { transform: rotate(14deg); }
-  60%  { transform: rotate(-4deg); }
-  75%  { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
+.is-nav-open .hero__title,
+.is-nav-open .hero__subtitle,
+.is-nav-open .hero__explore,
+.is-nav-open .hero__arrow {
+  opacity: 0 !important;
 }

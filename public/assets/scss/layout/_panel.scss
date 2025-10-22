@@ -1,12 +1,19 @@
-/* layout/_panel.scss */
-
-/* Containers */
+// Container that fills the height of the screen
 .panel {
-  min-height: 100vh;
+  height: 100vh;
+
+  // The initial content on the main
+  &--hero {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  padding-top: 24px;
+  }
+
+  &--creative {
+  height: auto;
+  padding-top: 24px;
+  }
+
 }
 
-/* Structure */
-.panel--hero {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}

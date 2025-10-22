@@ -1,89 +1,174 @@
+@use "sass:map";
 @use "../abstracts/mixins"as mixins;
 @use "../abstracts/tokens"as tokens;
 
+// On smaller screens, displays a full-screen nav column when hamburger is clicked
 .nav {
     display: none;
+    height: 100vh;
     flex-direction: column;
-    gap: 20px;
-}
 
-.nav__inner {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-/* Text */
-.nav__link {
-    color: var(--text);
-    font-family: var(--font-serif);
-    font-size: calc(var(--row-height) * (2 / 3));
-    text-decoration: none;
-
-    &--contact {
-        background-color: var(--button-bg);
-        align-self: center;
-        margin-top: auto;
-        display: inline-flex;
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
-        justify-content: center;
-        padding: 0.5em 1.25em;
-        border-radius: 9999px;
-        font-weight: 600;
-        text-align: center;
-        white-space: nowrap;
+        gap: var(--row-height);
+    }
+
+    &__link {
+        font-size: mixins.clamp-guard(36, map.get(tokens.$breakpoints, mobile), map.get(tokens.$breakpoints, tablet), 0.98, 1.12);
+        color: var(--nav);
+        font-family: var(--font-serif);
+        text-decoration: none;
+        background: none;
+        border: none;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--nav-hover);
+            outline: none;
+        }
+
+        &--contact {
+            background-color: var(--button-bg);
+            color: var(--text);
+            align-self: center;
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5em 1.25em;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+
+            &:hover,
+            &:focus-visible {
+                background-color: var(--button-bg-hover);
+                color: var(--text);
+                outline: none;
+            }
+        }
     }
 }
 
-.is-nav-open .nav {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    background: var(--bg-nav);
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.is-nav-open {
-    overflow: hidden;
-}
-
-@media (min-width: map-get(tokens.$breakpoints, tablet)) {
-    .nav__link {
-        font-size: var(--row-height);
-    }
-}
-
-@media (orientation: landscape) and (min-width: map-get(tokens.$breakpoints, tablet)) and (min-aspect-ratio: 4/3) {
+// Displays a nav row on wider screens
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
     .nav {
-        width: calc(#{map-get(tokens.$breakpoints, desktop)} / 2);
+        width: calc(#{map.get(tokens.$breakpoints, desktop)} / 2.5);
         display: flex;
         flex-direction: row;
+        align-items: flex-start;
+        gap: var(--gutter);
+        height: var(--row-height);
+
+        &__inner {
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--gutter);
+            flex: 1 1 100%;
+        }
+
+        &__link {
+            font-size: mixins.clamp-guard(18, map.get(tokens.$breakpoints, desktop), map.get(tokens.$breakpoints, uhd), 0.96, 1.06);
+
+            &--contact {
+                margin-top: 0;
+            }
+
+        }
+    }
+}
+
+// Opens the nav menu and prevents page scrolling
+.is-nav-open {
+    overflow: hidden;
+
+    .nav {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        background: var(--bg-nav);
+        flex-direction: column;
+        gap: 0;
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
+.is-nav-open .panel,
+.is-nav-open .panel--hero {
+  padding-inline: 0 !important;
+  padding-block: 0 !important;
+}
+
+.is-nav-open .hamburger {
+  position: absolute;
+  top: 24px;
+  right: var(--margin);
+}
+
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        width: 100%;
+        height: var(--row-height);
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: var(--gutter);
+    }
+
+    .is-nav-open .nav {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        background: var(--bg-nav);
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: var(--gutter);
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+    }
+
+    .is-nav-open .nav__inner {
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
         gap: var(--gutter);
     }
 
-    .nav__inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        gap: var(--nav-gap);
+    @media (max-width: 750px) {
+        .nav__link {
+            font-size: mixins.clamp-guard(36 * 0.75,
+                    map.get(tokens.$breakpoints, mobile),
+                    map.get(tokens.$breakpoints, tablet),
+                    0.98,
+                    1.12);
+        }
     }
 
-    .nav__link {
-        font-size: calc(var(--row-height) / 3);
-
-        &--contact {
-            margin-top: 0;
-            align-self: auto;
+    @media (min-width: 751px) {
+        .nav__link {
+            font-size: mixins.clamp-guard(36 * 1.1,
+                    map.get(tokens.$breakpoints, mobile),
+                    map.get(tokens.$breakpoints, tablet),
+                    0.98,
+                    1.12);
         }
-
     }
 }

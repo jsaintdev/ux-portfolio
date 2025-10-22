@@ -1,26 +1,23 @@
-/* ABSTRACTS (tokens first) */
-@use "abstracts/tokens" as tokens;
+@use "abstracts/tokens";
 @use "abstracts/responsive";
-@use "abstracts/mixins" as mixins;
+@use "abstracts/background";
+@use "abstracts/mixins";
 
-/* BASE */
 @use "base/reset";
 @use "base/a11y";
 
-/* LAYOUT */
+@use "layout/site";
 @use "layout/constraints";
 @use "layout/topbar";
 @use "layout/panel";
 @use "layout/featured";
 @use "layout/footer";
 
-/* COMPONENTS */
 @use "components/nav";
 @use "components/hamburger";
 @use "components/hero";
 @use "components/about";
 @use "components/project-card";
 
-/* UTILITIES */
 @use "utilities/animations";
 @use "utilities/state";

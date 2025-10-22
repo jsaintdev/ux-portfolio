@@ -1,5 +1,9 @@
+@use "sass:map";
 @use "./tokens"as tokens;
 
+/* ============================================================================== */
+/* =                        RESPONSIVE LAYOUT VARIABLES                         = */
+/* ============================================================================== */
 :root {
     --cols: 4;
     --unit: calc(100vw / var(--cols));
@@ -7,34 +11,46 @@
     --gutter: calc(var(--unit) * (1 / 5));
     --margin: calc(var(--gutter) / 2);
     --container: 100vw;
+    --row-height: 48px;
+    --topbar-height: calc(var(--row-height) * 2);
+    --topbar-rows: 2;
 }
 
-/* MOBILE */
-@media (max-width: map-get(tokens.$breakpoints, tablet)) {
-    :root {
-        --row-height: calc(#{map-get(tokens.$breakpoints, mobile)} / var(--cols) * (4 / 5) * (2 / 3));
-    }
+/* ============================================================================== */
+/* =                             RESPONSIVE LAYOUTS                             = */
+/* ============================================================================== */
+
+// Tablet (768 → 1279)
+@media (min-width: map.get(tokens.$breakpoints, tablet)) and (max-width: calc(#{map.get(tokens.$breakpoints, desktop)} - 0.02px)) {
+  :root {
+    --cols: 8;
+    --row-height: 96px;
+    --topbar-rows: 1;
+  }
 }
 
-@media (max-width: map-get(tokens.$breakpoints, tablet)) and (orientation: landscape)  {
-    :root {
-        --cols: 6;
-        --row-height: calc(#{map-get(tokens.$breakpoints, mobile)} / var(--cols) * (4 / 5));
-    }
+// Desktop (1280 → 1919)
+@media (min-width: map.get(tokens.$breakpoints, desktop)) and (max-width: calc(#{map.get(tokens.$breakpoints, uhd)} - 0.02px)) {
+  :root {
+    --cols: 16;
+    --row-height: 96px;
+    --topbar-rows: 1;
+  }
 }
 
-/* TABLET */
-@media (min-width: map-get(tokens.$breakpoints, tablet)) {
-    :root {
-        --cols: 10;
-        --row-height: calc(#{map-get(tokens.$breakpoints, tablet)} / var(--cols) * (4 / 5));
-    }
+// UHD (≥ 1920)
+@media (min-width: map.get(tokens.$breakpoints, uhd)) {
+  :root {
+    --cols: 16;
+    --row-height: 96px;
+    --topbar-rows: 1;
+  }
 }
 
-/* DESKTOP (12 columns) */
-@media (min-width: map-get(tokens.$breakpoints, desktop)) {
-    :root {
-        --cols: 16;
-        --row-height: calc(#{map-get(tokens.$breakpoints, desktop)} / var(--cols) * (4 / 5));
-    }
+// Viewport guard for short heights (landscape phones, split views)
+@media (max-height: map.get(tokens.$breakpoints, mobile-guard)) {
+  :root {
+    --row-height: 48px;
+    --topbar-rows: 2;
+  }
 }

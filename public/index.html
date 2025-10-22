@@ -15,7 +15,9 @@
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kablammo&display=swap"
+    rel="stylesheet">
 
   <!-- icons -->
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon.png">
@@ -25,138 +27,104 @@
 </head>
 
 <body>
-  <!-- panel 1: Topbar + Hero -->
-  <section class="panel panel--hero">
+  <div class="site-wrapper">
 
-    <!-- Topbar -->
-    <header class="topbar">
-      <div class="topbar__inner">
-        <!-- Logo -->
-        <img class="topbar__logo" src="./assets/img/logo.png" alt="Justin Saint logo">
+    <main class="site-main">
+      <!-- Background layers-->
+      <div class="bg-layers">
+        <div class="bg bg--hero-main"></div>
+        <div class="bg bg--repeat-canvas">
+          <canvas id="patternCanvas-dark"></canvas>
+          <canvas id="patternCanvas-brown"></canvas>
+          <canvas id="patternCanvas-yellow"></canvas>
+          <canvas id="patternCanvas-orange"></canvas>
+          <canvas id="patternCanvas-mint1"></canvas>
+          <canvas id="patternCanvas-orange2"></canvas>
+          <canvas id="patternCanvas-mint2"></canvas>
+        </div>
+        <div class="bg bg--hero-sheen"></div>
+        <div class="bg bg--hero-dark-green"></div>
+        <div class="bg bg--hero-green"></div>
+      </div>
 
-        <!-- Navigation -->
-        <nav id="site-nav" class="nav">
-          <div class="nav__inner">
-            <a href="#projects" class="nav__link">Projects</a>
-            <a href="./creative/index.html" class="nav__link">Creative</a>
-            <a href="./about/index.html" class="nav__link">About</a>
+      <!-- panel 1: Topbar + Hero -->
+      <section class="panel panel--hero">
+
+        <!-- Topbar -->
+        <header class="topbar">
+          <div class="topbar__inner">
+
+            <!-- Avatar -->
+            <a href="/about/" class="topbar__avatar-link">
+              <div class="topbar__avatar-wrap">
+                <img src="./assets/img/main/headshot.jpg" alt="Justin Saint headshot" class="topbar__avatar">
+                <img src="./assets/img/main/avatar-surprise.png" alt="" class="topbar__avatar-surprise">
+              </div>
+            </a>
+
+            <!-- Navigation -->
+            <nav id="site-nav" class="nav">
+              <div class="nav__inner">
+                <a href="#work" class="nav__link">Work</a>
+                <a href="/creative/" class="nav__link">Creative</a>
+                <a href="/about/" class="nav__link">About</a>
+                <button id="contact-copy" class="nav__link nav__link--contact">Copy Email</button>
+              </div>
+            </nav>
+
+            <!-- Hamburger -->
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+              <span class="hamburger__bar"></span><span class="hamburger__bar"></span><span
+                class="hamburger__bar"></span>
+            </button>
           </div>
-          <a id="contact-copy" class="nav__link nav__link--contact" href="#" role="button">
-            Copy Email
-          </a>
-        </nav>
 
-        <!-- Hamburger -->
-        <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-          <span class="hamburger__bar"></span><span class="hamburger__bar"></span><span class="hamburger__bar"></span>
-        </button>
-      </div>
+        </header>
 
-    </header>
+        <!-- Hero content -->
+        <div class="hero">
+          <div class="hero__inner">
 
-    <!-- Hero content -->
-    <div class="hero">
-      <div class="hero__inner">
+            <!-- Title and Subtitle text-->
+            <div class="hero__text">
+              <h1 class="hero__title">
+                I’m Justin— <span class="hero__break">UX Designer</span><span class="hero__break2">
+                  <span class="hero__break">in Vancouver, BC</span></span>
+              </h1>
+              <p class="hero__subtitle">
+                Throughout my multidisciplinary career<br>
+                my work has touched lives worldwide.<br>
+              </p>
+            </div>
 
-        <!-- Title and Subtitle text-->
-        <div class="hero__text">
-          <h1 class="hero__title">
-            <span>Hi, I’m Justin — </span>
-            <span>UX Designer in Vancouver, BC</span>
-          </h1>
-          <h2 class="hero__subtitle"> Through my work in art, performance, and communications, I’ve worked on projects that touched lives worldwide. Now I bring that passion and creativity into designing experiences that connect and engage. </h2>
+            <!-- Pointer text -->
+            <div class="hero__pointer">
+              <p><span class="hero__explore">
+                  Now I bring passion<br>
+                  into digital experiences<br>
+                  that connect and engage.</span></p>
+              <p><span class="hero__arrow">↓</span></p>
+            </div>
+          </div>
         </div>
+      </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED 1: Oddfellows -->
-  <section class="featured__wrapper">
-    <div class="featured featured--featured featured--right-overlap" data-rank="1">
-      <div class="featured__inner">
-        <!-- Project Image -->
-        <div>
-          <img src="./assets/img/main/oddfellows.jpg" alt="Oddfellows project prototype" class="featured__img">
+      <section class="panel temp">
+        <div class="temp__inner">
+          <h1 class="temp__title">Coming Soon!</h1>
+          <img class="temp__img" src="./assets/img/main/raps-directory.png" alt="Preview image" />
         </div>
+      </section>
 
-        <!-- Project Card -->
-        <article class="project-card">
-          <h3 class="project-card__title">Event Booking System</h3>
-          <p class="project-card__desc">
-            Digitizing an event booking process to reduce volunteer workload and boost bookings.
-          </p>
-          <a href="https://www.figma.com/proto/zIr9uoP5eGfBeo9fVuYgt0/COMP-4800-VOF-Admin-Wireframe?node-id=113-2007&p=f&t=amnaEiT1bH3S176k-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=113%3A2007&show-proto-sidebar=1"
-            target="_blank" class="project-card__link">view prototype →</a>
-        </article>
-      </div>
-    </div>
-
-    <!-- FEATURED 2: Featured Project – RAPS -->
-    <div class="featured featured--split-duo-right" data-rank="2">
-      <div class="featured__inner">
-        <!-- Left image (square) -->
-        <img src="./assets/img/main/raps-directory.png" alt="RAPS Directory Prototype"
-          class="featured__img featured__img--left">
-
-        <!-- Project Card -->
-        <article class="project-card">
-          <h3 class="project-card__title">RAPS Cat Sanctuary</h3>
-          <p class="project-card__desc">
-            Supporting 500+ rescued cats through design, communications, and community.
-          </p>
-          <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fform.typeform.com%2Fto%2FfExgTDuY%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExYzNTVlVFdEZkMXBBM0VzYgEe76h5RKk86eNNBGTE9IS5f74Vq7c5XajlN1E_V5cCfOtaDXQmPWJw2v-UnxQ_aem_FzwHQtKuMy6OvQa689EsJQ&h=AT1hPwLz4JZpZRAZGCGqatqi_lQRVJL5TdGJZc6GE9aQ9exFydX_Oks5evNSMDBT2VI8r_Rfc35hT-kE0-ubbqcdDkApen1UftZ18fX0Gw619btP1GtRfwJMwcI6au-4f_N93HtTk4Gtx-xlMeW3Lj93HTqCRA&__tn__=-UK-R&c[0]=AT1VYpOrDkE_1wbL5ZhWO3UVpUQvSLGlhU-SPTRqnQY1GlXdudlsQwYEv5OetqH1TiBc95DQpZrFu_Rt5xABLX6HE3Sh_RBxKZaG0h_-ybL__NAv3MnsWiYjrn4vF5d4J1S1uYBbfdGCLWqrwt-f1QsLm98VNsoa7hw78BU-R5ih5bUta3xP2nOBukO0qbx6oa8glFYrBo-XP8GSPyuguIYyodXRuWaW"
-            class="project-card__link">answer the survey →</a>
-        </article>
-
-        <!-- Right image (landscape) -->
-        <img src="./assets/img/main/raps-1.jpg" alt="RAPS Cat Sanctuary cats"
-          class="featured__img featured__img--right">
-      </div>
-    </div>
-
-    <!-- FEAATURED 3: Hackathon (left-tight) -->
-    <div class="featured featured--left-tight" data-rank="3">
-      <div class="featured__inner">
-        <article class="project-card">
-          <h3 class="project-card__title">BCIT School Hackathon</h3>
-          <p class="project-card__desc">
-            How I raised $12K and led 62 volunteers to host a hybrid hackathon for 180+ participants.
-          </p>
-          <a href="./assets/docs/hackathon-report.pdf" target="_blank" class="project-card__link">view report →</a>
-        </article>
-        <img src="./assets/img/main/hackathon.jpg" alt="QDS hackathon team working" class="featured__img" />
-      </div>
-    </div>
-
-    <!-- FEATURED 4: Play / Other Work Intro -->
-    <div class="featured featured--right-overlap" data-rank="4">
-      <div class="featured__inner">
-        <!-- Background Image -->
-        <img src="./assets/img/main/creative.jpg" alt="Justin applying an FX makeup"
-          class="featured__img">
-
-        <!-- Project Card -->
-        <article class="project-card">
-          <h3 class="project-card__title">Creative Work</h3>
-          <p class="project-card__desc">
-            Past gigs and creative moments that shaped my journey.
-          </p>
-          <a href="./creative/index.html" class="project-card__link">explore other work →</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- SITE FOOTER -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <p class="footer__text">© 2025 Justin Saint. All rights reserved.</p>
-    </div>
-  </footer>
+      <!-- SITE FOOTER -->
+      <div id="footer-container"></div>
+    </main>
+  </div>
 
   <!-- JavaScript -->
+  <script src="./assets/js/site.js" defer></script>
   <script src="./assets/js/nav.js" defer></script>
+  <script src="./assets/js/main.js" defer></script>
   <script src="./assets/js/featured.js" defer></script>
 
 </body>

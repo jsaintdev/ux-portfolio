@@ -1,19 +1,30 @@
-/* Global box-sizing */
+/* ============================================================================== */
+/* =                                    BASE                                    = */
+/* ============================================================================== */
+
 * {
   box-sizing: border-box;
+  outline: 1px solid red;
 }
 
-/* Full-height root */
 html,
 body {
-  height: 100%;
-  max-width: 100%;
   margin: 0;
 }
 
-/* Base body styles */
+// Base body styles
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  margin: var(--gutter);
+}
+
+a {
+  cursor: pointer;
 }

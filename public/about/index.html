@@ -27,44 +27,50 @@
 </head>
 
 <body>
-  <!-- panel 1: Topbar + about -->
-  <section class="panel panel--hero">
-
-    <!-- Topbar -->
-    <header class="topbar">
-      <div data-include="../partials/topbar.html"></div>
-    </header>
-
-    <!-- Hero content -->
-    <div class="about">
-      <div class="about__inner">
-
-        <!-- Headshot -->
-
-        <!-- Title and Subtitle text-->
-        <div class="about__text">
-          <h1 class="about__title"> I’m a UX/UI Designer with a technical foundation in full-stack development and a multidisciplinary background in visual art and communications. I’m passionate about creating thoughtful, well-structured digital experiences that help improve people’s lives.</h1>
-
-          <h2 class="about__subtitle"> After more than a decade working in entertainment, corporate and service industries, I transitioned into tech through BCIT’s accelerated Computer Systems Technology (CST) program, graduating as Valedictorian in 2025. My design practice blends artistic insight with technical precision, drawing from years of experience in storytelling, traditional painting, and collaborative problem-solving.</h2>
-
-          <h2 class="about__subtitle"> My skill set spans the entire UX/UI process — from research and wireframing to component design and front-end implementation. I’ve led event teams, designed digital systems, and built responsive interfaces. I thrive in collaborative environments and bring both empathy and structure to every project. </h2>
-
-          <h2 class="about__subtitle"> When I'm not working, I can be found taking care of over 500 cats at the Richmond Cat Sanctuary or baking sourdough pastries from scratch. </h2>
+  <div class="site-wrapper">
+    <main class="site-main">
+      <!-- Background layers-->
+      <div class="bg-layers">
+        <div class="bg bg--hero-main"></div>
+        <div class="bg bg--repeat-canvas">
+          <canvas id="patternCanvas-dark"></canvas>
+          <canvas id="patternCanvas-brown"></canvas>
+          <canvas id="patternCanvas-yellow"></canvas>
+          <canvas id="patternCanvas-orange"></canvas>
+          <canvas id="patternCanvas-mint1"></canvas>
+          <canvas id="patternCanvas-orange2"></canvas>
+          <canvas id="patternCanvas-mint2"></canvas>
         </div>
-
+        <div class="bg bg--hero-sheen"></div>
+        <div class="bg bg--hero-dark-green"></div>
+        <div class="bg bg--hero-green"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- SITE FOOTER -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <p class="footer__text">© 2025 Justin Saint. All rights reserved.</p>
-    </div>
-  </footer>
+      <section class="panel panel--creative">
+        <!-- Topbar -->
+        <header class="topbar">
+          <div data-include="../partials/topbar.html"></div>
+        </header>
+
+      </section>
+
+      <section class="temp">
+        <div class="temp__inner">
+          <h1 class="temp__title">Coming Soon!</h1>
+          <img class="temp__img" src="../assets/img/about/butterflies.png" alt="Preview image" />
+        </div>
+      </section>
+
+      <!-- SITE FOOTER -->
+      <div id="footer-container"></div>
+    </main>
+  </div>
 
   <!-- JavaScript -->
+  <script src="../assets/js/site.js" defer></script>
   <script src="../assets/js/nav.js" defer></script>
+  <script src="../assets/js/featured.js" defer></script>
+  <script src="../assets/js/temp.js" defer></script>
 
 </body>
 

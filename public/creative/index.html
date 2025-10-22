@@ -27,58 +27,50 @@
 </head>
 
 <body>
-
-    <!-- Topbar -->
-    <header class="topbar">
-        <div data-include="../partials/topbar.html"></div>
-    </header>
-
-    <!-- CREATIVE 1 – Affirmation Butterflies -->
-    <div class="featured featured--right-overlap" data-rank="5">
-        <div class="featured__inner">
-            <!-- Project Image -->
-            <div>
-                <img src="../assets/img/creative/butterflies.png" alt="Affirmation Butterflies piece" class="featured__img">
+    <div class="site-wrapper">
+        <main class="site-main">
+            <!-- Background layers-->
+            <div class="bg-layers">
+                <div class="bg bg--hero-main"></div>
+                <div class="bg bg--repeat-canvas">
+                    <canvas id="patternCanvas-dark"></canvas>
+                    <canvas id="patternCanvas-brown"></canvas>
+                    <canvas id="patternCanvas-yellow"></canvas>
+                    <canvas id="patternCanvas-orange"></canvas>
+                    <canvas id="patternCanvas-mint1"></canvas>
+                    <canvas id="patternCanvas-orange2"></canvas>
+                    <canvas id="patternCanvas-mint2"></canvas>
+                </div>
+                <div class="bg bg--hero-sheen"></div>
+                <div class="bg bg--hero-dark-green"></div>
+                <div class="bg bg--hero-green"></div>
             </div>
 
-            <!-- Project Card -->
-            <article class="project-card project-card--static">
-                <h3 class="project-card__title">Affirmation Butterflies</h3>
-                <p class="project-card__desc">
-                    An art piece for Vancouver Pride that touched hearts worldwide
-                </p>
-                <p>Art</p>
-            </article>
-        </div>
+            <section class="panel panel--creative">
+                <!-- Topbar -->
+                <header class="topbar">
+                    <div data-include="../partials/topbar.html"></div>
+                </header>
+
+            </section>
+
+            <section class="temp">
+                <div class="temp__inner">
+                    <h1 class="temp__title">Coming Soon!</h1>
+                    <img class="temp__img" src="../assets/img/creative/montecristo.jpg" alt="Preview image" />
+                </div>
+            </section>
+
+            <!-- SITE FOOTER -->
+            <div id="footer-container"></div>
+        </main>
     </div>
-
-    <div class="featured featured--center-overlay" data-rank="6">
-        <div class="featured__inner">
-            <!-- Background Image -->
-            <img src="../assets/img/creative/montecristo.jpg" alt="Two bowls of ramen" class="featured__img">
-
-            <!-- Project Card -->
-            <article class="project-card">
-                <h3 class="project-card__title">Montecristo Magazine</h3>
-                <p class="project-card__desc">
-                    Words and images celebrating the global flavours of Vancouver's local cuisine
-                </p>
-                <a href="https://montecristomagazine.com/author/justin-saint" target="_blank" rel="noopener noreferrer"
-                    class="project-card__link">read the articles →</a>
-            </article>
-        </div>
-    </div>
-
-    <!-- SITE FOOTER -->
-    <footer class="footer">
-        <div class="footer__inner">
-            <p class="footer__text">© 2025 Justin Saint. All rights reserved.</p>
-        </div>
-    </footer>
 
     <!-- JavaScript -->
-    <script src="../assets/js/nav.js" defer></script>
-    <script src="../assets/js/featured.js" defer></script>
+  <script src="../assets/js/site.js" defer></script>
+  <script src="../assets/js/nav.js" defer></script>
+  <script src="../assets/js/featured.js" defer></script>
+  <script src="../assets/js/temp.js" defer></script>
 
 </body>
 
