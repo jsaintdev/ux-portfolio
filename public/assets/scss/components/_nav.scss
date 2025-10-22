@@ -5,7 +5,7 @@
 // On smaller screens, displays a full-screen nav column when hamburger is clicked
 .nav {
     display: none;
-    height: 100vh;
+    height: 100svh;
     flex-direction: column;
 
     &__inner {
@@ -13,7 +13,7 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        gap: var(--row-height);
+        gap: var(--gutter-h);
     }
 
     &__link {
@@ -63,7 +63,7 @@
         flex-direction: row;
         align-items: flex-start;
         gap: var(--gutter);
-        height: var(--row-height);
+        height: var(--gutter-h);
 
         &__inner {
             width: 100%;
@@ -124,7 +124,7 @@
     .nav {
         display: none;
         width: 100%;
-        height: var(--row-height);
+        height: var(--gutter-h);
         flex-direction: row;
         align-items: center;
         justify-content: center;

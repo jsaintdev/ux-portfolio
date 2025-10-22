@@ -4,7 +4,7 @@
 
 // The initial text you see open opening the website
 .hero {
-    height: calc(100vh - (var(--row-height) * 2));
+    height: calc(100vh - (var(--gutter-h) * 2));
     width: 100%;
     display: flex;
     flex: 1 1 100%;
@@ -32,7 +32,7 @@
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--text);
-        margin-top: calc(var(--row-height) * 0.5);
+        margin-top: calc(var(--gutter-h) * 0.5);
     }
 
     &__subtitle {
@@ -62,9 +62,9 @@
         color: var(--hero-arrow);
         font-family: var(--font-arrow);
 
-        font-size: calc(var(--row-height));
-        width: calc(var(--row-height) * 1.2);
-        height: calc(var(--row-height) * 1.2);
+        font-size: calc(var(--gutter-h));
+        width: calc(var(--gutter-h) * 1.2);
+        height: calc(var(--gutter-h) * 1.2);
 
         display: inline-flex;
         align-items: flex-start;

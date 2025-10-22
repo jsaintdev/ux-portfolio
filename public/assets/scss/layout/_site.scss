@@ -22,58 +22,11 @@
   min-height: 100vh;
 }
 
-.bg-layers {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-}
-
-// BG overlay layers
-@include mixins.bg-layer(hero-main, var(--hero-main), normal, cover, 1, center top, no-repeat, 0);
-@include mixins.bg-layer(hero-sheen, var(--hero-sheen), lighten, 3840px 2160px, 0.12, center top, no-repeat, 2);
-@include mixins.bg-layer(hero-dark-green, var(--hero-dark-green), normal, 3840px 2160px, 1, center top, no-repeat, 3);
-@include mixins.bg-layer(hero-green, var(--hero-green), normal, 3840px 2160px, 1, center top, no-repeat, 4);
-
-.bg--repeat-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.bg--repeat-canvas canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-}
-
-// Keeps the site content over the background overlay
-.site-main> :not(.bg-layers) {
-  position: relative;
-  z-index: 1;
-}
-
 // TEMP CLASS! DELETE AFTER DONE
 .temp {
-  /* spacing: one row-height above header, one below image */
-  padding-top: var(--row-height);
-  padding-bottom: var(--row-height);
-  height: calc(100vh - (var(--row-height) * 5));
+  /* spacing: one gutter-h above header, one below image */
+  padding-top: var(--gutter-h);
+  padding-bottom: var(--gutter-h);
   display: flex;
   flex: 1 1 auto;
 
@@ -81,7 +34,7 @@
     /* center content block */
     margin-inline: auto;
     width: 100%;
-    max-width:calc(var(--container) / 2);
+    max-width:var(--container);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +53,7 @@
 
   &__img {
     /* image width = container, centered, responsive */
-    width: var(--container);
+    width: calc(var(--container) * 1.5);
     max-width: 100%;
     display: block;
     margin-inline: auto;
@@ -122,20 +75,8 @@
 
 @media (orientation: landscape) {
   .temp {
-    height: calc(100vh + var(--row-height));
+    height: calc(100vh + var(--gutter-h));
   }
 }
 
 // TEMP CLASS! DELETE AFTER DONE
-
-@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
-  .bg--hero-sheen {
-    opacity: 0.11;
-    background-size: 932px 430px; 
-  }
-
-  .bg--hero-dark-green {
-    opacity: 0.2;
-    background-size: 932px 430px;
-  }
-}

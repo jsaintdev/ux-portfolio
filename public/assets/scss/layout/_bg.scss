@@ -1,0 +1,61 @@
+@use "sass:map";
+@use "../abstracts/mixins" as mixins;
+@use "../abstracts/tokens" as tokens;
+
+.bg-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+// BG overlay layers
+@include mixins.bg-layer(hero-main, var(--hero-main), normal, cover, 1, center top, no-repeat, 0);
+@include mixins.bg-layer(hero-sheen, var(--hero-sheen), lighten, 3840px 2160px, 0.12, center top, no-repeat, 2);
+@include mixins.bg-layer(hero-dark-green, var(--hero-dark-green), normal, 3840px 2160px, 1, center top, no-repeat, 3);
+@include mixins.bg-layer(hero-green, var(--hero-green), normal, 3840px 2160px, 1, center top, no-repeat, 4);
+
+.bg--repeat-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg--repeat-canvas canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+// Keeps the site content over the background overlay
+.site-main> :not(.bg-layers) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+  .bg--hero-sheen {
+    opacity: 0.11;
+    background-size: 932px 430px; 
+  }
+
+  .bg--hero-dark-green {
+    opacity: 0.2;
+    background-size: 932px 430px;
+  }
+}

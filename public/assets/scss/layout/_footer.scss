@@ -3,7 +3,7 @@
 @use "../abstracts/mixins"as mixins;
 
 .footer {
-  background-color: color-mix(in srgb, var(--bg-footer) 33%, transparent);
+  background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
     @include mixins.fullbleed;
 
     &__inner {
