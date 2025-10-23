@@ -164,27 +164,13 @@
   --gutter-h: 48px;
   --row-multiplier: 2;
   --topbar-height: calc(var(--gutter-h) * var(--row-multiplier));
-  --featured-height: calc(var(var(--container)) / 1.5);
+  --featured-height: calc(var(--container) / 1.5);
 }
 
 /* ============================================================================== */
 /* =                             RESPONSIVE LAYOUTS                             = */
 /* ============================================================================== */
-@media (min-width: 768px) and (max-width: calc(1280px - 0.02px)) {
-  :root {
-    --cols: 8;
-    --gutter-h: 96px;
-    --row-multiplier: 1;
-  }
-}
-@media (min-width: 1280px) and (max-width: calc(1920px - 0.02px)) {
-  :root {
-    --cols: 16;
-    --gutter-h: 96px;
-    --row-multiplier: 1;
-  }
-}
-@media (min-width: 1920px) {
+@media (orientation: lanscape) and (min-width: 768px) {
   :root {
     --cols: 16;
     --gutter-h: 96px;
@@ -595,18 +581,21 @@ a {
 .featured__inner {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .featured__card {
-  width: var(--container);
-  height: var(--featured-height);
+  width: min(var(--container), 748.8px);
+  max-width: 100%;
+  height: min(var(--container), 499.2px);
   margin-block: var(--margin-h);
-  aspect-ratio: 1/1;
   overflow: hidden;
   border-radius: 5%;
 }
 .featured__img {
+  width: 100%;
   height: 100%;
-  width: auto;
   object-fit: cover;
   object-position: 50% 50%;
   border-radius: 0;
@@ -614,7 +603,8 @@ a {
 
 @media (orientation: landscape) and (min-width: 768px) {
   .featured__card {
-    aspect-ratio: 3/2;
+    width: 100%;
+    height: auto;
   }
 }
 @media (max-height: 480px) {
@@ -917,7 +907,7 @@ a {
   gap: var(--gutter-h);
 }
 .nav__link {
-  font-size: clamp(2.205rem, 2.205rem + (0.315rem) * (100svw - 344px) / 424px, 2.52rem);
+  font-size: clamp(2.205rem, 2.205rem + (0.315rem) * (100svw - 360px) / 408px, 2.52rem);
   color: var(--nav);
   font-family: var(--font-serif);
   text-decoration: none;
@@ -1035,12 +1025,12 @@ a {
 }
 @media (max-height: 480px) and (max-width: 750px) {
   .nav__link {
-    font-size: clamp(1.65375rem, 1.65375rem + (0.23625rem) * (100svw - 344px) / 424px, 1.89rem);
+    font-size: clamp(1.65375rem, 1.65375rem + (0.23625rem) * (100svw - 360px) / 408px, 1.89rem);
   }
 }
 @media (max-height: 480px) and (min-width: 751px) {
   .nav__link {
-    font-size: clamp(2.4255rem, 2.4255rem + (0.3465rem) * (100svw - 344px) / 424px, 2.772rem);
+    font-size: clamp(2.4255rem, 2.4255rem + (0.3465rem) * (100svw - 360px) / 408px, 2.772rem);
   }
 }
 .hamburger {

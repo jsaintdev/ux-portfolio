@@ -21,7 +21,7 @@
 
     --row-multiplier: 2;
     --topbar-height: calc(var(--gutter-h) * var(--row-multiplier));
-    --featured-height: calc(var(var(--container)) / 1.5);
+    --featured-height: calc(var(--container) / 1.5);
 
 }
 
@@ -29,18 +29,7 @@
 /* =                             RESPONSIVE LAYOUTS                             = */
 /* ============================================================================== */
 
-// Tablet (768 → 1279)
-@media (min-width: map.get(tokens.$breakpoints, tablet)) and (max-width: calc(#{map.get(tokens.$breakpoints, desktop)} - 0.02px)) {
-  :root {
-    --cols: 8;
-
-    --gutter-h: 96px;
-    --row-multiplier: 1;
-  }
-}
-
-// Desktop (1280 → 1919)
-@media (min-width: map.get(tokens.$breakpoints, desktop)) and (max-width: calc(#{map.get(tokens.$breakpoints, uhd)} - 0.02px)) {
+@media (orientation: lanscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
   :root {
     --cols: 16;
 
@@ -49,17 +38,6 @@
   }
 }
 
-// UHD (≥ 1920)
-@media (min-width: map.get(tokens.$breakpoints, uhd)) {
-  :root {
-    --cols: 16;
-
-    --gutter-h: 96px;
-    --row-multiplier: 1;
-  }
-}
-
-// Viewport guard for short heights (landscape phones, split views)
 @media (max-height: map.get(tokens.$breakpoints, mobile-guard)) {
   :root {
     
