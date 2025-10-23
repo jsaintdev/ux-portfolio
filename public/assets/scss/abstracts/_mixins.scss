@@ -16,7 +16,7 @@
   $min-rem: rem($s_min);
   $max-rem: rem($s_max);
   @return clamp(#{$min-rem},
-    calc(#{$min-rem} + (#{($max-rem - $min-rem)}) * ((100vw - #{$w_min}) / #{($w_max - $w_min)})),
+    calc(#{$min-rem} + (#{($max-rem - $min-rem)}) * ((100svw - #{$w_min}) / #{($w_max - $w_min)})),
     #{$max-rem});
 }
 

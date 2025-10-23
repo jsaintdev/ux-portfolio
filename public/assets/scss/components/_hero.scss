@@ -4,7 +4,7 @@
 
 // The initial text you see open opening the website
 .hero {
-    height: calc(100vh - (var(--gutter-h) * 2));
+    height: calc(100svh - (var(--gutter-h) * 2));
     width: 100%;
     display: flex;
     flex: 1 1 100%;

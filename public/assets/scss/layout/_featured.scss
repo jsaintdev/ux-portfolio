@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "../abstracts/tokens"as tokens;
+
+.featured {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-inline: var(--margin);
+    margin-block: var(--margin-h);
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__card {
+        width: var(--container);
+        height: var(--featured-height);
+        margin-block: var(--margin-h);
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-radius: 5%;
+    }
+
+    &__img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        object-position: 50% 50%;
+        border-radius: 0;
+    }
+}
+
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+
+    .featured {
+        &__card {
+            aspect-ratio: 3/2;
+        }
+    }
+}
+
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+    .featured {
+        &__inner {
+            width: 100%;
+            display: grid;
+            grid-template-areas: "A B";
+            justify-items: center;
+            align-items: center;
+            justify-content: space-evenly;
+            align-content: space-between;
+        }
+
+        &__card {
+            width: calc(var(--col) * (var(--cols) * 0.5));
+        }
+    }
+
+}

@@ -8,17 +8,20 @@
 
     // Width
     --cols: 4;
-    --unit: calc(100vw / var(--cols));
+    --unit: calc(100svw / var(--cols));
     --col: calc(var(--unit) * (4 / 5));
     --gutter: calc(var(--unit) * (1 / 5));
     --margin: calc(var(--gutter) / 2);
-    --container: 100svw;
+
+    --container: calc(100svw - (var(--margin) * 2));
 
     // Height
     --margin-h: 24px;
     --gutter-h: 48px;
+
     --row-multiplier: 2;
     --topbar-height: calc(var(--gutter-h) * var(--row-multiplier));
+    --featured-height: calc(var(var(--container)) / 1.5);
 
 }
 

@@ -14,7 +14,7 @@
 
     &__connect {
         @include mixins.set-cols(2);
-        max-width: var(--container);
+        max-width: 100svw;
         background-color: var(--button-bg);
         padding-inline: var(--margin);
         cursor: pointer;
