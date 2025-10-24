@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
       selector: ".hero__arrow",
       delay: 1500
     },
+    {
+      selector: ".featured",
+      delay: 1800
+    }
   ];
 
   const revealWhenReady = (el) => {

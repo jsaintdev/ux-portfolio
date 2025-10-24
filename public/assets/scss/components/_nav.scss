@@ -140,9 +140,8 @@
         align-items: center;
         justify-content: center;
         gap: var(--gutter);
-        width: 100vw;
-        height: 100vh;
-        z-index: 1000;
+        z-index: 2000;
+        margin: 0;
     }
 
     .is-nav-open .nav__inner {

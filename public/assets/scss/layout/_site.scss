@@ -20,6 +20,11 @@
   position: relative;
   isolation: isolate;
   min-height: 100svh;
+
+}
+
+.site-main > :not(.bg-layers) {
+  z-index: 10;
 }
 
 // TEMP CLASS! DELETE AFTER DONE

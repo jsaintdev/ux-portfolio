@@ -101,6 +101,7 @@
 
     // Open the mobile nav menu
     function openMenu() {
+      window.scrollTo({ top: 0, behavior: 'instant' });
       lastFocused = document.activeElement;
       body.classList.add('is-nav-open');
       button.setAttribute('aria-expanded', 'true');
