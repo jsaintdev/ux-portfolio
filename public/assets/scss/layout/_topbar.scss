@@ -1,5 +1,6 @@
-@use "../abstracts/mixins" as mixins;
-@use "../abstracts/tokens" as tokens;
+@use "sass:map";
+@use "../abstracts/mixins"as mixins;
+@use "../abstracts/tokens"as tokens;
 
 .topbar {
   height: var(--gutter-h);
@@ -72,5 +73,11 @@
     z-index: 1;
     opacity: 0;
     transform: translateX(0) rotate(0deg);
+  }
+}
+
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+  .topbar {
+    position: relative;
   }
 }

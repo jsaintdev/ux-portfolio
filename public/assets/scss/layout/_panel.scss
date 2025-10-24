@@ -5,7 +5,6 @@
 .panel {
   height: auto;
   padding-inline: var(--margin);
-  margin-bottom: var(--gutter-h);
 
   // The initial content on the main
   &--hero {
@@ -16,14 +15,3 @@
 
 }
 
-@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
-  .panel {
-    min-height: calc(100svh - (var(--gutter-h) * 2));
-  }
-}
-
-@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
-  .panel {
-    height: auto;
-  }
-}

@@ -4,7 +4,7 @@
 
 // The initial text you see open opening the website
 .hero {
-    height: calc(100svh - (var(--gutter-h) * 2));
+    height: auto;
     width: 100%;
     display: flex;
     flex: 1 1 100%;
@@ -12,6 +12,7 @@
     align-self: center;
     align-items: stretch;
     justify-items: center;
+    container-type: inline-size;
 
     &__inner {
         width: 100%;
@@ -29,7 +30,7 @@
     }
 
     &__title {
-        @include mixins.font-sizes(40, 72, 96, 108);
+        @include mixins.text(h1);
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--text);
@@ -37,7 +38,7 @@
     }
 
     &__subtitle {
-        @include mixins.font-sizes(20, 36, 48, 54);
+        @include mixins.text(s1);
         font-family: var(--font-display);
         font-weight: 400;
         display: block;
@@ -70,7 +71,7 @@
     }
 
     &__explore {
-        @include mixins.font-sizes(16, 24, 28, 32);
+        @include mixins.text(h4);
         align-self: center;
         font-family: var(--font-display);
         font-weight: 400;
@@ -79,7 +80,6 @@
     & p {
         margin: 0;
     }
-
 }
 
 // Adjusts settings for landscape

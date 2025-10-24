@@ -17,7 +17,7 @@
     }
 
     &__link {
-        font-size: mixins.clamp-guard(36, map.get(tokens.$breakpoints, mobile), map.get(tokens.$breakpoints, tablet), 0.98, 1.12);
+        @include mixins.text(h2);
         color: var(--nav);
         font-family: var(--font-serif);
         text-decoration: none;
@@ -62,6 +62,7 @@
         display: flex;
         flex-direction: row;
         align-items: flex-start;
+        min-width: 0;
         gap: var(--gutter);
         height: var(--gutter-h);
 
@@ -75,7 +76,7 @@
         }
 
         &__link {
-            font-size: mixins.clamp-guard(18, map.get(tokens.$breakpoints, desktop), map.get(tokens.$breakpoints, uhd), 0.96, 1.06);
+            @include mixins.text-static(18, true);
 
             &--contact {
                 margin-top: 0;
@@ -113,6 +114,21 @@
   position: absolute;
   top: 24px;
   right: var(--margin);
+}
+
+.is-nav-open .topbar {
+  margin: 0;
+  height: 100svh !important;
+}
+
+.is-nav-open .hero__title,
+.is-nav-open .hero__subtitle,
+.is-nav-open .hero__explore,
+.is-nav-open .hero__arrow,
+.is-nav-open .featured {
+  opacity: 0 !important;
+  transform: translateY(10px);
+  transition: none !important;
 }
 
 @media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
@@ -153,21 +169,13 @@
 
     @media (max-width: 750px) {
         .nav__link {
-            font-size: mixins.clamp-guard(36 * 0.75,
-                    map.get(tokens.$breakpoints, mobile),
-                    map.get(tokens.$breakpoints, tablet),
-                    0.98,
-                    1.12);
+            @include mixins.text(nav-sm);
         }
     }
 
     @media (min-width: 751px) {
         .nav__link {
-            font-size: mixins.clamp-guard(36 * 1.1,
-                    map.get(tokens.$breakpoints, mobile),
-                    map.get(tokens.$breakpoints, tablet),
-                    0.98,
-                    1.12);
+            @include mixins.text(nav);
         }
     }
 }

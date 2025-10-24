@@ -8,19 +8,3 @@
   opacity: 0;
   transform: translateY(10px);
 }
-
-
-.is-nav-open .topbar {
-  margin: 0;
-  height: 100svh !important;
-}
-
-.is-nav-open .hero__title,
-.is-nav-open .hero__subtitle,
-.is-nav-open .hero__explore,
-.is-nav-open .hero__arrow,
-.is-nav-open .featured {
-  opacity: 0 !important;
-  transform: translateY(10px);
-  transition: none !important;
-}

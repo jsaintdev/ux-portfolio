@@ -6,6 +6,7 @@
     background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
     @include mixins.fullbleed;
     max-width: 100svw;
+    container-type: inline-size;
 
     &__inner {
         display: flex;
@@ -31,14 +32,14 @@
     }
 
     &__header {
-        @include mixins.font-sizes(24, 42, 54, 72);
+        @include mixins.text(h3);
         margin: 0.5em 0;
         display: flex;
         align-items: center;
     }
 
     &__arrow {
-        @include mixins.font-sizes(36, 60, 80, 90);
+        @include mixins.text(h2);
         display: inline-block;
         font-family: var(--font-arrow);
         transform: translateX(0);
@@ -47,7 +48,7 @@
     }
 
     &__email {
-        @include mixins.font-sizes(24, 42, 54, 72);
+        @include mixins.text(h3);
         color: var(--text);
         transition: color 0.3s ease;
         display: flex;
@@ -67,7 +68,7 @@
     }
 
     &__copyright {
-        @include mixins.font-sizes(12, 16, 20, 24);
+        @include mixins.text(small);
     }
 
     &__links {
@@ -76,7 +77,7 @@
     }
 
     &__link {
-        @include mixins.font-sizes(12, 16, 20, 24);
+        @include mixins.text(small);
         color: var(--text);
         text-decoration: none;
 
@@ -85,6 +86,10 @@
             color: var(--text-2);
             outline: none;
         }
+    }
+
+    p {
+        margin: 0.5em;
     }
 
 }

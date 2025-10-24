@@ -2,6 +2,23 @@
 @use "./tokens"as tokens;
 @use "./background";
 
+$cq: (c1: 28rem, // ~448px
+  c2: 47rem, // ~752px
+  c3: 80rem, // ~1280px
+  c4: 120rem // ~1920px
+);
+
+$text-anchors: (h1: (c1: 40, c2: 72, c3: 80, c4: 108),
+  s1: (c1: 18, c2: 32, c3: 40, c4: 54),
+  h2: (c1: 24, c2: 43, c3: 58, c4: 65),
+  h3: (c1: 19, c2: 35, c3: 46, c4: 52),
+  h4: (c1: 16, c2: 24, c3: 30, c4: 43),
+  body: (c1: 16, c2: 18, c3: 19, c4: 20),
+  small: (c1: 12, c2: 14, c3: 16, c4: 16),
+  nav-sm: (c1: 27, c2: 36, c3: 36, c4: 36),
+  nav: (c1: 36, c2: 36, c3: 36, c4: 36),
+);
+
 /* ============================== HELPER FUNCTIONS ============================== */
 
 // Converts a pixel value into rem units, with 16px as a base
@@ -9,15 +26,13 @@
   @return ($px * 0.0625) * 1rem;
 }
 
-// Accepts a target font size and viewport widths to generate a clamp()
-@function clamp-guard($s_p, $w_min, $w_max, $min_mult, $max_mult) {
-  $s_min: $s_p * $min_mult;
-  $s_max: $s_p * $max_mult;
-  $min-rem: rem($s_min);
-  $max-rem: rem($s_max);
-  @return clamp(#{$min-rem},
-    calc(#{$min-rem} + (#{($max-rem - $min-rem)}) * ((100svw - #{$w_min}) / #{($w_max - $w_min)})),
-    #{$max-rem});
+// Generates a clamp between specified font sizes
+@function cclamp($s1, $w1, $s2, $w2) {
+  $min: rem($s1);
+  $max: rem($s2);
+  @return clamp(#{$min},
+    calc(#{$min} + (#{($max - $min)}) * ((100cqw - #{$w1}) / #{($w2 - $w1)})),
+    #{$max});
 }
 
 /* ============================================================================== */
@@ -44,44 +59,51 @@
 
 /* ================================ FONT SIZING ================================= */
 
-@mixin font-sizes($mob, $tab, $des, $uhd) {
-  $bp-mobile: map.get(tokens.$breakpoints, mobile);
-  $bp-tablet: map.get(tokens.$breakpoints, tablet);
-  $bp-desktop: map.get(tokens.$breakpoints, desktop);
-  $bp-uhd: map.get(tokens.$breakpoints, uhd);
-  $bp-mguard: map.get(tokens.$breakpoints, mobile-guard);
-  $bp-tguard: map.get(tokens.$breakpoints, tablet-guard);
+@mixin text($role) {
+  $a: map.get($text-anchors, $role);
 
-  $lt-desktop: calc(#{$bp-desktop} - 0.02px);
-  $lt-uhd: calc(#{$bp-uhd} - 0.02px);
-
-  $mob-wmin: $bp-tablet - 64px;
-  $tab-wmin: $bp-desktop - 96px;
-  $des-wmin: $bp-uhd - 128px;
-
-  font-size: clamp-guard($mob, $mob-wmin, $bp-tablet, 0.97, 1);
-
-  @media (min-width: $bp-tablet) and (max-width: $lt-desktop) {
-    font-size: clamp-guard($tab, $tab-wmin, $bp-desktop, 0.97, 1);
+  @if $a==null {
+    @error "Unknown text role `#{$role}`";
   }
 
-  @media (min-width: $bp-desktop) and (max-width: $lt-uhd) {
-    font-size: clamp-guard($des, $des-wmin, $bp-uhd, 0.97, 1);
+  $s1: map.get($a, c1);
+  $s2: map.get($a, c2);
+  $s3: map.get($a, c3);
+  $s4: map.get($a, c4);
+
+  $w1: map.get($cq, c1);
+  $w2: map.get($cq, c2);
+  $w3: map.get($cq, c3);
+  $w4: map.get($cq, c4);
+
+  font-size: rem($s1);
+
+  @container (min-width: #{$w1}) {
+    font-size: cclamp($s1, $w1, $s2, $w2);
   }
 
-  @media (min-width: $bp-uhd) {
-    font-size: rem($uhd);
+  @container (min-width: #{$w2}) {
+    font-size: cclamp($s2, $w2, $s3, $w3);
   }
 
-  @media (hover: none) and (pointer: coarse) and (min-width: $bp-tguard) and (min-height: $bp-tguard) {
-    font-size: clamp-guard($des, $des-wmin, $bp-uhd, 0.97, 1);
+  @container (min-width: #{$w3}) {
+    font-size: cclamp($s3, $w3, $s4, $w4);
   }
 
-  @media (hover: none) and (pointer: coarse) and (max-height: $bp-mguard) {
-    font-size: rem($mob * 0.75);
+  @container (min-width: #{$w4}) {
+    font-size: rem($s4);
   }
 }
 
+@mixin text-static($px, $bump-at-c3: false) {
+  font-size: rem($px);
+
+  @if $bump-at-c3 {
+    @container (min-width: map.get($cq, c3)) {
+      font-size: rem($px + 1);
+    }
+  }
+}
 
 /* =============================== COLUMN SIZING ================================ */
 
