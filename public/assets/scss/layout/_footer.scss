@@ -109,7 +109,11 @@
         &__endbar {
             flex-direction: row;
             margin: 0.5em 0;
-            margin-bottom: 0;
+            max-height: var(margin-h);
+        }
+
+        p {
+            margin: 1em;
         }
     }
 }

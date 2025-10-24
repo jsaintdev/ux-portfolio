@@ -45,25 +45,19 @@ $tablet-height: $tablet-width / 1.5;
         &__card {
             width: 100%;
             height: auto;
+            max-height: var(--container-h);
         }
     }
 }
 
 @media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
+
     .featured {
-        &__inner {
-            width: 100%;
-            display: grid;
-            grid-template-areas: "A B";
-            justify-items: center;
-            align-items: center;
-            justify-content: space-evenly;
-            align-content: space-between;
-        }
 
         &__card {
-            width: calc(var(--col) * (var(--cols) * 0.5));
+            height: auto;
+            max-height: calc(100svh - (var(--margin-h)));
+            max-width: calc(100svw - (var(--gutter-h) * 2));
         }
     }
-
 }

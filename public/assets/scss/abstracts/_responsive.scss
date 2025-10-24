@@ -18,6 +18,7 @@
     // Height
     --margin-h: 24px;
     --gutter-h: 48px;
+    --container-h: calc(100svh - (var(--margin-h) * 2));
 
     --row-multiplier: 2;
     --topbar-height: calc(var(--gutter-h) * var(--row-multiplier));
