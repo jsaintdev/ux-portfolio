@@ -1,10 +1,12 @@
 @use "sass:map";
 @use "../abstracts/tokens"as tokens;
 
-$mobile-bp: map.get(tokens.$breakpoints, mobile);
-$tablet-bp: map.get(tokens.$breakpoints, tablet);
-$tablet-width: $tablet-bp * 0.975;
-$tablet-height: $tablet-width / 1.5;
+$tablet-width: 748.8px;
+$tablet-height: 499.2px;
+
+$uhd-width: 1872px;
+$uhd-height: 1248px;
+
 
 .featured {
     height: auto;
@@ -22,12 +24,26 @@ $tablet-height: $tablet-width / 1.5;
     }
 
     &__card {
-        width: min(var(--container), #{$tablet-width});
+
         max-width: 100%;
-        height: min(var(--container), #{$tablet-height});
         margin-block: var(--margin-h);
         overflow: hidden;
         border-radius: 5%;
+
+        &--landscape {
+            width: min(var(--container), #{$tablet-width});
+            height: min(var(--container), #{$tablet-height});
+        }
+
+        &--square {
+            width: min(var(--container), #{$tablet-width});
+            height: min(var(--container), #{$tablet-width});
+        }
+
+        &--portrait {
+            width: min(var(--container), #{$tablet-height});
+            height: min(var(--container), #{$tablet-width});
+        }
     }
 
     &__img {
@@ -39,13 +55,28 @@ $tablet-height: $tablet-width / 1.5;
     }
 }
 
-@media (orientation: landscape) and (min-width: $tablet-bp) {
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
 
     .featured {
         &__card {
             width: 100%;
             height: auto;
             max-height: var(--container-h);
+
+            &--landscape {
+                width: min(var(--container), #{$uhd-width});
+                height: min(var(--container), #{$uhd-height});
+            }
+
+            &--square {
+                height: min(var(--container), #{$uhd-width});
+                width: auto;
+            }
+
+            &--portrait {
+                width: min(var(--container), #{$tablet-height});
+                height: min(var(--container), #{$tablet-width});
+            }
         }
     }
 }
@@ -55,9 +86,23 @@ $tablet-height: $tablet-width / 1.5;
     .featured {
 
         &__card {
-            height: auto;
+            max-width: 100%;
             max-height: calc(100svh - (var(--margin-h)));
-            max-width: calc(100svw - (var(--gutter-h) * 2));
+
+            &--landscape {
+                width: min(var(--container), #{$uhd-width});
+                height: min(var(--container), #{$uhd-height});
+            }
+
+            &--square {
+                width: min(var(--container), #{$uhd-width});
+                height: min(var(--container), #{$uhd-width});
+            }
+
+            &--portrait {
+                width: min(var(--container), #{$uhd-height});
+                height: min(var(--container), #{$uhd-width});
+            }
         }
     }
 }
