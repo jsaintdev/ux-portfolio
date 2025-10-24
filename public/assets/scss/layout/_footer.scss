@@ -69,6 +69,7 @@
 
     &__copyright {
         @include mixins.text(small);
+        color: var(--text-2);
     }
 
     &__links {
@@ -90,6 +91,7 @@
 
     p {
         margin: 0.5em;
+        margin-block: 1em;
     }
 
 }

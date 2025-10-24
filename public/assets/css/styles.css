@@ -763,6 +763,9 @@ a {
     font-size: 1rem;
   }
 }
+.footer__copyright {
+  color: var(--text-2);
+}
 .footer__links {
   display: flex;
   justify-content: space-evenly;
@@ -800,6 +803,7 @@ a {
 }
 .footer p {
   margin: 0.5em;
+  margin-block: 1em;
 }
 
 @media (orientation: landscape) {

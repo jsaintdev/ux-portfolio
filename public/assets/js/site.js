@@ -322,7 +322,7 @@ function wireFooterEmail() {
     // avoid duplicate email node
     let emailText = el.querySelector('.footer__email');
     if (!emailText) {
-      emailText = document.createElement('p');
+      emailText = document.createElement('h2');
       emailText.className = 'footer__email';
       emailText.textContent = addr;
       el.appendChild(emailText);
