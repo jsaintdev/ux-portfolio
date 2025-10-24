@@ -1,37 +1,16 @@
-// Animates the hero content (defers while nav is open)
 document.addEventListener("DOMContentLoaded", () => {
-  const elements = [{
-      selector: ".bg-layers",
-      delay: 0
-    },
-    {
-      selector: ".topbar",
-      delay: 100
-    },
-    {
-      selector: ".hero__title",
-      delay: 500
-    },
-    {
-      selector: ".hero__subtitle",
-      delay: 1000
-    },
-    {
-      selector: ".hero__explore",
-      delay: 1400
-    },
-    {
-      selector: ".hero__arrow",
-      delay: 1500
-    },
-    {
-      selector: ".featured",
-      delay: 1800
-    }
+  const items = [
+    { selector: ".bg-layers",     delay: 0    },
+    { selector: ".topbar",        delay: 100  },
+    { selector: ".hero__title",   delay: 500  },
+    { selector: ".hero__subtitle",delay: 1000 },
+    { selector: ".hero__explore", delay: 1400 },
+    { selector: ".hero__arrow",   delay: 1500 },
+    { selector: ".featured",      delay: 1800 },
   ];
 
   const revealWhenReady = (el) => {
-    if (document.body.classList.contains('is-nav-open')) {
+    if (document.body.classList.contains("is-nav-open")) {
       setTimeout(() => revealWhenReady(el), 150);
       return;
     }
@@ -40,17 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
     el.style.transform = "translateY(0)";
   };
 
-  elements.forEach(({
-    selector,
-    delay
-  }) => {
+  items.forEach(({ selector, delay }) => {
     const el = document.querySelector(selector);
     if (!el) return;
-    el.style.opacity = "0";
-    el.style.transform = "translateY(10px)";
     setTimeout(() => revealWhenReady(el), delay);
   });
+
+  // let CSS stop hiding once we've queued reveals
+  document.body.classList.remove("animations-init");
 });
+
 
 
 // Makes the avatar surprise appear upon clicking

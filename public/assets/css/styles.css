@@ -1317,6 +1317,17 @@ a {
     position: relative;
   }
 }
+.animations-init .bg-layers,
+.animations-init .topbar,
+.animations-init .hero__title,
+.animations-init .hero__subtitle,
+.animations-init .hero__explore,
+.animations-init .hero__arrow,
+.animations-init .featured {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 .is-nav-open .topbar {
   margin: 0;
   height: 100svh !important;
