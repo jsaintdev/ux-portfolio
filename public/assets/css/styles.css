@@ -652,6 +652,7 @@ a {
   border-radius: 9999px;
   font-weight: 600;
   text-align: center;
+  text-decoration: none;
   border: none;
   white-space: nowrap;
   transition: background-color 0.2s ease, transform 0.1s ease;
