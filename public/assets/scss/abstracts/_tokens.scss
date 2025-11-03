@@ -172,9 +172,13 @@ $breakpoints: (mobile: 360px,
   // Text
   --text: var(--text-1);
 
+  --featured-label: var(--secondary-200);
+
   // Elements
-  --button-bg: var(--accent-orange-600);
-  --button-bg-hover: var(--accent-orange-700);
+  --button: var(--primary-600);
+  --button-hover: var(--primary-700);
+  --button-contact: var(--accent-orange-600);
+  --button-contact-hover: var(--accent-orange-700);
 
   --nav: var(--text-1);
   --nav-hover: var(--primary-300);

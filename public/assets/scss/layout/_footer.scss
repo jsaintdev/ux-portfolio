@@ -3,10 +3,10 @@
 @use "../abstracts/mixins"as mixins;
 
 .footer {
-    background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
     @include mixins.fullbleed;
     max-width: 100svw;
     container-type: inline-size;
+    margin-bottom: 0;
 
     &__inner {
         display: flex;
@@ -15,9 +15,11 @@
 
     &__connect {
         @include mixins.set-cols(2);
-        max-width: 100svw;
-        background-color: var(--button-bg);
+        width: 100svw;
+        align-self: center;
+        background-color: var(--button-contact);
         padding-inline: var(--margin);
+        margin-bottom: calc(var(--gutter-h) * 0.5);
         cursor: pointer;
         transition: color 0.3s ease;
 
@@ -27,7 +29,7 @@
         }
 
         &:hover .footer__connect {
-            background-color: var(--button-bg-hover);
+            background-color: var(--button-contact-hover);
         }
     }
 
@@ -61,6 +63,7 @@
     }
 
     &__endbar {
+        background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
         @include mixins.set-cols(2);
         display: flex;
         margin-top: 1em;
@@ -100,6 +103,11 @@
 
     .footer {
 
+        &__connect {
+            width: var(--container);
+            border-radius: 2rem;
+        }
+
         &__connect:hover .footer__arrow,
         .footer__arrow.nudge {
             transform: rotate(-90deg) translateY(50%);
@@ -117,6 +125,7 @@
             flex-direction: row;
             margin: 0.5em 0;
             max-height: var(margin-h);
+            margin-bottom: 0;
         }
 
         p {
