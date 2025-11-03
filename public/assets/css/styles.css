@@ -136,8 +136,8 @@
   --bg-footer: var(--surface-900);
   --text: var(--text-1);
   --featured-label: var(--secondary-200);
-  --button: var(--primary-600);
-  --button-hover: var(--primary-700);
+  --button: var(--secondary-500);
+  --button-hover: var(--secondary-400);
   --button-contact: var(--accent-orange-600);
   --button-contact-hover: var(--accent-orange-700);
   --nav: var(--text-1);
@@ -648,7 +648,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5em 1.25em;
+  padding: 0.75em 2em;
   border-radius: 9999px;
   font-weight: 600;
   text-align: center;
