@@ -65,14 +65,14 @@
     }
 
     &__title {
-        @include mixins.text(h2);
+        @include mixins.text(h1);
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--text);
     }
 
     &__subtitle {
-        @include mixins.text(h4);
+        @include mixins.text(h3);
         font-family: var(--font-display);
         font-weight: 400;
         display: block;
@@ -116,7 +116,6 @@
             width: var(--project-section);
             margin-right: var(--gutter);
         }
-
         &__text {
             margin-block: calc(var(--gutter-h) * 0.5);
         }

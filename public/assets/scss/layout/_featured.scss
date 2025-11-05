@@ -101,7 +101,7 @@ $uhd-height: 1248px;
     }
 
     &__label {
-        @include mixins.text(h4);
+        @include mixins.text(h3);
         font-family: var(--font-display);
         font-weight: 400;
         display: block;
@@ -109,7 +109,7 @@ $uhd-height: 1248px;
     }
 
     &__title {
-        @include mixins.text(h4);
+        @include mixins.text(h3);
     }
 
     &__button {

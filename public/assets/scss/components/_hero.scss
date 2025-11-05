@@ -30,7 +30,7 @@
     }
 
     &__title {
-        @include mixins.text(h1);
+        @include mixins.text(t1);
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--text);
@@ -71,7 +71,7 @@
     }
 
     &__explore {
-        @include mixins.text(h4);
+        @include mixins.text(h3);
         align-self: center;
         font-family: var(--font-display);
         font-weight: 400;
