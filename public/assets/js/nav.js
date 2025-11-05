@@ -10,47 +10,62 @@
 (function () {
 
   // Load the navbar HTML into the page
+  // Load the navbar HTML into the page
   document.addEventListener("DOMContentLoaded", async () => {
     const includeTargets = document.querySelectorAll("[data-include]");
+
+    // --- normalize helper: safely convert relative → root-relative
+    function normalize(path) {
+      if (!path) return path;
+      if (
+        path.startsWith("/") ||
+        path.startsWith("./") ||
+        path.startsWith("../") ||
+        /^https?:\/\//.test(path)
+      ) {
+        return path; // already valid
+      }
+      // bare path (e.g., "partials/nav.html") → "/partials/nav.html"
+      return "/" + path.replace(/^\/+/, "");
+    }
+
     for (const el of includeTargets) {
-      const file = el.getAttribute("data-include");
+      const file = normalize(el.getAttribute("data-include"));
       try {
         const res = await fetch(file);
         if (res.ok) {
           el.innerHTML = await res.text();
         } else {
-          console.error("Include failed:", file);
+          console.error("Include failed:", file, res.status);
         }
       } catch (err) {
         console.error("Include error:", err);
       }
     }
 
-    // Once nav is injected, initialize the menu logic
+    // initialize once includes are loaded
     initNav();
 
-    // Copy Email to Clipboard with feedback
-    const contactCopy = document.getElementById('contact-copy');
+    // Copy Email
+    const contactCopy = document.getElementById("contact-copy");
     if (contactCopy) {
-      const email = 'justinsaintdev@gmail.com';
-      contactCopy.addEventListener('click', async (e) => {
+      const email = "justinsaintdev@gmail.com";
+      contactCopy.addEventListener("click", async (e) => {
         e.preventDefault();
         try {
           await navigator.clipboard.writeText(email);
           const original = contactCopy.textContent;
-          contactCopy.textContent = 'Copied!';
-          contactCopy.classList.add('copied');
-
+          contactCopy.textContent = "Copied!";
+          contactCopy.classList.add("copied");
           setTimeout(() => {
             contactCopy.textContent = original;
-            contactCopy.classList.remove('copied');
+            contactCopy.classList.remove("copied");
           }, 1500);
         } catch (err) {
-          console.error('Clipboard copy failed:', err);
+          console.error("Clipboard copy failed:", err);
         }
       });
     }
-
   });
 
   // Mobile nav functionality
@@ -101,7 +116,10 @@
 
     // Open the mobile nav menu
     function openMenu() {
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'instant'
+      });
       lastFocused = document.activeElement;
       body.classList.add('is-nav-open');
       button.setAttribute('aria-expanded', 'true');

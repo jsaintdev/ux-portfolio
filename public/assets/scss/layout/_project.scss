@@ -1,0 +1,126 @@
+@use "sass:map";
+@use "../abstracts/tokens"as tokens;
+@use "../abstracts/mixins"as mixins;
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+
+    &__hero {
+        width: var(--container);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: var(--gutter-h);
+        container-type: inline-size;
+    }
+
+    &__summary {
+        @include mixins.fullbleed();
+        width: 100svw;
+        display: flex;
+        flex-direction: column;
+        container-type: inline-size;
+        background: var(--project-panel);
+        padding-block: var(--gutter-h);
+    }
+
+    &__section {
+        width: var(--container);
+        display: flex;
+        flex-direction: column;
+        container-type: inline-size;
+        margin-block: var(--gutter-h);
+        margin-inline: calc(var(--margin));
+        background: var(--project-panel);
+    }
+
+    &__img-wrapper {
+        @include mixins.fullbleed();
+        width: 100svw;
+        display: flex;
+        justify-content: center;
+        background-image: linear-gradient(to bottom,
+                transparent 0%,
+                var(--project-panel) 100%);
+    }
+
+    &__img {
+        width: var(--container);
+        height: auto;
+        margin-top: var(--gutter-h);
+        border-radius: 2rem;
+        object-fit: cover;
+    }
+
+    &__overview {
+        padding-inline: var(--margin);
+    }
+
+    &__details {
+        padding-inline: var(--margin);
+    }
+
+    &__title {
+        @include mixins.text(h2);
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--text);
+    }
+
+    &__subtitle {
+        @include mixins.text(h4);
+        font-family: var(--font-display);
+        font-weight: 400;
+        display: block;
+        color: var(--text-2);
+        margin-block: 0;
+        margin-inline: var(--gutter);
+    }
+
+    &__header {
+        @include mixins.text(h4);
+        color: var(--project-header);
+        font-weight: 500;
+    }
+
+    &__text {
+        @include mixins.text(body);
+        margin-inline: 0;
+    }
+}
+
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+    .project {
+        &__hero {
+            margin: calc(var(--gutter-h) * 2);
+        }
+
+        &__section {
+            width: var(--project-section);
+        }
+
+        &__summary {
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        &__img {
+            width: var(--project-section);
+        }
+
+        &__overview {
+            width: var(--project-section);
+            margin-right: var(--gutter);
+        }
+
+        &__text {
+            margin-block: calc(var(--gutter-h) * 0.5);
+        }
+    }
+}
+
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {}

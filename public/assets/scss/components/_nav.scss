@@ -58,7 +58,7 @@
 // Displays a nav row on wider screens
 @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
     .nav {
-        width: calc(#{map.get(tokens.$breakpoints, desktop)} / 2.5);
+        width: calc(#{map.get(tokens.$breakpoints, desktop)} / 2);
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -70,7 +70,7 @@
             width: 100%;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
             gap: var(--gutter);
             flex: 1 1 100%;
         }
