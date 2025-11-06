@@ -2,45 +2,87 @@
 @use "../abstracts/tokens"as tokens;
 @use "../abstracts/mixins"as mixins;
 
+$tablet-width: 748.8px;
+$tablet-height: 499.2px;
+
+$uhd-width: 1872px;
+$uhd-height: 1248px;
+
 .project {
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-self: center;
 
+    // Outer Containers
     &__hero {
         width: var(--container);
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin: var(--gutter-h);
-        container-type: inline-size;
-    }
+        justify-content: center;
+        margin-top: var(--gutter-h);
+        padding-inline: var(--margin);
 
-    &__summary {
-        @include mixins.fullbleed();
-        width: 100svw;
-        display: flex;
-        flex-direction: column;
-        container-type: inline-size;
-        background: var(--project-panel);
-        padding-block: var(--gutter-h);
+        &-inner {
+            inline-size: var(--container);
+            margin-inline: auto;
+            container-type: inline-size;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
     }
 
     &__section {
-        width: var(--container);
+        inline-size: 100%;
         display: flex;
         flex-direction: column;
         container-type: inline-size;
-        margin-block: var(--gutter-h);
-        margin-inline: calc(var(--margin));
-        background: var(--project-panel);
+        padding-block: var(--gutter-h);
+        align-items: center;
+
+        &--problem {
+            @include mixins.fullbleed();
+            background: var(--project-panel);
+            padding-block: var(--gutter-h);
+        }
+
+        &--light {
+            background-color: color-mix(in srgb, var(--project-mask) 75%, transparent);
+        }
+
+        &--dark {
+            background: var(--project-panel);
+        }
     }
 
-    &__img-wrapper {
+    &__details {
+        inline-size: var(--project-panel);
+        display: flex;
+        flex-direction: column;
+        margin-top: calc(var(--gutter-h) * 0.5);
+        gap: 1em;
+        align-items: flex-start;
+
+        &-item {
+            width: 100%;
+            display: flex;
+            gap: 1em;
+        }
+    }
+
+    // Inner Containers
+    &__inner {
+        padding-inline: var(--margin);
+    }
+
+
+    // Elements
+    &__hero-image {
         @include mixins.fullbleed();
-        width: 100svw;
+        width: 100%;
         display: flex;
         justify-content: center;
         background-image: linear-gradient(to bottom,
@@ -48,43 +90,84 @@
                 var(--project-panel) 100%);
     }
 
-    &__img {
-        width: var(--container);
-        height: auto;
-        margin-top: var(--gutter-h);
+    &__img-wrapper {
+        width: var(--project-section);
+        overflow: hidden;
         border-radius: 2rem;
+        position: relative;
+        margin-top: var(--gutter-h);
+        aspect-ratio: 1/1;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
     }
 
-    &__overview {
-        padding-inline: var(--margin);
-    }
-
-    &__details {
-        padding-inline: var(--margin);
-    }
-
+    // Fonts
     &__title {
         @include mixins.text(h1);
+        inline-size: fit-content;
+        max-inline-size: var(--project-section);
+        text-wrap: balance;
+        margin-inline: 0;
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--text);
     }
 
+    &__break {
+        display: block;
+    }
+
     &__subtitle {
-        @include mixins.text(h3);
+        @include mixins.text(h4);
+        inline-size: var(--project-section);
+        max-inline-size: 100%;
+        text-align: justify;
         font-family: var(--font-display);
         font-weight: 400;
         display: block;
         color: var(--text-2);
         margin-block: 0;
-        margin-inline: var(--gutter);
+        margin-inline: 0;
     }
 
-    &__header {
+    &__small {
+        @include mixins.text(small);
+        color: var(--text-2);
+        margin: 0;
+    }
+
+    &__bold {
+        color: var(--text);
+        font-weight: bold;
+    }
+
+    &__h3 {
+        @include mixins.text(h3);
+        color: var(--project-header);
+        font-weight: 600;
+    }
+
+    &__h4 {
         @include mixins.text(h4);
         color: var(--project-header);
         font-weight: 500;
+    }
+
+    &__s4 {
+        @include mixins.text(h4);
+        color: var(--text-2);
+        font-weight: 200;
+    }
+
+    &__icon {
+        inline-size: 1em;
+        block-size: 1em;
+        display: inline-block;
+        vertical-align: text-bottom;
     }
 
     &__text {
@@ -95,30 +178,58 @@
 
 @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
     .project {
-        &__hero {
-            margin: calc(var(--gutter-h) * 2);
+
+        // Outer Containers
+        &__hero-inner {
+            inline-size: var(--project-section);
         }
 
-        &__section {
+        // Inner Containers
+        &__inner {
             width: var(--project-section);
         }
 
-        &__summary {
-            flex-direction: row;
-            justify-content: center;
+        // Elements
+        &__img-wrapper {
+            width: var(--project-section);
+            max-width: var(--project-section);
+            height: auto;
+            aspect-ratio: 21 / 9;
         }
 
         &__img {
-            width: var(--project-section);
+            display: block;
+            inline-size: 100%;
+            block-size: 100%;
+            object-position: center 0%;
         }
 
-        &__overview {
-            width: var(--project-section);
-            margin-right: var(--gutter);
+        // Fonts
+
+        &__title {
+            max-inline-size: 100%;
+            inline-size: var(--project-section);
         }
+
+        &__break {
+            display: inline;
+        }
+
         &__text {
             margin-block: calc(var(--gutter-h) * 0.5);
         }
+    }
+}
+
+@container (min-width: #{map.get(tokens.$breakpoints, tablet)}) {
+    .project__details {
+            display: grid;
+            grid-template-areas: 
+                "item1 item2"
+                "item3 item4";
+            inline-size: var(--project-section);
+            justify-self: center;
+            justify-items: start;
     }
 }
 
