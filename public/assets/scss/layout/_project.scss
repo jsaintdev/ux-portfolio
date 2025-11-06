@@ -73,6 +73,22 @@ $uhd-height: 1248px;
         }
     }
 
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-item {
+            display: flex;
+            gap: 1em;
+            margin: 1em;
+
+            & p {
+                margin: 0;
+            }
+        }
+    }
+
     // Inner Containers
     &__inner {
         padding-inline: var(--margin);
@@ -170,8 +186,20 @@ $uhd-height: 1248px;
         vertical-align: text-bottom;
     }
 
+    &__icon-big {
+        inline-size: 1.5em;
+        block-size: 1.5em;
+        display: inline-block;
+        vertical-align: text-bottom;
+    }
+
     &__text {
         @include mixins.text(body);
+        margin-inline: 0;
+    }
+
+    &__big {
+        @include mixins.text(big);
         margin-inline: 0;
     }
 }
