@@ -13,9 +13,9 @@
     --gutter: calc(var(--unit) * (1 / 5));
     --margin: calc(var(--gutter) / 2);
 
-    --container: calc(100svw - (var(--margin) * 2));
+    --container: calc(100svw - (var(--gutter)));
     --project-section: calc(100svw - var(--unit));
-    --project-overview: calc(100svw - (var(--unit) * 2));
+    --project-light: calc(100svw - (var(--gutter) * 2));
 
     --col-half: calc((var(--container) * 0.5) - (var(--gutter) * 0.5));
 

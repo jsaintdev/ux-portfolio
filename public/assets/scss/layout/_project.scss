@@ -50,11 +50,12 @@ $uhd-height: 1248px;
         }
 
         &--light {
+            inline-size: var(--project-light);
             background-color: color-mix(in srgb, var(--project-mask) 75%, transparent);
         }
 
         &--dark {
-            background: var(--project-panel);
+            background: var(--project-panel-2);
         }
     }
 
@@ -87,6 +88,42 @@ $uhd-height: 1248px;
                 margin: 0;
             }
         }
+    }
+
+    &__list2 {
+        margin-inline: calc(var(--margin) * 1.5);
+        display: flex;
+        flex-direction: column;
+        margin-block: 0;
+        gap: 0.5em;
+
+        & li {
+            margin: 0;
+        }
+    }
+
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        &-item {
+            background-color: var(--project-panel);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 2rem;
+            padding-block: calc(var(--gutter-h) * 0.25);
+
+            & p {
+            margin-block: calc(var(--gutter-h) * 0.25);
+            margin-inline: var(--gutter);
+        }
+
+        }
+
+
     }
 
     // Inner Containers
@@ -165,6 +202,7 @@ $uhd-height: 1248px;
         @include mixins.text(h3);
         color: var(--project-header);
         font-weight: 600;
+        margin-top: 0;
     }
 
     &__h4 {
@@ -202,6 +240,11 @@ $uhd-height: 1248px;
         @include mixins.text(big);
         margin-inline: 0;
     }
+
+    &__highlight {
+        color: var(--project-highlight);
+        font-weight: 600;
+    }
 }
 
 @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
@@ -215,6 +258,16 @@ $uhd-height: 1248px;
         // Inner Containers
         &__inner {
             width: var(--project-section);
+        }
+
+        &__list2 {
+            margin-inline: var(--margin);
+            gap: 1em;
+        }
+
+        &__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
 
         // Elements
