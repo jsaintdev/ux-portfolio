@@ -139,6 +139,7 @@
   --project-mask: var(--surface-800);
   --project-header: var(--primary-300);
   --project-highlight: var(--secondary-300);
+  --project-button: var(--accent-seaglass-700);
   --text: var(--text-1);
   --featured-label: var(--secondary-200);
   --button: var(--secondary-500);
@@ -1157,6 +1158,57 @@ a {
   color: var(--project-highlight);
   font-weight: 600;
 }
+.project__button {
+  font-size: 1rem;
+}
+@container (min-width: 28rem) {
+  .project__button {
+    font-size: clamp(1rem, 1rem + (0.125rem) * (100cqw - 28rem) / 19rem, 1.125rem);
+  }
+}
+@container (min-width: 47rem) {
+  .project__button {
+    font-size: clamp(1.125rem, 1.125rem + (0.0625rem) * (100cqw - 47rem) / 33rem, 1.1875rem);
+  }
+}
+@container (min-width: 80rem) {
+  .project__button {
+    font-size: clamp(1.1875rem, 1.1875rem + (0.0625rem) * (100cqw - 80rem) / 40rem, 1.25rem);
+  }
+}
+@container (min-width: 120rem) {
+  .project__button {
+    font-size: 1.25rem;
+  }
+}
+@media (max-height: 480px) {
+  .project__button {
+    font-size: clamp(0.8125rem, 0.8125rem + (0.0625rem) * (100cqw - 28rem) / 19rem, 0.875rem);
+  }
+}
+.project__button {
+  background-color: var(--project-button);
+  color: var(--text);
+  align-self: center;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em 2em;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: calc(var(--gutter-h) * 0.25);
+}
+.project__button:hover, .project__button:focus-visible {
+  background-color: var(--button-hover);
+  color: var(--text);
+  outline: none;
+}
 
 @media (orientation: landscape) and (min-width: 768px) {
   .project__hero-inner {
@@ -1172,6 +1224,7 @@ a {
   .project__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1em;
   }
   .project__img-wrapper {
     width: var(--project-section);

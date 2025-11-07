@@ -117,13 +117,10 @@ $uhd-height: 1248px;
             padding-block: calc(var(--gutter-h) * 0.25);
 
             & p {
-            margin-block: calc(var(--gutter-h) * 0.25);
-            margin-inline: var(--gutter);
+                margin-block: calc(var(--gutter-h) * 0.25);
+                margin-inline: var(--gutter);
+            }
         }
-
-        }
-
-
     }
 
     // Inner Containers
@@ -245,6 +242,33 @@ $uhd-height: 1248px;
         color: var(--project-highlight);
         font-weight: 600;
     }
+
+        &__button {
+        @include mixins.text(body);
+        background-color: var(--project-button);
+        color: var(--text);
+        align-self: center;
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75em 2em;
+        border-radius: 9999px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        white-space: nowrap;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        margin-top: calc(var(--gutter-h) * 0.25);
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--button-hover);
+            color: var(--text);
+            outline: none;
+        }
+    }
 }
 
 @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
@@ -268,6 +292,7 @@ $uhd-height: 1248px;
         &__grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 1em;
         }
 
         // Elements
@@ -304,13 +329,13 @@ $uhd-height: 1248px;
 
 @container (min-width: #{map.get(tokens.$breakpoints, tablet)}) {
     .project__details {
-            display: grid;
-            grid-template-areas: 
-                "item1 item2"
-                "item3 item4";
-            inline-size: var(--project-section);
-            justify-self: center;
-            justify-items: start;
+        display: grid;
+        grid-template-areas:
+            "item1 item2"
+            "item3 item4";
+        inline-size: var(--project-section);
+        justify-self: center;
+        justify-items: start;
     }
 }
 
