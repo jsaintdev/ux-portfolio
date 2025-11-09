@@ -55,23 +55,23 @@
 
     &__pointer {
         display: flex;
-        flex-direction: column;
         justify-self: flex-end;
         align-self: end;
+        align-items: flex-end;
+        gap: 0.5em;
     }
 
     &__arrow {
+        @include mixins.text(s2);
         color: var(--hero-arrow);
         font-family: var(--font-arrow);
-
-        font-size: calc(var(--gutter-h));
 
         display: inline-flex;
         align-items: flex-start;
     }
 
     &__explore {
-        @include mixins.text(h3);
+        @include mixins.text(s2);
         align-self: center;
         font-family: var(--font-display);
         font-weight: 400;
@@ -99,7 +99,7 @@
         }
 
         &__title {
-            margin-bottom: 5px;
+            margin-bottom: calc(var(--gutter-h) * 0.5);
         }
 
         &__subtitle {
@@ -112,10 +112,6 @@
 
         &__break2 {
             display: block;
-        }
-
-        &__pointer {
-            min-width: calc(#{map.get(tokens.$breakpoints, desktop)} / 2.5);
         }
     }
 }

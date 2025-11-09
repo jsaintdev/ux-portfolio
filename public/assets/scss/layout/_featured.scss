@@ -80,8 +80,8 @@ $uhd-height: 1248px;
 
         &--right {
             background-image: linear-gradient(to right,
-                    rgba(0, 0, 0, 0) 45%,
-                    rgba(50,50,50,0.6) 55%,
+                    rgba(0, 0, 0, 0) 33%,
+                    rgba(50,50,50,0.6) 50%,
                     rgba(25,25,25,0.8) 75%,
                     rgba(0, 0, 0, 0.9) 100%);
             right: 0;
@@ -90,8 +90,8 @@ $uhd-height: 1248px;
 
         &--left {
             background-image: linear-gradient(to left,
-                    rgba(0, 0, 0, 0) 45%,
-                    rgba(50,50,50,0.6) 55%,
+                    rgba(0, 0, 0, 0) 33%,
+                    rgba(50,50,50,0.6) 50%,
                     rgba(25,25,25,0.8) 75%,
                     rgba(0, 0, 0, 0.9) 100%);
             left: 0;
@@ -100,7 +100,7 @@ $uhd-height: 1248px;
     }
 
     &__label {
-        @include mixins.text(h3);
+        @include mixins.text(f3);
         font-family: var(--font-display);
         font-weight: 400;
         display: block;
@@ -108,7 +108,7 @@ $uhd-height: 1248px;
     }
 
     &__title {
-        @include mixins.text(h3);
+        @include mixins.text(f3);
     }
 
     &__button {
@@ -174,8 +174,8 @@ $uhd-height: 1248px;
 
         &--left {
             background-image: linear-gradient(to left,
-                    rgba(0, 0, 0, 0) 45%,
-                    rgba(50,50,50,0.6) 55%,
+                    rgba(0, 0, 0, 0) 33%,
+                    rgba(50,50,50,0.6) 50%,
                     rgba(25,25,25,0.8) 75%,
                     rgba(0, 0, 0, 0.9) 100%);
         }
