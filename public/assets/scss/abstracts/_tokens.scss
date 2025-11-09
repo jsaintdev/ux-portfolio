@@ -170,17 +170,16 @@ $breakpoints: (mobile: 360px,
   --bg-footer: var(--surface-900);
 
   --project-panel: var(--surface-900);
-  --project-panel-2: var(--surface-800);
   --project-mask: var(--surface-800);
-  --project-header: var(--primary-300);
+  --project-h3: var(--primary-400);
+  --project-h4: var(--text-mint-3);
   --project-highlight: var(--secondary-300);
-  --project-button: var(--accent-seaglass-700);
+  --project-button: var(--primary-700);
 
   // Text
   --text: var(--text-1);
 
   --featured-label: var(--secondary-200);
-
 
   // Elements
   --button: var(--secondary-500);

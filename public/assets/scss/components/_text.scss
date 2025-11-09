@@ -1,0 +1,101 @@
+@use "sass:map";
+@use "../abstracts/tokens"as tokens;
+@use "../abstracts/mixins"as mixins;
+
+.text {
+
+    // Hero Section
+
+    &__title {
+        @include mixins.text(h1);
+        inline-size: fit-content;
+        max-inline-size: var(--project-section);
+        text-wrap: balance;
+        margin-inline: 0;
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--text);
+    }
+
+    &__subtitle {
+        @include mixins.text(h4);
+        inline-size: var(--project-section);
+        max-inline-size: 100%;
+        text-align: justify;
+        font-family: var(--font-display);
+        font-weight: 400;
+        display: block;
+        color: var(--text-2);
+        margin-block: 0;
+        margin-inline: 0;
+    }
+
+    &__small {
+        @include mixins.text(small);
+        color: var(--text-2);
+        margin: 0;
+    }
+
+    // Body Text
+    &__h3 {
+        @include mixins.text(h3);
+        color: var(--project-h3);
+        font-weight: 600;
+        margin-top: 0;
+    }
+
+    &__h4 {
+        @include mixins.text(h4);
+        color: var(--project-h4);
+        font-weight: 500;
+    }
+
+    &__s4 {
+        @include mixins.text(h4);
+        color: var(--text-2);
+        font-weight: 200;
+    }
+
+    &__body {
+        @include mixins.text(body);
+        margin-inline: 0;
+        margin-block: 1em;
+    }
+
+    &__big {
+        @include mixins.text(big);
+        margin-inline: 0;
+    }
+
+    // Utility
+    &__break {
+        display: block;
+    }
+
+    &__bold {
+        color: var(--text);
+        font-weight: bold;
+    }
+
+    &__highlight {
+        color: var(--project-highlight);
+        font-weight: 600;
+    }
+}
+
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+    .project {
+        &__title {
+            max-inline-size: 100%;
+            inline-size: var(--project-section);
+        }
+
+        &__text {
+            margin-block: calc(var(--gutter-h) * 0.5);
+        }
+
+        &__break {
+            display: inline;
+        }
+    }
+}
