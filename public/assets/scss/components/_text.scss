@@ -68,6 +68,15 @@
         margin-inline: 0;
     }
 
+    &__footer {
+        @include mixins.text(small);
+        color: var(--text-2);
+    }
+
+    &__copyright {
+        align-self: center;
+    }
+
     // Utility
     &__break {
         display: block;

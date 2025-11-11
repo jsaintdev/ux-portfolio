@@ -119,38 +119,6 @@ $text-anchors: (t1: (c1: 40, c2: 72, c3: 80, c4: 108),
   }
 }
 
-/* =============================== COLUMN SIZING ================================ */
-
-@mixin set-cols($cells: 2) {
-  display: flex;
-  flex-direction: column;
-  --width: calc(var(--cols) * var(--col) + (var(--cols) - 1) * var(--gutter));
-
-  >* {
-    width: 100%;
-    max-width: var(--width);
-    flex: 0 0 auto;
-
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  @media (orientation: landscape) {
-    flex-direction: row;
-    justify-content: space-around;
-    --width: calc(((var(--cols) / #{$cells}) * var(--col)) + (((var(--cols) / #{$cells}) - 1) * var(--gutter)));
-
-    >* {
-      flex: 0 0 var(--width);
-      max-width: var(--width);
-
-    }
-  }
-}
-
 // Removes horizontal margins and padding
 @mixin fullbleed {
   margin-inline: 0;

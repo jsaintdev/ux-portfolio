@@ -26,7 +26,7 @@
 
 </head>
 
-<body>
+<body data-page="main">
   <div class="site-wrapper animations-init">
 
     <main class="site-main">
@@ -65,7 +65,9 @@
               <a href="#work" class="nav__link">Work</a>
               <a href="/creative/" class="nav__link">Creative</a>
               <a href="/about/" class="nav__link">About</a>
-              <button id="contact-copy" class="nav__link nav__link--contact">Copy Email</button>
+              <button id="contact-copy" class="button button--topbar">
+                <img class="image__icon" src="../../assets/img/icons/copy.svg" alt="Copy Icon">
+                Copy Email</button>
             </div>
           </nav>
 
@@ -87,7 +89,7 @@
             <!-- Title and Subtitle text-->
             <div class="hero__text">
               <h1 class="hero__title">
-                Hi, I’m Justin— <span class="hero__break">UX Designer</span><span class="hero__break2">
+                Hi, I’m Justin— <span class="hero__break">UI/UX Designer</span><span class="hero__break2">
                   <span class="hero__break">in Vancouver, BC</span></span>
               </h1>
               <p class="hero__subtitle">
@@ -175,10 +177,7 @@
   </div>
 
   <!-- JavaScript -->
-  <script src="./assets/js/site.js" defer></script>
-  <script src="./assets/js/nav.js" defer></script>
-  <script src="./assets/js/main.js" defer></script>
-  <script src="./assets/js/featured.js" defer></script>
+  <script type="module" src="./assets/js/app.js" defer></script>
 
 </body>
 

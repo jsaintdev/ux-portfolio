@@ -6,84 +6,50 @@
     @include mixins.fullbleed;
     max-width: 100svw;
     container-type: inline-size;
-    margin-bottom: 0;
 
     &__inner {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
+        padding-inline: calc(var(--margin) * 2);
+        padding-block: calc(var(--gutter-h) * 0.5);
+        gap: 1em;
+    }
+
+    &__endbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__info {
         display: flex;
         flex-direction: column;
     }
 
-    &__connect {
-        @include mixins.set-cols(2);
-        width: 100svw;
-        align-self: center;
-        background-color: var(--button-contact);
-        padding-inline: var(--margin);
-        margin-bottom: calc(var(--gutter-h) * 0.5);
-        cursor: pointer;
-        transition: color 0.3s ease;
-
-        &:hover .footer__arrow,
-        .footer__arrow.nudge {
-            transform: translateX(50%) rotate(0deg);
-        }
-
-        &:hover .footer__connect {
-            background-color: var(--button-contact-hover);
-        }
-    }
-
-    &__header {
-        @include mixins.text(h2);
-        margin: 0.5em 0;
-        display: flex;
-        align-items: center;
-    }
-
-    &__arrow {
-        @include mixins.text(h1);
-        display: inline-block;
-        font-family: var(--font-arrow);
-        transform: translateX(0);
-        transition: transform 0.3s ease;
-        transform: rotate(-90deg);
-    }
-
-    &__email {
-        @include mixins.text(h2);
-        color: var(--text);
-        transition: color 0.3s ease;
-        display: flex;
-        align-items: center;
-        margin-inline: 0;
-
-        &.copied {
-            color: var(--text);
-        }
-    }
-
-    &__endbar {
-        background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
-        @include mixins.set-cols(2);
-        display: flex;
-        margin-top: 1em;
-        margin-bottom: 0;
-    }
-
-    &__copyright {
-        @include mixins.text(small);
-        color: var(--text-2);
+    &__contact {
+        display: none;
     }
 
     &__links {
+        width: 100%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
     }
 
     &__link {
         @include mixins.text(small);
         color: var(--text);
         text-decoration: none;
+        margin: 0.5em 1.5em;
+
+        &--none {
+            display: none;
+        }
 
         &:hover,
         &:focus-visible {
@@ -93,47 +59,36 @@
     }
 
     p {
-        margin: 0.5em;
-        margin-block: 1em;
+        margin: 0;
     }
-
 }
 
 @media (orientation: landscape) {
 
     .footer {
 
-        &__connect {
-            width: var(--container);
-            border-radius: 2rem;
-        }
-
-        &__connect:hover .footer__arrow,
-        .footer__arrow.nudge {
-            transform: rotate(-90deg) translateY(50%);
-        }
-
-        &__copyright {
-            justify-self: flex-start;
-        }
-
-        &__email {
-            align-self: center;
-        }
-
         &__endbar {
             flex-direction: row;
-            margin: 0.5em 0;
-            max-height: var(margin-h);
-            margin-bottom: 0;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(var(--container) - 36px);
         }
 
-        p {
-            margin: 1em;
+        &__contact {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__links {
+            width: var(--col-half);
+            gap: 1em;
+        }
+
+        &__link--none {
+            display: inline;
         }
     }
 }
 
-@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
 
-}
+@media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {}

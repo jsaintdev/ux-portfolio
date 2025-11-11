@@ -1,5 +1,5 @@
 // Generates the spheres for the background
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
 
   // breakpoint buckets for regen rules
   function getBucket(w) {
@@ -96,8 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastRegenAt = 0;
 
     // regen limits
-    const MIN_REGEN_MS = 30000; // don't regenerate more often than 30s
-    const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12h per-bucket cache
+    const MIN_REGEN_MS = 30000;
+    const CACHE_TTL_MS = 12 * 60 * 60 * 1000;
 
     const cacheKey = (bucket) => `bgBlobs:${id}:${bucket}`;
 
@@ -281,70 +281,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   layerConfigs.forEach(createLayer);
 });
-
-// Sets up the footer
-document.addEventListener("DOMContentLoaded", async () => {
-  const footerContainer = document.getElementById("footer-container");
-  if (!footerContainer) return;
-
-  try {
-    const path = location.pathname
-      .replace(/index\.html$/i, '')
-      .replace(/\/+$/, '/');
-    const segments = path.split('/').filter(Boolean).length;
-    const basePath = segments === 0 ? './' : '../'.repeat(segments);
-    const footerURL = basePath + 'partials/footer.html';
-
-    const res = await fetch(footerURL);
-    if (!res.ok) throw new Error(`Failed to load footer (${res.status})`);
-    footerContainer.innerHTML = await res.text();
-
-    if (typeof window.wireFooterEmail === "function") {
-      window.wireFooterEmail();
-    }
-  } catch (err) {
-    console.error("Footer load error:", err);
-  }
-});
-
-
-// Set up email in footer
-function wireFooterEmail() {
-  document.querySelectorAll('.footer__connect[data-u][data-d][data-tld]').forEach(el => {
-    if (el.dataset.wired === '1') return; // already wired
-    el.dataset.wired = '1';
-
-    const u = el.dataset.u.split('').reverse().join('');
-    const d = el.dataset.d.split('').reverse().join('');
-    const tld = el.dataset.tld.split('').reverse().join('');
-    const addr = `${u}@${d}.${tld}`;
-
-    // avoid duplicate email node
-    let emailText = el.querySelector('.footer__email');
-    if (!emailText) {
-      emailText = document.createElement('h2');
-      emailText.className = 'footer__email';
-      emailText.textContent = addr;
-      el.appendChild(emailText);
-    }
-
-    const arrow = el.querySelector('.footer__arrow');
-
-    el.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(addr);
-        const prev = emailText.textContent;
-        emailText.textContent = 'Email Copied!';
-        emailText.classList.add('copied');
-        if (arrow) arrow.classList.add('nudge');
-        setTimeout(() => {
-          emailText.textContent = prev;
-          emailText.classList.remove('copied');
-          if (arrow) arrow.classList.remove('nudge');
-        }, 2000);
-      } catch (err) {
-        console.error('Copy failed', err);
-      }
-    });
-  });
-}

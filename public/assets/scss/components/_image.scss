@@ -25,6 +25,17 @@
         object-fit: cover;
     }
 
+    &__logo {
+        height: 48px;
+        width: 48px;
+        display: inline-block;
+
+        &--footer {
+            height: 24px;
+            width: 24px;
+        }
+    }
+
     &__icon {
         inline-size: 1em;
         block-size: 1em;
@@ -62,6 +73,11 @@
             inline-size: 100%;
             block-size: 100%;
             object-position: center 0%;
+        }
+
+        &__logo--footer {
+            height: 36px;
+            width: 36px;
         }
     }
 }
