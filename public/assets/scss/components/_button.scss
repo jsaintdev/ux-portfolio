@@ -36,6 +36,7 @@
         margin-top: auto;
         gap: 0.5em;
         align-items: center;
+        padding: 0.5em 1em;
 
         &:hover,
         &:focus-visible {
@@ -53,6 +54,13 @@
         align-items: center;
         margin-top: 0;
         padding: 0.5em 1.5em;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--button-footer-hover);
+            color: var(--text);
+            outline: none;
+        }
     }
 }
 
@@ -61,6 +69,7 @@
     .button {
         &--topbar {
             @include mixins.text-static(18, true);
+            padding: 0.75em 2em;
             margin-top: 0;
         }
     }

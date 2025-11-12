@@ -10,4 +10,4 @@ const layerConfigs = [
   { id: "patternCanvas-mint2",  colorVar: "--pattern-mint-2",       minR: 80, maxR:200, divisor:100000, alpha:"1A" },
 ];
 
-initBackground(layerConfigs, { cacheNs: "bg-main" });
+initBackground(layerConfigs, { cacheNs: "bg-work" });

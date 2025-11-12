@@ -74,7 +74,9 @@
     }
 
     &__copyright {
-        align-self: center;
+        @include mixins.text(small);
+        color: var(--text-3);
+        padding-top: 1em;
     }
 
     // Utility

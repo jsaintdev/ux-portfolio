@@ -1,10 +1,17 @@
+.animations-init .featured,
+.animations-init .project__hero,
+.animiations-init .image__wrapper,
+.animiations-init .image__content {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 .animations-init .bg-layers,
 .animations-init .topbar,
 .animations-init .hero__title,
 .animations-init .hero__subtitle,
 .animations-init .hero__explore,
-.animations-init .hero__arrow,
-.animations-init .featured {
+.animations-init .hero__arrow {
   opacity: 0;
   transform: translateY(10px);
 }

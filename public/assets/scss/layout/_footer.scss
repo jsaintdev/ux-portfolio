@@ -9,6 +9,7 @@
 
     &__inner {
         display: flex;
+        flex-direction: column;
         width: 100%;
         align-items: center;
         justify-content: space-between;
@@ -20,13 +21,11 @@
 
     &__endbar {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
 
     &__info {
         display: flex;
-        flex-direction: column;
+        gap: 1em;
     }
 
     &__contact {
@@ -67,11 +66,16 @@
 
     .footer {
 
+        &__inner {
+            gap: 2em;
+        }
+
         &__endbar {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: calc(var(--container) - 36px);
+            margin-block: calc(var(--gutter-h) * 0.25);
         }
 
         &__contact {
