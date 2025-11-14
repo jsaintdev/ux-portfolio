@@ -51,7 +51,7 @@ $uhd-height: 1248px;
 
         &--light {
             inline-size: var(--project-light);
-            background-color: color-mix(in srgb, var(--project-mask) 75%, transparent);
+            background-color: color-mix(in srgb, var(--project-mask) 90%, transparent);
         }
 
         &--dark {

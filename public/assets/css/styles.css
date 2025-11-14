@@ -209,7 +209,7 @@
           var(--bg-900) 100%);
   --blend-main: linear-gradient(180deg,
           color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
-          var(--surface-900) 100%);
+          var(--surface-600) 100%);
   --mask-hero:
       radial-gradient(ellipse 800px 800px at 40% 15%,
           color-mix(in srgb,
@@ -230,6 +230,14 @@
           color-mix(in srgb,
               var(--surface-800) 90%,
               transparent 10%),
+          transparent 100%);
+  --mask-project:
+      linear-gradient(to bottom,
+          color-mix(in srgb, var(--surface-900) 50%, transparent) 0%,
+          color-mix(in srgb, var(--surface-700) 85%, transparent) 5%,
+          color-mix(in srgb, var(--surface-600) 95%, transparent) 25%,
+          color-mix(in srgb, var(--surface-500) 75%, transparent) 30%,
+          color-mix(in srgb, var(--surface-600) 75%, transparent) 90%,
           transparent 100%);
 }
 
@@ -525,6 +533,19 @@ a {
   inset: 0;
   pointer-events: none;
   background: var(--mask-hero);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 3840px 2160px;
+  mix-blend-mode: normal;
+  opacity: 1;
+  z-index: 3;
+}
+
+.bg--mask-project {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--mask-project);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 3840px 2160px;
@@ -907,7 +928,7 @@ a {
 }
 .project__section--light {
   inline-size: var(--project-light);
-  background-color: color-mix(in srgb, var(--project-mask) 75%, transparent);
+  background-color: color-mix(in srgb, var(--project-mask) 90%, transparent);
 }
 .project__section--dark {
   margin-inline: 0;

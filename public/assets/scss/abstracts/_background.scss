@@ -10,7 +10,7 @@
 
     --blend-main: linear-gradient(180deg,
             color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
-            var(--surface-900) 100%);
+            var(--surface-600) 100%);
 
     --mask-hero:
         radial-gradient(ellipse 800px 800px at 40% 15%,
@@ -34,4 +34,12 @@
                 transparent 10%),
             transparent 100%);
 
+    --mask-project:
+        linear-gradient(to bottom,
+            color-mix(in srgb, var(--surface-900) 50%, transparent) 0%,
+            color-mix(in srgb, var(--surface-700) 85%, transparent) 5%,
+            color-mix(in srgb, var(--surface-600) 95%, transparent) 25%,
+            color-mix(in srgb, var(--surface-500) 75%, transparent) 30%,
+            color-mix(in srgb, var(--surface-600) 75%, transparent) 90%,
+            transparent 100%);
 }
