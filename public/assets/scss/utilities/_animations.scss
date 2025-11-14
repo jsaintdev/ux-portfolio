@@ -3,7 +3,6 @@
 .animiations-init .image__wrapper,
 .animiations-init .image__content {
   opacity: 0;
-  transform: translateY(10px);
 }
 
 .animations-init .bg-layers,
@@ -11,7 +10,8 @@
 .animations-init .hero__title,
 .animations-init .hero__subtitle,
 .animations-init .hero__explore,
-.animations-init .hero__arrow {
+.animations-init .hero__arrow,
+.animations-init .featured__card {
   opacity: 0;
   transform: translateY(10px);
 }

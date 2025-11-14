@@ -35,3 +35,25 @@ ready(() => {
     }
   });
 });
+
+ready(() => {
+  const cards = document.querySelectorAll(".featured__card");
+  if (!cards.length) return;
+
+  const reveal = (el) => {
+    el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+    el.style.opacity = "1";
+    el.style.transform = "translateY(0)";
+  };
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        reveal(en.target);
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+
+  cards.forEach((el) => io.observe(el));
+});

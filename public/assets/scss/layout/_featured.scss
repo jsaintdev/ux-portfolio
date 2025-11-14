@@ -81,9 +81,9 @@ $uhd-height: 1248px;
         &--right {
             background-image: linear-gradient(to right,
                     rgba(0, 0, 0, 0) 33%,
-                    rgba(50,50,50,0.6) 50%,
-                    rgba(25,25,25,0.8) 75%,
-                    rgba(0, 0, 0, 0.9) 100%);
+                    rgba(30, 30, 30, 0.8) 45%,
+                    rgba(20, 20, 20, 0.85) 75%,
+                    rgba(15, 15, 15, 0.9) 100%);
             right: 0;
             top: 0;
         }
@@ -91,9 +91,9 @@ $uhd-height: 1248px;
         &--left {
             background-image: linear-gradient(to left,
                     rgba(0, 0, 0, 0) 33%,
-                    rgba(50,50,50,0.6) 50%,
-                    rgba(25,25,25,0.8) 75%,
-                    rgba(0, 0, 0, 0.9) 100%);
+                    rgba(30, 30, 30, 0.8) 45%,
+                    rgba(20, 20, 20, 0.85) 75%,
+                    rgba(15, 15, 15, 0.9) 100%);
             left: 0;
             top: 0;
         }
@@ -164,21 +164,21 @@ $uhd-height: 1248px;
         }
 
         &__mask {
-                    &--right {
-            background-image: linear-gradient(to right,
-                    rgba(0, 0, 0, 0) 0%,
-                    rgba(50,50,50,0.5) 66%,
-                    rgba(25,25,25,0.7) 75%,
-                    rgba(0, 0, 0, 0.9) 100%);
-        }
+            &--right {
+                background-image: linear-gradient(to right,
+                        rgba(0, 0, 0, 0) 33%,
+                        rgba(30, 30, 30, 0.8) 60%,
+                        rgba(20, 20, 20, 0.85) 75%,
+                        rgba(15, 15, 15, 0.9) 100%);
+            }
 
-        &--left {
-            background-image: linear-gradient(to left,
-                    rgba(0, 0, 0, 0) 33%,
-                    rgba(50,50,50,0.6) 50%,
-                    rgba(25,25,25,0.8) 75%,
-                    rgba(0, 0, 0, 0.9) 100%);
-        }
+            &--left {
+                background-image: linear-gradient(to left,
+                        rgba(0, 0, 0, 0) 33%,
+                        rgba(30, 30, 30, 0.8) 55%,
+                        rgba(20, 20, 20, 0.85) 75%,
+                        rgba(15, 15, 15, 0.9) 100%);
+            }
         }
 
         &__other {

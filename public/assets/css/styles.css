@@ -220,7 +220,7 @@
           color-mix(in srgb,
               var(--primary-800) 90%,
               transparent 10%),
-          transparent 75%),
+          transparent 50%),
       radial-gradient(ellipse 500px 200px at 66% 30%,
           color-mix(in srgb,
               var(--surface-700) 90%,
@@ -311,6 +311,7 @@ a {
   height: 100%;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
 .bg {
@@ -707,12 +708,12 @@ a {
   pointer-events: none;
 }
 .featured__mask--right {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 33%, rgba(50, 50, 50, 0.6) 50%, rgba(25, 25, 25, 0.8) 75%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 33%, rgba(30, 30, 30, 0.8) 45%, rgba(20, 20, 20, 0.85) 75%, rgba(15, 15, 15, 0.9) 100%);
   right: 0;
   top: 0;
 }
 .featured__mask--left {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 33%, rgba(50, 50, 50, 0.6) 50%, rgba(25, 25, 25, 0.8) 75%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 33%, rgba(30, 30, 30, 0.8) 45%, rgba(20, 20, 20, 0.85) 75%, rgba(15, 15, 15, 0.9) 100%);
   left: 0;
   top: 0;
 }
@@ -849,10 +850,10 @@ a {
     height: min(var(--container), 748.8px);
   }
   .featured__mask--right {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(50, 50, 50, 0.5) 66%, rgba(25, 25, 25, 0.7) 75%, rgba(0, 0, 0, 0.9) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 33%, rgba(30, 30, 30, 0.8) 60%, rgba(20, 20, 20, 0.85) 75%, rgba(15, 15, 15, 0.9) 100%);
   }
   .featured__mask--left {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 33%, rgba(50, 50, 50, 0.6) 50%, rgba(25, 25, 25, 0.8) 75%, rgba(0, 0, 0, 0.9) 100%);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 33%, rgba(30, 30, 30, 0.8) 55%, rgba(20, 20, 20, 0.85) 75%, rgba(15, 15, 15, 0.9) 100%);
   }
   .featured__other {
     display: flex;
@@ -2189,7 +2190,6 @@ a {
 .animiations-init .image__wrapper,
 .animiations-init .image__content {
   opacity: 0;
-  transform: translateY(10px);
 }
 
 .animations-init .bg-layers,
@@ -2197,7 +2197,8 @@ a {
 .animations-init .hero__title,
 .animations-init .hero__subtitle,
 .animations-init .hero__explore,
-.animations-init .hero__arrow {
+.animations-init .hero__arrow,
+.animations-init .featured__card {
   opacity: 0;
   transform: translateY(10px);
 }
