@@ -85,7 +85,7 @@ $text-anchors: (t1: (c1: 40, c2: 72, c3: 80, c4: 108),
     @if $base-size {
       background-size: calc(#{$base-size} * 0.6);
       
-      @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+      @media (min-width: map.get(tokens.$breakpoints, tablet)) {
         background-size: $base-size;
       }
     }
