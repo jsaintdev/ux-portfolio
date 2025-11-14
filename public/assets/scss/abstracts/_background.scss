@@ -12,7 +12,36 @@
             color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
             var(--surface-400) 100%);
 
-    --mask-hero:
+    --mask-hero-mobile:
+        radial-gradient(ellipse 700px 150px at 50% 20%,
+            color-mix(in srgb,
+                var(--primary-900) 95%,
+                transparent 5%),
+            transparent 100%),
+        radial-gradient(ellipse 400px 300px at 50% 15%,
+            color-mix(in srgb,
+                var(--primary-700) 90%,
+                transparent 10%),
+            transparent 100%),
+        radial-gradient(ellipse 500px 200px at 66% 45%,
+            color-mix(in srgb,
+                var(--surface-700) 90%,
+                transparent 10%),
+            transparent 100%),
+        radial-gradient(ellipse 500px 200px at 45% 35%,
+            color-mix(in srgb,
+                var(--surface-800) 90%,
+                transparent 10%),
+            transparent 100%),
+        linear-gradient(to bottom,
+            color-mix(in srgb, var(--surface-900) 100%, transparent) 0%,
+            transparent 10%,
+            transparent 25%,
+            color-mix(in srgb, var(--surface-600) 50%, transparent) 85%,
+            color-mix(in srgb, var(--surface-500) 75%, transparent) 95%,
+            transparent 100%);
+
+    --mask-hero-landscape:
         radial-gradient(ellipse 1200px 800px at 35% 20%,
             color-mix(in srgb,
                 var(--primary-900) 90%,

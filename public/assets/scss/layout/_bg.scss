@@ -38,7 +38,7 @@
 
 @include mixins.bg-layer(blend-main, var(--blend-main), overlay, cover, 1, center top, no-repeat, 2);
 
-@include mixins.bg-layer(mask-hero, var(--mask-hero), normal, 3840px 2160px, 1, center top, no-repeat, 3);
+@include mixins.bg-layer(mask-hero, var(--mask-hero-mobile), normal, 1600px 1200px, 1, center top, no-repeat, 3);
 @include mixins.bg-layer(mask-project, var(--mask-project), normal, 3840px 2160px, 1, center top, no-repeat, 3);
 
 .bg--repeat-canvas {
@@ -61,6 +61,19 @@
 .site-main> :not(.bg-layers) {
   position: relative;
   z-index: 1;
+}
+
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+  .bg {
+    &--mask-hero {
+      background-image: var(--mask-hero-landscape);
+    }
+
+    &--mask-hero,
+    &--mask-project {
+      background-size: 3840px 2160px;
+    }
+  }
 }
 
 @media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
