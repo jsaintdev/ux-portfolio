@@ -8,10 +8,6 @@
             color-mix(in srgb, var(--accent-blue-800) 70%, transparent) 0%,
             var(--bg-900) 100%);
 
-    --blend-main: linear-gradient(180deg,
-            color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
-            var(--surface-400) 100%);
-
     --mask-hero-mobile:
         radial-gradient(ellipse 700px 150px at 50% 20%,
             color-mix(in srgb,
@@ -33,7 +29,7 @@
                 var(--surface-800) 90%,
                 transparent 10%),
             transparent 100%),
-        linear-gradient(to bottom,
+        linear-gradient(180deg,
             color-mix(in srgb, var(--surface-900) 100%, transparent) 0%,
             transparent 10%,
             transparent 25%,
@@ -71,8 +67,24 @@
             color-mix(in srgb, var(--surface-500) 75%, transparent) 95%,
             transparent 100%);
 
+    --mask-creative: linear-gradient(90deg,
+            transparent 0%,
+            color-mix(in srgb, var(--bg-600) 90%, transparent) 5%,
+            transparent 15%,
+            color-mix(in srgb, var(--accent-blue-400) 50%, transparent) 20%,
+            color-mix(in srgb, var(--bg-900) 90%, transparent) 25%,
+            color-mix(in srgb, var(--bg-800) 90%, transparent) 30%,
+            color-mix(in srgb, var(--accent-seaglass-400) 50%, transparent) 40%,
+            transparent 45%,
+            color-mix(in srgb, var(--bg-900) 90%, transparent) 50%,
+            color-mix(in srgb, var(--accent-seaglass-900) 90%, transparent) 63%,
+            color-mix(in srgb, var(--bg-900) 90%, transparent) 66%,
+            color-mix(in srgb, var(--accent-blue-700) 90%, transparent) 70%,
+            color-mix(in srgb, var(--bg-900) 90%, transparent) 80%,
+            transparent 100%);
+
     --mask-project:
-        linear-gradient(to bottom,
+        linear-gradient(180deg,
             color-mix(in srgb, var(--surface-900) 50%, transparent) 0%,
             color-mix(in srgb, var(--surface-700) 85%, transparent) 5%,
             color-mix(in srgb, var(--surface-600) 95%, transparent) 25%,

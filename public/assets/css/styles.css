@@ -207,9 +207,6 @@
   --base: linear-gradient(180deg,
           color-mix(in srgb, var(--accent-blue-800) 70%, transparent) 0%,
           var(--bg-900) 100%);
-  --blend-main: linear-gradient(180deg,
-          color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
-          var(--surface-400) 100%);
   --mask-hero-mobile:
       radial-gradient(ellipse 700px 150px at 50% 20%,
           color-mix(in srgb,
@@ -231,7 +228,7 @@
               var(--surface-800) 90%,
               transparent 10%),
           transparent 100%),
-      linear-gradient(to bottom,
+      linear-gradient(180deg,
           color-mix(in srgb, var(--surface-900) 100%, transparent) 0%,
           transparent 10%,
           transparent 25%,
@@ -267,8 +264,23 @@
           color-mix(in srgb, var(--surface-600) 50%, transparent) 85%,
           color-mix(in srgb, var(--surface-500) 75%, transparent) 95%,
           transparent 100%);
+  --mask-creative: linear-gradient(90deg,
+          transparent 0%,
+          color-mix(in srgb, var(--bg-600) 90%, transparent) 5%,
+          transparent 15%,
+          color-mix(in srgb, var(--accent-blue-400) 50%, transparent) 20%,
+          color-mix(in srgb, var(--bg-900) 90%, transparent) 25%,
+          color-mix(in srgb, var(--bg-800) 90%, transparent) 30%,
+          color-mix(in srgb, var(--accent-seaglass-400) 50%, transparent) 40%,
+          transparent 45%,
+          color-mix(in srgb, var(--bg-900) 90%, transparent) 50%,
+          color-mix(in srgb, var(--accent-seaglass-900) 90%, transparent) 63%,
+          color-mix(in srgb, var(--bg-900) 90%, transparent) 66%,
+          color-mix(in srgb, var(--accent-blue-700) 90%, transparent) 70%,
+          color-mix(in srgb, var(--bg-900) 90%, transparent) 80%,
+          transparent 100%);
   --mask-project:
-      linear-gradient(to bottom,
+      linear-gradient(180deg,
           color-mix(in srgb, var(--surface-900) 50%, transparent) 0%,
           color-mix(in srgb, var(--surface-700) 85%, transparent) 5%,
           color-mix(in srgb, var(--surface-600) 95%, transparent) 25%,
@@ -359,6 +371,8 @@ a {
   background-attachment: scroll;
 }
 
+/* =================================== GLOBAL =================================== */
+/* ------------------------------------ Base ------------------------------------ */
 .bg--base {
   position: absolute;
   inset: 0;
@@ -372,26 +386,7 @@ a {
   z-index: 0;
 }
 
-.bg--glow--bright-yellow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("/assets/img/bg/glow--bright-yellow.webp");
-  background-image: image-set(url("/assets/img/bg/glow--bright-yellow.avif") type("image/avif"), url("/assets/img/bg/glow--bright-yellow.webp") type("image/webp"));
-  background-repeat: repeat;
-  background-position: 0 0;
-  background-attachment: scroll;
-  mix-blend-mode: lighten;
-  opacity: 0.3;
-  z-index: 1;
-  background-size: calc(800px * 0.6);
-}
-@media (orientation: landscape) and (min-width: 768px) {
-  .bg--glow--bright-yellow {
-    background-size: 800px;
-  }
-}
-
+/* ----------------------------------- Shadow ----------------------------------- */
 .bg--repeat--shadow-brown {
   position: absolute;
   inset: 0;
@@ -406,9 +401,52 @@ a {
   z-index: 1;
   background-size: calc(600px * 0.6);
 }
-@media (orientation: landscape) and (min-width: 768px) {
+@media (min-width: 768px) {
   .bg--repeat--shadow-brown {
     background-size: 600px;
+  }
+}
+
+/* ------------------------------------ Main ------------------------------------ */
+.bg--repeat--mint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--mint.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--mint.avif") type("image/avif"), url("/assets/img/bg/repeat--mint.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: soft-light;
+  opacity: 1;
+  z-index: 1;
+  background-size: calc(1000px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--repeat--mint {
+    background-size: 1000px;
+  }
+}
+
+/* ============================== MAIN AND PROJECT ============================== */
+/* ------------------------------------ Glow ------------------------------------ */
+.bg--glow--bright-yellow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/glow--bright-yellow.webp");
+  background-image: image-set(url("/assets/img/bg/glow--bright-yellow.avif") type("image/avif"), url("/assets/img/bg/glow--bright-yellow.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
+  z-index: 1;
+  background-size: calc(800px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--glow--bright-yellow {
+    background-size: 800px;
   }
 }
 
@@ -426,12 +464,13 @@ a {
   z-index: 1;
   background-size: calc(800px * 0.6);
 }
-@media (orientation: landscape) and (min-width: 768px) {
+@media (min-width: 768px) {
   .bg--glow--yellow {
     background-size: 800px;
   }
 }
 
+/* ----------------------------------- Shadow ----------------------------------- */
 .bg--repeat--shadow-orange {
   position: absolute;
   inset: 0;
@@ -446,7 +485,7 @@ a {
   z-index: 1;
   background-size: calc(900px * 0.6);
 }
-@media (orientation: landscape) and (min-width: 768px) {
+@media (min-width: 768px) {
   .bg--repeat--shadow-orange {
     background-size: 900px;
   }
@@ -466,12 +505,13 @@ a {
   z-index: 1;
   background-size: calc(700px * 0.6);
 }
-@media (orientation: landscape) and (min-width: 768px) {
+@media (min-width: 768px) {
   .bg--repeat--shadow-green {
     background-size: 700px;
   }
 }
 
+/* ------------------------------------ Main ------------------------------------ */
 .bg--repeat--peach {
   position: absolute;
   inset: 0;
@@ -482,33 +522,13 @@ a {
   background-position: 0 0;
   background-attachment: scroll;
   mix-blend-mode: soft-light;
-  opacity: 0.8;
+  opacity: 1;
   z-index: 1;
   background-size: calc(700px * 0.6);
 }
-@media (orientation: landscape) and (min-width: 768px) {
+@media (min-width: 768px) {
   .bg--repeat--peach {
     background-size: 700px;
-  }
-}
-
-.bg--repeat--mint {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("/assets/img/bg/repeat--mint.webp");
-  background-image: image-set(url("/assets/img/bg/repeat--mint.avif") type("image/avif"), url("/assets/img/bg/repeat--mint.webp") type("image/webp"));
-  background-repeat: repeat;
-  background-position: 0 0;
-  background-attachment: scroll;
-  mix-blend-mode: soft-light;
-  opacity: 0.4;
-  z-index: 1;
-  background-size: calc(1000px * 0.6);
-}
-@media (orientation: landscape) and (min-width: 768px) {
-  .bg--repeat--mint {
-    background-size: 1000px;
   }
 }
 
@@ -522,16 +542,17 @@ a {
   background-position: 0 0;
   background-attachment: scroll;
   mix-blend-mode: soft-light;
-  opacity: 0.8;
+  opacity: 1;
   z-index: 1;
   background-size: calc(700px * 0.6);
 }
-@media (orientation: landscape) and (min-width: 768px) {
+@media (min-width: 768px) {
   .bg--repeat--orange {
     background-size: 700px;
   }
 }
 
+/* ---------------------------------- Overlay ----------------------------------- */
 .bg--blend-main {
   position: absolute;
   inset: 0;
@@ -565,12 +586,165 @@ a {
   background: var(--mask-project);
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: 3840px 2160px;
+  background-size: 1600px 1200px;
   mix-blend-mode: normal;
   opacity: 1;
   z-index: 3;
 }
 
+/* ================================== CREATIVE ================================== */
+/* ------------------------------------ Glow ------------------------------------ */
+.bg--glow--white {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/glow--white.webp");
+  background-image: image-set(url("/assets/img/bg/glow--white.avif") type("image/avif"), url("/assets/img/bg/glow--white.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
+  z-index: 1;
+  background-size: calc(700px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--glow--white {
+    background-size: 700px;
+  }
+}
+
+.bg--glow--bright-white {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/glow--bright-white.webp");
+  background-image: image-set(url("/assets/img/bg/glow--bright-white.avif") type("image/avif"), url("/assets/img/bg/glow--bright-white.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
+  z-index: 1;
+  background-size: calc(1000px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--glow--bright-white {
+    background-size: 1000px;
+  }
+}
+
+/* ----------------------------------- Shadow ----------------------------------- */
+.bg--repeat--shadow-gray {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--shadow-gray.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--shadow-gray.avif") type("image/avif"), url("/assets/img/bg/repeat--shadow-gray.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  z-index: 1;
+  background-size: calc(600px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--repeat--shadow-gray {
+    background-size: 600px;
+  }
+}
+
+.bg--repeat--shadow-blue {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--shadow-blue.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--shadow-blue.avif") type("image/avif"), url("/assets/img/bg/repeat--shadow-blue.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  z-index: 1;
+  background-size: calc(700px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--repeat--shadow-blue {
+    background-size: 700px;
+  }
+}
+
+/* ------------------------------------ Main ------------------------------------ */
+.bg--repeat--seaglass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--seaglass.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--seaglass.avif") type("image/avif"), url("/assets/img/bg/repeat--seaglass.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: soft-light;
+  opacity: 1;
+  z-index: 1;
+  background-size: calc(550px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--repeat--seaglass {
+    background-size: 550px;
+  }
+}
+
+.bg--repeat--blue {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--blue.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--blue.avif") type("image/avif"), url("/assets/img/bg/repeat--blue.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: hard-light;
+  opacity: 1;
+  z-index: 1;
+  background-size: calc(600px * 0.6);
+}
+@media (min-width: 768px) {
+  .bg--repeat--blue {
+    background-size: 600px;
+  }
+}
+
+/* ---------------------------------- Overlay ----------------------------------- */
+.bg--mask-creative {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--mask-creative);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: multiply;
+  opacity: 1;
+  z-index: 2;
+}
+
+/* ============================== ABOUT -- SUNRISE ============================== */
+/* ------------------------------------ Glow ------------------------------------ */
+/* ----------------------------------- Shadow ----------------------------------- */
+/* ------------------------------------ Main ------------------------------------ */
+/* ---------------------------------- Overlay ----------------------------------- */
+/* ================================ ABOUT -- DAY ================================ */
+/* ------------------------------------ Glow ------------------------------------ */
+/* ----------------------------------- Shadow ----------------------------------- */
+/* ------------------------------------ Main ------------------------------------ */
+/* ---------------------------------- Overlay ----------------------------------- */
+/* ============================== ABOUT -- SUNSET =============================== */
+/* ------------------------------------ Glow ------------------------------------ */
+/* ----------------------------------- Shadow ----------------------------------- */
+/* ------------------------------------ Main ------------------------------------ */
+/* ---------------------------------- Overlay ----------------------------------- */
 .bg--repeat-canvas {
   position: absolute;
   inset: 0;

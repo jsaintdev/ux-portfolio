@@ -23,23 +23,94 @@
   background-attachment: scroll;
 }
 
-// Global Base
+/* =================================== GLOBAL =================================== */
+
+/* ------------------------------------ Base ------------------------------------ */
 @include mixins.bg-layer(base, var(--base), normal, cover, 1, center top, no-repeat, 0);
 
-// Main
-@include mixins.bg-tile-layer(glow--bright-yellow, lighten, 0.3, 1, false, 800px);
+/* ----------------------------------- Shadow ----------------------------------- */
 @include mixins.bg-tile-layer(repeat--shadow-brown, multiply, 0.7, 1, false, 600px);
+
+/* ------------------------------------ Main ------------------------------------ */
+@include mixins.bg-tile-layer(repeat--mint, soft-light, 1.0, 1, false, 1000px);
+
+/* ============================== MAIN AND PROJECT ============================== */
+
+/* ------------------------------------ Glow ------------------------------------ */
+@include mixins.bg-tile-layer(glow--bright-yellow, lighten, 0.3, 1, false, 800px);
 @include mixins.bg-tile-layer(glow--yellow, lighten, 0.3, 1, false, 800px);
+
+/* ----------------------------------- Shadow ----------------------------------- */
 @include mixins.bg-tile-layer(repeat--shadow-orange, multiply, 0.7, 1, false, 900px);
 @include mixins.bg-tile-layer(repeat--shadow-green, multiply, 0.8, 1, false, 700px);
-@include mixins.bg-tile-layer(repeat--peach, soft-light, 0.8, 1, false, 700px);
-@include mixins.bg-tile-layer(repeat--mint, soft-light, 0.4, 1, false, 1000px);
-@include mixins.bg-tile-layer(repeat--orange, soft-light, 0.8, 1, false, 700px);
 
+/* ------------------------------------ Main ------------------------------------ */
+@include mixins.bg-tile-layer(repeat--peach, soft-light, 1.0, 1, false, 700px);
+@include mixins.bg-tile-layer(repeat--orange, soft-light, 1.0, 1, false, 700px);
+
+/* ---------------------------------- Overlay ----------------------------------- */
 @include mixins.bg-layer(blend-main, var(--blend-main), overlay, cover, 1, center top, no-repeat, 2);
 
 @include mixins.bg-layer(mask-hero, var(--mask-hero-mobile), normal, 1600px 1200px, 1, center top, no-repeat, 3);
-@include mixins.bg-layer(mask-project, var(--mask-project), normal, 3840px 2160px, 1, center top, no-repeat, 3);
+@include mixins.bg-layer(mask-project, var(--mask-project), normal, 1600px 1200px, 1, center top, no-repeat, 3);
+
+/* ================================== CREATIVE ================================== */
+
+/* ------------------------------------ Glow ------------------------------------ */
+@include mixins.bg-tile-layer(glow--white, lighten, 0.3, 1, false, 700px);
+@include mixins.bg-tile-layer(glow--bright-white, lighten, 0.3, 1, false, 1000px);
+
+/* ----------------------------------- Shadow ----------------------------------- */
+@include mixins.bg-tile-layer(repeat--shadow-gray, multiply, 0.5, 1, false, 600px);
+@include mixins.bg-tile-layer(repeat--shadow-blue, multiply, 0.6, 1, false, 700px);
+
+/* ------------------------------------ Main ------------------------------------ */
+@include mixins.bg-tile-layer(repeat--seaglass, soft-light, 1.0, 1, false, 550px);
+@include mixins.bg-tile-layer(repeat--blue, hard-light, 1.0, 1, false, 600px);
+
+/* ---------------------------------- Overlay ----------------------------------- */
+@include mixins.bg-layer(mask-creative, var(--mask-creative), multiply, cover, 1, center top, no-repeat, 2);
+
+/* ============================== ABOUT -- SUNRISE ============================== */
+
+/* ------------------------------------ Glow ------------------------------------ */
+
+
+/* ----------------------------------- Shadow ----------------------------------- */
+
+
+/* ------------------------------------ Main ------------------------------------ */
+
+
+/* ---------------------------------- Overlay ----------------------------------- */
+
+/* ================================ ABOUT -- DAY ================================ */
+
+/* ------------------------------------ Glow ------------------------------------ */
+
+
+/* ----------------------------------- Shadow ----------------------------------- */
+
+
+/* ------------------------------------ Main ------------------------------------ */
+
+
+/* ---------------------------------- Overlay ----------------------------------- */
+
+
+/* ============================== ABOUT -- SUNSET =============================== */
+
+/* ------------------------------------ Glow ------------------------------------ */
+
+
+/* ----------------------------------- Shadow ----------------------------------- */
+
+
+/* ------------------------------------ Main ------------------------------------ */
+
+
+/* ---------------------------------- Overlay ----------------------------------- */
+
 
 .bg--repeat-canvas {
   position: absolute;
