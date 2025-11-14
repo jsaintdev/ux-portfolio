@@ -232,9 +232,13 @@
               transparent 10%),
           transparent 90%),
       linear-gradient(to bottom,
-          color-mix(in srgb, var(--surface-900) 50%, transparent) 0%,
-          color-mix(in srgb, var(--surface-800) 85%, transparent) 5%,
-          transparent 10%);
+          color-mix(in srgb, var(--surface-900) 100%, transparent) 0%,
+          color-mix(in srgb, var(--surface-800) 90%, transparent) 5%,
+          transparent 10%,
+          transparent 25%,
+          color-mix(in srgb, var(--surface-600) 50%, transparent) 85%,
+          color-mix(in srgb, var(--surface-500) 75%, transparent) 95%,
+          transparent 100%);
   --mask-project:
       linear-gradient(to bottom,
           color-mix(in srgb, var(--surface-900) 50%, transparent) 0%,
@@ -450,7 +454,7 @@ a {
   background-position: 0 0;
   background-attachment: scroll;
   mix-blend-mode: soft-light;
-  opacity: 1;
+  opacity: 0.8;
   z-index: 1;
   background-size: calc(700px * 0.6);
 }
@@ -477,6 +481,26 @@ a {
 @media (orientation: landscape) and (min-width: 768px) {
   .bg--repeat--mint {
     background-size: 1000px;
+  }
+}
+
+.bg--repeat--orange {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--orange.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--orange.avif") type("image/avif"), url("/assets/img/bg/repeat--orange.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: soft-light;
+  opacity: 0.8;
+  z-index: 1;
+  background-size: calc(700px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--repeat--orange {
+    background-size: 700px;
   }
 }
 

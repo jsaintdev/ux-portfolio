@@ -32,8 +32,9 @@
 @include mixins.bg-tile-layer(glow--yellow, lighten, 0.3, 1, false, 800px);
 @include mixins.bg-tile-layer(repeat--shadow-orange, multiply, 0.7, 1, false, 900px);
 @include mixins.bg-tile-layer(repeat--shadow-green, multiply, 0.8, 1, false, 700px);
-@include mixins.bg-tile-layer(repeat--peach, soft-light, 1.0, 1, false, 700px);
+@include mixins.bg-tile-layer(repeat--peach, soft-light, 0.8, 1, false, 700px);
 @include mixins.bg-tile-layer(repeat--mint, soft-light, 0.4, 1, false, 1000px);
+@include mixins.bg-tile-layer(repeat--orange, soft-light, 0.8, 1, false, 700px);
 
 @include mixins.bg-layer(blend-main, var(--blend-main), overlay, cover, 1, center top, no-repeat, 2);
 
