@@ -13,7 +13,7 @@
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        background-color: color-mix(in srgb, var(--bg-footer) 50%, transparent);
+        background-color: color-mix(in srgb, var(--bg-footer) 75%, transparent);
         padding-inline: calc(var(--margin) * 2);
         padding-block: calc(var(--gutter-h) * 0.5);
         gap: 1em;
