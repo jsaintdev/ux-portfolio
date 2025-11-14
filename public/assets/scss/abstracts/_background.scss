@@ -4,81 +4,34 @@
 
 :root {
 
-    /* ================================= VARIABLES ================================== */
+    --base: linear-gradient(180deg,
+            color-mix(in srgb, var(--accent-blue-800) 70%, transparent) 0%,
+            var(--bg-900) 100%);
 
-    // Main
-    --pattern-green: var(--primary-900);
-    --pattern-dark-green: var(--secondary-900);
-    --pattern-mint-1: var(--secondary-300);
-    --pattern-mint-2: var(--secondary-200);
-    --pattern-bright-orange: var(--accent-orange-500);
-    --pattern-muted-orange: var(--accent-orange-700);
-    --pattern-yellow: var(--accent-yellow-200);
-    --pattern-brown: var(--accent-brown-800);
+    --blend-main: linear-gradient(180deg,
+            color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
+            var(--surface-900) 100%);
 
-    // About
-    --pattern-blue: var(--accent-seaglass-900);
-    --pattern-dark-blue: var(--accent-blue-900);
-    --pattern-seaglass-1: var(--accent-seaglass-500);
-    --pattern-seaglass-2: var(--accent-seaglass-400);
-    --pattern-bright-blue: var(--accent-blue-400);
-    --pattern-muted-blue: var(--accent-blue-600);
-    --pattern-light: var(--accent-seaglass-100);
-    --pattern-bluegreen: var(--surface-800);
-
-    // Creative
-    --pattern-orange: var(--accent-peach-900);
-    --pattern-dark-orange: var(--accent-orange-900);
-    --pattern-peach-1: var(--accent-peach-500);
-    --pattern-peach-2: var(--accent-peach-400);
-    --pattern-bright-green: var(--secondary-400);
-    --pattern-muted-green: var(--primary-700);
-    --pattern-sun: var(--accent-yellow-100);
-    --pattern-cloud: var(--accent-blue-400);
-
-    // Sheen Angles
-    --sheen-angle: 150deg;
-    --sheen-start: 24.55%;
-    --sheen-end: 79.09%;
-
-    /* ================================== PATTERNS ================================== */
-
-    --hero-main:
-        linear-gradient(180.17deg,
-            var(--bg-600) 32.8%,
-            var(--bg-400) 99.85%);
-
-    --hero-sheen:
-        linear-gradient(180deg,
-            color-mix(in srgb, color-mix(in srgb, var(--secondary-400) 21%, transparent) 40%, transparent) 0%,
-            transparent 50%),
-
-        linear-gradient(var(--sheen-angle),
-            color-mix(in srgb, var(--text-1) 33%, transparent) var(--sheen-start),
-            var(--secondary-400-21) var(--sheen-end));
-
-    --hero-green:
-        radial-gradient(ellipse 1100px 1000px at 40% 15%,
+    --mask-hero:
+        radial-gradient(ellipse 800px 800px at 40% 15%,
             color-mix(in srgb,
-                var(--pattern-green) 60%,
-                transparent 40%),
+                var(--surface-500) 90%,
+                transparent 10%),
             transparent 100%),
-        radial-gradient(ellipse 600px 400px at 66% 40%,
+        radial-gradient(ellipse 1500px 500px at 40% 15%,
             color-mix(in srgb,
-                var(--pattern-green) 50%,
-                transparent 50%),
-            transparent 100%);
-
-    --hero-dark-green:
-        radial-gradient(ellipse 1200px 700px at 30% 15%,
+                var(--primary-800) 90%,
+                transparent 10%),
+            transparent 75%),
+        radial-gradient(ellipse 500px 200px at 66% 30%,
             color-mix(in srgb,
-                var(--pattern-dark-green) 95%,
-                transparent 5%),
+                var(--surface-700) 90%,
+                transparent 10%),
             transparent 100%),
-        radial-gradient(ellipse 1000px 400px at 70% 40%,
+        radial-gradient(ellipse 800px 600px at 60% 10%,
             color-mix(in srgb,
-                var(--pattern-dark-green) 95%,
-                transparent 5%),
+                var(--surface-800) 90%,
+                transparent 10%),
             transparent 100%);
 
 }

@@ -6,7 +6,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  inset: 0;
   width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
@@ -20,11 +22,22 @@
   background-attachment: scroll;
 }
 
-// BG overlay layers
-@include mixins.bg-layer(hero-main, var(--hero-main), normal, cover, 1, center top, no-repeat, 0);
-@include mixins.bg-layer(hero-sheen, var(--hero-sheen), lighten, 3840px 2160px, 0.12, center top, no-repeat, 2);
-@include mixins.bg-layer(hero-dark-green, var(--hero-dark-green), normal, 3840px 2160px, 1, center top, no-repeat, 3);
-@include mixins.bg-layer(hero-green, var(--hero-green), normal, 3840px 2160px, 1, center top, no-repeat, 4);
+// Global Base
+@include mixins.bg-layer(base, var(--base), normal, cover, 1, center top, no-repeat, 0);
+
+// Main
+@include mixins.bg-tile-layer(glow--bright-yellow, lighten, 0.3, 1, false, 800px);
+@include mixins.bg-tile-layer(repeat--shadow-brown, multiply, 0.7, 1, false, 600px);
+@include mixins.bg-tile-layer(glow--yellow, lighten, 0.3, 1, false, 800px);
+@include mixins.bg-tile-layer(repeat--shadow-orange, multiply, 0.7, 1, false, 900px);
+@include mixins.bg-tile-layer(repeat--shadow-green, multiply, 0.8, 1, false, 700px);
+@include mixins.bg-tile-layer(repeat--peach, screen, 0.3, 1, false, 700px);
+@include mixins.bg-tile-layer(repeat--mint, screen, 0.2, 1, false, 1000px);
+@include mixins.bg-tile-layer(motion--green, lighten, 0.5, 1, false, 1000px);
+@include mixins.bg-tile-layer(motion--orange, lighten, 0.5, 1, false, 750px);
+
+@include mixins.bg-layer(blend-main, var(--blend-main), overlay, cover, 1, center top, no-repeat, 2);
+@include mixins.bg-layer(mask-hero, var(--mask-hero), normal, 3840px 2160px, 1, center top, no-repeat, 3);
 
 .bg--repeat-canvas {
   position: absolute;
@@ -49,13 +62,5 @@
 }
 
 @media (max-height: #{map.get(tokens.$breakpoints, mobile-guard)}) {
-  .bg--hero-sheen {
-    opacity: 0.11;
-    background-size: 932px 430px; 
-  }
 
-  .bg--hero-dark-green {
-    opacity: 0.2;
-    background-size: 932px 430px;
-  }
 }

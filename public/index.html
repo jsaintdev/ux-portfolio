@@ -30,21 +30,43 @@
   <div class="site-wrapper animations-init">
 
     <main class="site-main">
+
       <!-- Background layers-->
       <div class="bg-layers">
-        <div class="bg bg--hero-main"></div>
+
+        <!-- Base Layer -->
+        <div class="bg bg--base"></div>
+
+        <!-- Glow and Shadow -->
+        <div class="bg bg--glow bg--glow--bright-yellow"></div>
+        <div class="bg bg--repeat bg--repeat--shadow-brown"></div>
+        <div class="bg bg--glow bg--glow--yellow"></div>
+        <div class="bg bg--repeat bg--repeat--shadow-orange"></div>
+        <div class="bg bg--repeat bg--repeat--shadow-green"></div>
+
+        <!-- Scroll -->
         <div class="bg bg--repeat-canvas">
-          <canvas id="patternCanvas-dark"></canvas>
-          <canvas id="patternCanvas-brown"></canvas>
-          <canvas id="patternCanvas-yellow"></canvas>
-          <canvas id="patternCanvas-orange"></canvas>
           <canvas id="patternCanvas-mint1"></canvas>
-          <canvas id="patternCanvas-orange2"></canvas>
+          <canvas id="patternCanvas-orange"></canvas>
+        </div>
+
+        <!-- Highlight -->
+        <div class="bg bg--repeat bg--repeat--peach"></div>
+        <div class="bg bg--repeat bg--repeat--mint"></div>
+
+        <!-- Motion -->
+        <div class="bg bg--motion bg--motion--green"></div>
+        <div class="bg bg--motion bg--motion--orange"></div>
+
+        <!-- Scroll Overlay -->
+        <div class="bg bg--repeat-canvas">
           <canvas id="patternCanvas-mint2"></canvas>
         </div>
-        <div class="bg bg--hero-sheen"></div>
-        <div class="bg bg--hero-dark-green"></div>
-        <div class="bg bg--hero-green"></div>
+
+        <!-- Overlay -->
+        <div class="bg bg--blend-main"></div>
+        <div class="bg bg--mask-hero"></div>
+
       </div>
 
       <!-- Topbar -->
@@ -120,8 +142,7 @@
             <div class="featured__text featured__text--right">
               <h3 class="featured__label">RAPS CAT DIRECTORY</h3>
               <h2 class="featured__title">An app for identifying<br> over 500 cats</h2>
-              <a href="/work/raps-directory/"
-                class="featured__button">
+              <a href="/work/raps-directory/" class="featured__button">
                 view case study
               </a>
             </div>

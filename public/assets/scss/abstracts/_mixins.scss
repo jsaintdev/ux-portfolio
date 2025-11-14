@@ -63,6 +63,39 @@ $text-anchors: (t1: (c1: 40, c2: 72, c3: 80, c4: 108),
   }
 }
 
+// For tiled images
+@mixin bg-tile-layer($name, $blend: normal, $opacity: 1, $index: 0, $scroll-affect: false, $base-size: null) {
+  .bg--#{$name} {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url('/assets/img/bg/#{$name}.webp');
+    background-image: image-set(
+      url('/assets/img/bg/#{$name}.avif') type('image/avif'),
+      url('/assets/img/bg/#{$name}.webp') type('image/webp')
+    );
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-attachment: scroll;
+    mix-blend-mode: $blend;
+    opacity: $opacity;
+    z-index: $index;
+
+    @if $base-size {
+      background-size: calc(#{$base-size} * 0.6);
+      
+      @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+        background-size: $base-size;
+      }
+    }
+    
+    @if $scroll-affect {
+      transition: opacity 0.3s ease-out;
+    }
+  }
+}
+
+
 /* ================================ FONT SIZING ================================= */
 
 @mixin text($role) {

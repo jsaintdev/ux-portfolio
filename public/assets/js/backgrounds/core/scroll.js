@@ -73,6 +73,7 @@ export function initBackground(layerConfigs, { cacheNs = "bgBlobs" } = {}) {
         grad.addColorStop(0, `${color}${alpha}`);
         grad.addColorStop(1, `${color}00`);
         ctx.fillStyle = grad;
+        ctx.globalCompositeOperation = "screen";
         ctx.beginPath();
         ctx.arc(x, y, r, 0, 2 * Math.PI);
         ctx.fill();

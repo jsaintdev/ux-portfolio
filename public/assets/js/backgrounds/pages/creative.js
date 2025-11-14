@@ -1,4 +1,4 @@
-import { initBackground } from "./init.js";
+import { initBackground } from "../core/scroll.js";
 
 const layerConfigs = [
   // Forest base hues for continuity
@@ -15,4 +15,4 @@ const layerConfigs = [
   { id: "patternCanvas-seaglass",colorVar: "--pattern-seaglass-1",    minR: 80, maxR:180, divisor:180000, alpha:"1A" },
 ];
 
-initBackground(layerConfigs, { cacheNs: "bg-about" });
+initBackground(layerConfigs, { cacheNs: "bg-creative" });

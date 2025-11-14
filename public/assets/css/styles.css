@@ -55,6 +55,8 @@
   --text-mint-5: #91B491;
   /* ---------------------------------- BRANDING ---------------------------------- */
   --logo: #33D39D;
+  --test: red;
+  --test-2: magenta;
   --primary-100: #E3EFE3;
   --primary-200: #C7DEC7;
   --primary-300: #A9CAA9;
@@ -202,67 +204,32 @@
 /* =                              SITE BACKGROUND                               = */
 /* ============================================================================== */
 :root {
-  /* ================================= VARIABLES ================================== */
-  --pattern-green: var(--primary-900);
-  --pattern-dark-green: var(--secondary-900);
-  --pattern-mint-1: var(--secondary-300);
-  --pattern-mint-2: var(--secondary-200);
-  --pattern-bright-orange: var(--accent-orange-500);
-  --pattern-muted-orange: var(--accent-orange-700);
-  --pattern-yellow: var(--accent-yellow-200);
-  --pattern-brown: var(--accent-brown-800);
-  --pattern-blue: var(--accent-seaglass-900);
-  --pattern-dark-blue: var(--accent-blue-900);
-  --pattern-seaglass-1: var(--accent-seaglass-500);
-  --pattern-seaglass-2: var(--accent-seaglass-400);
-  --pattern-bright-blue: var(--accent-blue-400);
-  --pattern-muted-blue: var(--accent-blue-600);
-  --pattern-light: var(--accent-seaglass-100);
-  --pattern-bluegreen: var(--surface-800);
-  --pattern-orange: var(--accent-peach-900);
-  --pattern-dark-orange: var(--accent-orange-900);
-  --pattern-peach-1: var(--accent-peach-500);
-  --pattern-peach-2: var(--accent-peach-400);
-  --pattern-bright-green: var(--secondary-400);
-  --pattern-muted-green: var(--primary-700);
-  --pattern-sun: var(--accent-yellow-100);
-  --pattern-cloud: var(--accent-blue-400);
-  --sheen-angle: 150deg;
-  --sheen-start: 24.55%;
-  --sheen-end: 79.09%;
-  /* ================================== PATTERNS ================================== */
-  --hero-main:
-      linear-gradient(180.17deg,
-          var(--bg-600) 32.8%,
-          var(--bg-400) 99.85%);
-  --hero-sheen:
-      linear-gradient(180deg,
-          color-mix(in srgb, color-mix(in srgb, var(--secondary-400) 21%, transparent) 40%, transparent) 0%,
-          transparent 50%),
-      linear-gradient(var(--sheen-angle),
-          color-mix(in srgb, var(--text-1) 33%, transparent) var(--sheen-start),
-          var(--secondary-400-21) var(--sheen-end));
-  --hero-green:
-      radial-gradient(ellipse 1100px 1000px at 40% 15%,
+  --base: linear-gradient(180deg,
+          color-mix(in srgb, var(--accent-blue-800) 70%, transparent) 0%,
+          var(--bg-900) 100%);
+  --blend-main: linear-gradient(180deg,
+          color-mix(in srgb, var(--primary-600) 70%, transparent) 0%,
+          var(--surface-900) 100%);
+  --mask-hero:
+      radial-gradient(ellipse 800px 800px at 40% 15%,
           color-mix(in srgb,
-              var(--pattern-green) 60%,
-              transparent 40%),
+              var(--surface-500) 90%,
+              transparent 10%),
           transparent 100%),
-      radial-gradient(ellipse 600px 400px at 66% 40%,
+      radial-gradient(ellipse 1500px 500px at 40% 15%,
           color-mix(in srgb,
-              var(--pattern-green) 50%,
-              transparent 50%),
-          transparent 100%);
-  --hero-dark-green:
-      radial-gradient(ellipse 1200px 700px at 30% 15%,
+              var(--primary-800) 90%,
+              transparent 10%),
+          transparent 75%),
+      radial-gradient(ellipse 500px 200px at 66% 30%,
           color-mix(in srgb,
-              var(--pattern-dark-green) 95%,
-              transparent 5%),
+              var(--surface-700) 90%,
+              transparent 10%),
           transparent 100%),
-      radial-gradient(ellipse 1000px 400px at 70% 40%,
+      radial-gradient(ellipse 800px 600px at 60% 10%,
           color-mix(in srgb,
-              var(--pattern-dark-green) 95%,
-              transparent 5%),
+              var(--surface-800) 90%,
+              transparent 10%),
           transparent 100%);
 }
 
@@ -331,7 +298,9 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  inset: 0;
   width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
@@ -345,11 +314,11 @@ a {
   background-attachment: scroll;
 }
 
-.bg--hero-main {
+.bg--base {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: var(--hero-main);
+  background: var(--base);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -358,43 +327,210 @@ a {
   z-index: 0;
 }
 
-.bg--hero-sheen {
+.bg--glow--bright-yellow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: var(--hero-sheen);
+  background-image: url("/assets/img/bg/glow--bright-yellow.webp");
+  background-image: image-set(url("/assets/img/bg/glow--bright-yellow.avif") type("image/avif"), url("/assets/img/bg/glow--bright-yellow.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
+  z-index: 1;
+  background-size: calc(800px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--glow--bright-yellow {
+    background-size: 800px;
+  }
+}
+
+.bg--repeat--shadow-brown {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--shadow-brown.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--shadow-brown.avif") type("image/avif"), url("/assets/img/bg/repeat--shadow-brown.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  z-index: 1;
+  background-size: calc(600px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--repeat--shadow-brown {
+    background-size: 600px;
+  }
+}
+
+.bg--glow--yellow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/glow--yellow.webp");
+  background-image: image-set(url("/assets/img/bg/glow--yellow.avif") type("image/avif"), url("/assets/img/bg/glow--yellow.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.3;
+  z-index: 1;
+  background-size: calc(800px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--glow--yellow {
+    background-size: 800px;
+  }
+}
+
+.bg--repeat--shadow-orange {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--shadow-orange.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--shadow-orange.avif") type("image/avif"), url("/assets/img/bg/repeat--shadow-orange.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  z-index: 1;
+  background-size: calc(900px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--repeat--shadow-orange {
+    background-size: 900px;
+  }
+}
+
+.bg--repeat--shadow-green {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--shadow-green.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--shadow-green.avif") type("image/avif"), url("/assets/img/bg/repeat--shadow-green.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+  z-index: 1;
+  background-size: calc(700px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--repeat--shadow-green {
+    background-size: 700px;
+  }
+}
+
+.bg--repeat--peach {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--peach.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--peach.avif") type("image/avif"), url("/assets/img/bg/repeat--peach.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  z-index: 1;
+  background-size: calc(700px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--repeat--peach {
+    background-size: 700px;
+  }
+}
+
+.bg--repeat--mint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/repeat--mint.webp");
+  background-image: image-set(url("/assets/img/bg/repeat--mint.avif") type("image/avif"), url("/assets/img/bg/repeat--mint.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: screen;
+  opacity: 0.2;
+  z-index: 1;
+  background-size: calc(1000px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--repeat--mint {
+    background-size: 1000px;
+  }
+}
+
+.bg--motion--green {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/motion--green.webp");
+  background-image: image-set(url("/assets/img/bg/motion--green.avif") type("image/avif"), url("/assets/img/bg/motion--green.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.5;
+  z-index: 1;
+  background-size: calc(1000px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--motion--green {
+    background-size: 1000px;
+  }
+}
+
+.bg--motion--orange {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/img/bg/motion--orange.webp");
+  background-image: image-set(url("/assets/img/bg/motion--orange.avif") type("image/avif"), url("/assets/img/bg/motion--orange.webp") type("image/webp"));
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: scroll;
+  mix-blend-mode: lighten;
+  opacity: 0.5;
+  z-index: 1;
+  background-size: calc(750px * 0.6);
+}
+@media (orientation: landscape) and (min-width: 768px) {
+  .bg--motion--orange {
+    background-size: 750px;
+  }
+}
+
+.bg--blend-main {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--blend-main);
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: 3840px 2160px;
-  mix-blend-mode: lighten;
-  opacity: 0.12;
+  background-size: cover;
+  mix-blend-mode: overlay;
+  opacity: 1;
   z-index: 2;
 }
 
-.bg--hero-dark-green {
+.bg--mask-hero {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: var(--hero-dark-green);
+  background: var(--mask-hero);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 3840px 2160px;
   mix-blend-mode: normal;
   opacity: 1;
   z-index: 3;
-}
-
-.bg--hero-green {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: var(--hero-green);
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: 3840px 2160px;
-  mix-blend-mode: normal;
-  opacity: 1;
-  z-index: 4;
 }
 
 .bg--repeat-canvas {
@@ -418,16 +554,6 @@ a {
   z-index: 1;
 }
 
-@media (max-height: 480px) {
-  .bg--hero-sheen {
-    opacity: 0.11;
-    background-size: 932px 430px;
-  }
-  .bg--hero-dark-green {
-    opacity: 0.2;
-    background-size: 932px 430px;
-  }
-}
 .topbar {
   height: var(--gutter-h);
   margin-top: var(--margin-h);
@@ -2053,6 +2179,12 @@ a {
 .animations-init .hero__arrow {
   opacity: 0;
   transform: translateY(10px);
+}
+
+.animations-init .bg,
+.animations-init .bg--base {
+  opacity: 1;
+  transform: none;
 }
 
 /* Motion reduction */

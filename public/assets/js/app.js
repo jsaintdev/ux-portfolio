@@ -5,10 +5,10 @@ import "./components/footer.js";
 
 // Load background
 const page = document.body?.dataset?.page || "main";
-import(`./backgrounds/${page}.js`)
+import(`./backgrounds/pages/${page}.js`)
   .catch((err) => {
     console.error(`Failed to load background module: ${page}`, err);
-    return import("./backgrounds/main.js");
+    return import("./backgrounds/pages/main.js");
   });
 
 // Load page animations

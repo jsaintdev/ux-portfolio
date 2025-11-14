@@ -15,3 +15,6 @@
   opacity: 0;
   transform: translateY(10px);
 }
+
+.animations-init .bg,
+.animations-init .bg--base { opacity: 1; transform: none; }
