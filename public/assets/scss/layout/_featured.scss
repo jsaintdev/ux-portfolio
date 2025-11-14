@@ -113,7 +113,7 @@ $uhd-height: 1248px;
     }
 
     &__button {
-        @include mixins.text(f3);
+        @include mixins.text(button);
         background-color: var(--button);
         color: var(--text);
         align-self: center;

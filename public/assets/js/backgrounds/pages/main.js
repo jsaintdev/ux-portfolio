@@ -1,16 +1,10 @@
 import { initTileRotation } from "../core/rotate.js";
 import { initGlow } from "../core/glow.js";
-import { initMotion } from "../core/motion.js";
 import { initBackground } from "../core/scroll.js";
 
 const glowConfigs = [
-  { selector: '.bg--glow--bright-yellow', minOpacity: 0.4, maxOpacity: 0.9, periodMs: 10000 },
+  { selector: '.bg--glow--bright-yellow', minOpacity: 0.3, maxOpacity: 0.5, periodMs: 10000 },
   { selector: '.bg--glow--yellow', minOpacity: 0.3, maxOpacity: 0.6, periodMs: 20000 }
-];
-
-const motionConfigs = [
-  { selector: ".bg--motion--green",  type: "circle", radius: 120 },
-  { selector: ".bg--motion--orange", type: "circle",    radius: 70 }
 ];
 
 const scrollConfigs = [
@@ -20,8 +14,6 @@ const scrollConfigs = [
 ];
 
 initGlow(glowConfigs);
-initMotion(motionConfigs);
-
 initTileRotation('.bg--glow, .bg--repeat');
 
 initBackground(scrollConfigs, { cacheNs: "bg-main" });

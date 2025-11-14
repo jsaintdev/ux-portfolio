@@ -1,13 +1,20 @@
-import { initBackground } from "./init.js";
+import { initTileRotation } from "../core/rotate.js";
+import { initGlow } from "../core/glow.js";
+import { initBackground } from "../core/scroll.js";
 
-const layerConfigs = [
-  { id: "patternCanvas-dark",   colorVar: "--pattern-dark-green",   minR:120, maxR:160, divisor:200000, alpha:"33" },
-  { id: "patternCanvas-brown",  colorVar: "--pattern-brown",        minR:120, maxR:160, divisor:300000, alpha:"26" },
-  { id: "patternCanvas-yellow", colorVar: "--pattern-yellow",       minR: 80, maxR:100, divisor:300000, alpha:"33" },
-  { id: "patternCanvas-orange", colorVar: "--pattern-bright-orange",minR:150, maxR:180, divisor:250000, alpha:"26" },
-  { id: "patternCanvas-mint1",  colorVar: "--pattern-mint-1",       minR: 80, maxR:160, divisor:250000, alpha:"0D" },
-  { id: "patternCanvas-orange2",colorVar: "--pattern-muted-orange", minR:100, maxR:150, divisor:150000, alpha:"26" },
-  { id: "patternCanvas-mint2",  colorVar: "--pattern-mint-2",       minR: 80, maxR:200, divisor:100000, alpha:"1A" },
+const glowConfigs = [
+  { selector: '.bg--glow--bright-yellow', minOpacity: 0.4, maxOpacity: 0.9, periodMs: 10000 },
+  { selector: '.bg--glow--yellow', minOpacity: 0.3, maxOpacity: 0.6, periodMs: 20000 }
 ];
 
-initBackground(layerConfigs, { cacheNs: "bg-work" });
+const scrollConfigs = [
+  { id: "patternCanvas-orange", colorVar: "--accent-orange-500",minR:150, maxR:180, divisor:250000, alpha:"80" },
+  { id: "patternCanvas-mint1",  colorVar: "--secondary-200",       minR: 80, maxR:160, divisor:300000, alpha:"99" },
+  { id: "patternCanvas-mint2",  colorVar: "--secondary-300",       minR: 80, maxR:200, divisor:200000, alpha:"66" },
+];
+
+initGlow(glowConfigs);
+
+initTileRotation('.bg--glow, .bg--repeat');
+
+initBackground(scrollConfigs, { cacheNs: "bg-main" });
