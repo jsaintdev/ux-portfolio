@@ -20,10 +20,10 @@
 
     --col-half: calc((var(--container) * 0.5) - (var(--gutter) * 0.5));
 
-
     // Height
     --margin-h: 24px;
     --gutter-h: 48px;
+    --gutter-2h: 96px;
     --container-h: calc(100svh - (var(--margin-h) * 2));
 
     --row-multiplier: 2;

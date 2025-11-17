@@ -2,12 +2,6 @@
 @use "../abstracts/tokens"as tokens;
 @use "../abstracts/mixins"as mixins;
 
-$tablet-width: 748.8px;
-$tablet-height: 499.2px;
-
-$uhd-width: 1872px;
-$uhd-height: 1248px;
-
 .project {
     width: 100%;
     max-width: 100%;

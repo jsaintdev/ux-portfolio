@@ -154,8 +154,8 @@ $uhd-height: 1248px;
             }
 
             &--square {
+                width: min(var(--container), #{$uhd-width});
                 height: min(var(--container), #{$uhd-width});
-                width: auto;
             }
 
             &--portrait {
