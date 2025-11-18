@@ -106,10 +106,24 @@
         color: var(--project-highlight);
         font-weight: 600;
     }
+
+    &__card {
+        @include mixins.text(card);
+        color: var(--text-2);
+        margin: 0;
+
+    }
+
+    &__role {
+        @include mixins.text(card);
+        font-weight: 600;
+        color: var(--creative-role);
+        margin: 0;
+    }
 }
 
 @media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
-    .project {
+    .text {
         &__title {
             max-inline-size: 100%;
             inline-size: var(--project-section);

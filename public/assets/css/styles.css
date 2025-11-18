@@ -160,6 +160,8 @@
   --project-h4: var(--text-mint-3);
   --project-highlight: var(--secondary-300);
   --project-button: var(--primary-700);
+  --creative-card: var(--bg-500);
+  --creative-role: var(--primary-400);
   --text: var(--text-1);
   --featured-label: var(--secondary-200);
   --button: var(--secondary-500);
@@ -1150,6 +1152,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-block: 1em;
 }
 .creative__frame {
   margin-block: var(--margin-h);
@@ -1159,7 +1162,7 @@ a {
   aspect-ratio: 0.6666666667;
 }
 .creative__frame--1x1 {
-  width: min(var(--container), 748.8px);
+  width: min(var(--container), 499.2px);
   aspect-ratio: 1;
 }
 .creative__frame--2x3 {
@@ -1176,7 +1179,22 @@ a {
 }
 .creative__frame--16x9 {
   width: min(var(--container), 748.8px);
-  aspect-ratio: 1.7777777778;
+  aspect-ratio: 1.5;
+}
+.creative__card {
+  background-color: color-mix(in srgb, var(--creative-card) 75%, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  width: 165px;
+  aspect-ratio: 1/1;
+}
+.creative__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
 }
 
 @media (orientation: landscape) and (min-width: 768px) {
@@ -1185,30 +1203,35 @@ a {
   }
   .creative__item {
     flex-direction: row;
+    gap: 1em;
   }
   .creative__frame--key {
-    width: min(var(--container), 1248px);
+    width: min(var(--container), 832px);
     aspect-ratio: 0.6666666667;
   }
   .creative__frame--1x1 {
-    width: min(var(--container), 1872px);
+    width: min(var(--container), 560px);
     aspect-ratio: 1;
   }
   .creative__frame--2x3 {
-    width: min(var(--container), 1248px);
+    width: min(var(--container), 560px);
     aspect-ratio: 0.6666666667;
   }
   .creative__frame--3x4 {
-    width: min(var(--container), 1248px);
+    width: min(var(--container), 560px);
     aspect-ratio: 0.75;
   }
   .creative__frame--3x2 {
-    width: min(var(--container), 1872px);
+    width: min(var(--container), 1260px);
     aspect-ratio: 1.5;
   }
   .creative__frame--16x9 {
-    width: min(var(--container), 1872px);
+    width: min(var(--container), 1260px);
     aspect-ratio: 1.7777777778;
+  }
+  .creative__card {
+    padding: 24px;
+    width: 200px;
   }
 }
 .project {
@@ -2386,16 +2409,81 @@ a {
   color: var(--project-highlight);
   font-weight: 600;
 }
+.text__card {
+  font-size: 0.625rem;
+}
+@container (min-width: 28rem) {
+  .text__card {
+    font-size: clamp(0.625rem, 0.625rem + (0.25rem) * (100cqw - 28rem) / 19rem, 0.875rem);
+  }
+}
+@container (min-width: 47rem) {
+  .text__card {
+    font-size: clamp(0.875rem, 0.875rem + (0.25rem) * (100cqw - 47rem) / 33rem, 1.125rem);
+  }
+}
+@container (min-width: 80rem) {
+  .text__card {
+    font-size: clamp(1.125rem, 1.125rem + (0.125rem) * (100cqw - 80rem) / 40rem, 1.25rem);
+  }
+}
+@container (min-width: 120rem) {
+  .text__card {
+    font-size: 1.25rem;
+  }
+}
+@media (max-height: 480px) {
+  .text__card {
+    font-size: clamp(0.5rem, 0.5rem + (0.1875rem) * (100cqw - 28rem) / 19rem, 0.6875rem);
+  }
+}
+.text__card {
+  color: var(--text-2);
+  margin: 0;
+}
+.text__role {
+  font-size: 0.625rem;
+}
+@container (min-width: 28rem) {
+  .text__role {
+    font-size: clamp(0.625rem, 0.625rem + (0.25rem) * (100cqw - 28rem) / 19rem, 0.875rem);
+  }
+}
+@container (min-width: 47rem) {
+  .text__role {
+    font-size: clamp(0.875rem, 0.875rem + (0.25rem) * (100cqw - 47rem) / 33rem, 1.125rem);
+  }
+}
+@container (min-width: 80rem) {
+  .text__role {
+    font-size: clamp(1.125rem, 1.125rem + (0.125rem) * (100cqw - 80rem) / 40rem, 1.25rem);
+  }
+}
+@container (min-width: 120rem) {
+  .text__role {
+    font-size: 1.25rem;
+  }
+}
+@media (max-height: 480px) {
+  .text__role {
+    font-size: clamp(0.5rem, 0.5rem + (0.1875rem) * (100cqw - 28rem) / 19rem, 0.6875rem);
+  }
+}
+.text__role {
+  font-weight: 600;
+  color: var(--creative-role);
+  margin: 0;
+}
 
 @media (orientation: landscape) and (min-width: 768px) {
-  .project__title {
+  .text__title {
     max-inline-size: 100%;
     inline-size: var(--project-section);
   }
-  .project__text {
+  .text__text {
     margin-block: calc(var(--gutter-h) * 0.5);
   }
-  .project__break {
+  .text__break {
     display: inline;
   }
 }
