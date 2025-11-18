@@ -159,16 +159,17 @@
   --project-h3: var(--primary-400);
   --project-h4: var(--text-mint-3);
   --project-highlight: var(--secondary-300);
-  --project-button: var(--primary-700);
   --creative-card: var(--bg-500);
   --creative-role: var(--primary-400);
   --text: var(--text-1);
   --featured-label: var(--secondary-200);
-  --button: var(--secondary-500);
-  --button-hover: var(--secondary-400);
+  --button: var(--primary-700);
+  --button-hover: var(--primary-600);
   --button-contact: var(--accent-orange-600);
   --button-contact-hover: var(--accent-orange-700);
   --button-footer-hover: var(--primary-600);
+  --button-creative: var(--accent-seaglass-700);
+  --button-creative-hover: var(--accent-seaglass-600);
   --nav: var(--text-1);
   --nav-hover: var(--primary-300);
   --hamburger: var(--primary-800);
@@ -2516,7 +2517,7 @@ a {
   }
 }
 .button {
-  background-color: var(--project-button);
+  background-color: var(--button);
   color: var(--text);
   align-self: center;
   margin-top: auto;
@@ -2577,8 +2578,6 @@ a {
 }
 .button--topbar:hover, .button--topbar:focus-visible {
   background-color: var(--button-contact-hover);
-  color: var(--text);
-  outline: none;
 }
 .button--footer {
   font-size: 0.6875rem;
@@ -2616,8 +2615,42 @@ a {
 }
 .button--footer:hover, .button--footer:focus-visible {
   background-color: var(--button-footer-hover);
-  color: var(--text);
-  outline: none;
+}
+.button--creative {
+  font-size: 0.625rem;
+}
+@container (min-width: 28rem) {
+  .button--creative {
+    font-size: clamp(0.625rem, 0.625rem + (0.25rem) * (100cqw - 28rem) / 19rem, 0.875rem);
+  }
+}
+@container (min-width: 47rem) {
+  .button--creative {
+    font-size: clamp(0.875rem, 0.875rem + (0.25rem) * (100cqw - 47rem) / 33rem, 1.125rem);
+  }
+}
+@container (min-width: 80rem) {
+  .button--creative {
+    font-size: clamp(1.125rem, 1.125rem + (0.125rem) * (100cqw - 80rem) / 40rem, 1.25rem);
+  }
+}
+@container (min-width: 120rem) {
+  .button--creative {
+    font-size: 1.25rem;
+  }
+}
+@media (max-height: 480px) {
+  .button--creative {
+    font-size: clamp(0.5rem, 0.5rem + (0.1875rem) * (100cqw - 28rem) / 19rem, 0.6875rem);
+  }
+}
+.button--creative {
+  background-color: var(--button-creative);
+  margin: 0;
+  align-self: flex-start;
+}
+.button--creative:hover, .button--creative:focus-visible {
+  background-color: var(--button-creative-hover);
 }
 
 @media (orientation: landscape) and (min-width: 768px) {

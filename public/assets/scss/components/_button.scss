@@ -4,7 +4,7 @@
 
 .button {
     @include mixins.text(body);
-    background-color: var(--project-button);
+    background-color: var(--button);
     color: var(--text);
     align-self: center;
     margin-top: auto;
@@ -41,8 +41,6 @@
         &:hover,
         &:focus-visible {
             background-color: var(--button-contact-hover);
-            color: var(--text);
-            outline: none;
         }
 
 
@@ -58,8 +56,18 @@
         &:hover,
         &:focus-visible {
             background-color: var(--button-footer-hover);
-            color: var(--text);
-            outline: none;
+        }
+    }
+
+    &--creative {
+        @include mixins.text(card);
+        background-color: var(--button-creative);
+        margin: 0;
+        align-self: flex-start;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--button-creative-hover);
         }
     }
 }
