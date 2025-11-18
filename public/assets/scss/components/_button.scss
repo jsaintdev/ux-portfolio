@@ -62,7 +62,6 @@
     &--creative {
         @include mixins.text(card);
         background-color: var(--button-creative);
-        margin: 0;
         align-self: flex-start;
 
         &:hover,

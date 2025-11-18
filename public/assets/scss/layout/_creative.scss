@@ -2,10 +2,10 @@
 @use "../abstracts/tokens"as tokens;
 @use "../abstracts/mixins"as mixins;
 
-$tablet-width: 748.8px;
-$tablet-height: 499.2px;
+$tablet-width: 740px;
+$tablet-height: 480px;
 
-$hd-width: 1260px;
+$hd-width: 1120px;
 $hd-height: 560px;
 
 $uhd-width: 1248px;
@@ -18,6 +18,7 @@ $uhd-height: 832px;
     flex-direction: column;
     align-items: center;
     justify-self: center;
+    margin-bottom: var(--gutter-2h);
 
     // Outer Containers
     &__hero {
@@ -81,6 +82,10 @@ $uhd-height: 832px;
             @include mixins.frame-size($tablet-width, 3, 2);
         }
 
+        &--5x4 {
+            @include mixins.frame-size($tablet-width, 5, 4);
+        }
+
         &--16x9 {
             @include mixins.frame-size($tablet-width, 3, 2);
         }
@@ -95,6 +100,14 @@ $uhd-height: 832px;
         padding: 15px;
         width: 165px;
         aspect-ratio: 1 / 1;
+
+        &--start {
+            align-self: flex-start;
+        }
+
+        &--end {
+            align-self: flex-end;
+        }
     }
 
     &__info {
@@ -145,6 +158,10 @@ $uhd-height: 832px;
                 @include mixins.frame-size($hd-width, 3, 2);
             }
 
+            &--5x4 {
+                @include mixins.frame-size($hd-width, 5, 4);
+            }
+
             &--16x9 {
                 @include mixins.frame-size($hd-width, 16, 9);
             }
@@ -154,6 +171,10 @@ $uhd-height: 832px;
             padding: 24px;
             width: 200px;
         
+            &--start,
+            &--end {
+                align-self: center;
+            }
         }
 
     }
