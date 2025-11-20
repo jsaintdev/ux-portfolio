@@ -1,0 +1,101 @@
+@use "sass:map";
+@use "../abstracts/tokens"as tokens;
+@use "../abstracts/mixins"as mixins;
+
+$tablet-width: 748.8px;
+$tablet-height: 499.2px;
+
+$uhd-width: 1872px;
+$uhd-height: 1248px;
+
+.about {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    margin-bottom: var(--gutter-2h);
+
+    // Outer Containers
+    &__hero {
+        width: var(--container);
+        display: flex;
+        justify-content: center;
+        margin-block: var(--gutter-2h);
+        padding-inline: var(--margin);
+
+        &-inner {
+            inline-size: var(--container);
+            margin-inline: auto;
+            container-type: inline-size;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    &__section {
+        width: var(--container);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__frame {
+        margin-block: var(--margin-h);
+        overflow: hidden;
+        border-radius: 2rem;
+        position: relative;
+
+        &--landscape {
+            width: min(var(--container), #{$tablet-width});
+            height: min(var(--container), #{$tablet-height});
+        }
+
+        &--square {
+            width: min(var(--container), #{$tablet-width});
+            height: min(var(--container), #{$tablet-width});
+        }
+
+        &--portrait {
+            width: min(var(--container), #{$tablet-height});
+            height: min(var(--container), #{$tablet-width});
+        }
+    }
+
+}
+
+@media (orientation: landscape) and (min-width: map.get(tokens.$breakpoints, tablet)) {
+
+    .about {
+
+        // Outer Containers
+        &__hero-inner {
+            inline-size: var(--project-section);
+        }
+
+        &__section {
+            flex-direction: row;
+        }
+
+        &__frame {
+            &--landscape {
+                width: min(var(--container), #{$uhd-width});
+                aspect-ratio: 3 / 2;
+            }
+
+            &--square {
+                width: min(var(--col-half), #{$uhd-width});
+                aspect-ratio: 1 / 1;
+            }
+
+            &--portrait {
+                width: min(var(--col-half), #{$tablet-height});
+                aspect-ratio: 4 / 5;
+            }
+        }
+    }
+}

@@ -1116,6 +1116,77 @@ a {
     width: min(var(--container), 1872px);
   }
 }
+.about {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin-bottom: var(--gutter-2h);
+}
+.about__hero {
+  width: var(--container);
+  display: flex;
+  justify-content: center;
+  margin-block: var(--gutter-2h);
+  padding-inline: var(--margin);
+}
+.about__hero-inner {
+  inline-size: var(--container);
+  margin-inline: auto;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.about__section {
+  width: var(--container);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about__frame {
+  margin-block: var(--margin-h);
+  overflow: hidden;
+  border-radius: 2rem;
+  position: relative;
+}
+.about__frame--landscape {
+  width: min(var(--container), 748.8px);
+  height: min(var(--container), 499.2px);
+}
+.about__frame--square {
+  width: min(var(--container), 748.8px);
+  height: min(var(--container), 748.8px);
+}
+.about__frame--portrait {
+  width: min(var(--container), 499.2px);
+  height: min(var(--container), 748.8px);
+}
+
+@media (orientation: landscape) and (min-width: 768px) {
+  .about__hero-inner {
+    inline-size: var(--project-section);
+  }
+  .about__section {
+    flex-direction: row;
+  }
+  .about__frame--landscape {
+    width: min(var(--container), 1872px);
+    aspect-ratio: 3/2;
+  }
+  .about__frame--square {
+    width: min(var(--col-half), 1872px);
+    aspect-ratio: 1/1;
+  }
+  .about__frame--portrait {
+    width: min(var(--col-half), 499.2px);
+    aspect-ratio: 4/5;
+  }
+}
 .creative {
   width: 100%;
   max-width: 100%;
@@ -1179,6 +1250,10 @@ a {
   width: min(var(--container), 740px);
   aspect-ratio: 1.5;
 }
+.creative__frame--4x3 {
+  width: min(var(--container), 740px);
+  aspect-ratio: 1.3333333333;
+}
 .creative__frame--5x4 {
   width: min(var(--container), 740px);
   aspect-ratio: 1.25;
@@ -1236,6 +1311,10 @@ a {
   .creative__frame--3x2 {
     width: min(var(--container), 1120px);
     aspect-ratio: 1.5;
+  }
+  .creative__frame--4x3 {
+    width: min(var(--container), 1120px);
+    aspect-ratio: 1.3333333333;
   }
   .creative__frame--5x4 {
     width: min(var(--container), 1120px);
@@ -2684,6 +2763,19 @@ a {
     margin-top: 0;
   }
 }
+.butterfly {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--project-section);
+  height: var(--project-section);
+}
+.butterfly div {
+  position: absolute;
+  box-sizing: border-box;
+}
+
 .animations-init .featured,
 .animations-init .project__hero,
 .animations-init .project__hero-image,

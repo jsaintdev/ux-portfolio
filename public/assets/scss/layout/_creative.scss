@@ -82,6 +82,10 @@ $uhd-height: 832px;
             @include mixins.frame-size($tablet-width, 3, 2);
         }
 
+        &--4x3 {
+            @include mixins.frame-size($tablet-width, 4, 3);
+        }
+
         &--5x4 {
             @include mixins.frame-size($tablet-width, 5, 4);
         }
@@ -156,6 +160,10 @@ $uhd-height: 832px;
             // Landscape
             &--3x2 {
                 @include mixins.frame-size($hd-width, 3, 2);
+            }
+
+            &--4x3 {
+                @include mixins.frame-size($hd-width, 4, 3);
             }
 
             &--5x4 {

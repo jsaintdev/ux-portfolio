@@ -1,0 +1,15 @@
+.butterfly {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--project-section);
+    height: var(--project-section);
+
+    & div {
+        position: absolute;
+        box-sizing: border-box;
+    }
+
+    
+}
