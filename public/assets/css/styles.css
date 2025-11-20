@@ -1133,7 +1133,7 @@ a {
   padding-inline: var(--margin);
 }
 .about__hero-inner {
-  inline-size: var(--container);
+  inline-size: var(--project-section);
   margin-inline: auto;
   container-type: inline-size;
   display: flex;
@@ -2161,6 +2161,37 @@ a {
   font-family: var(--font-display);
   font-weight: 700;
   color: var(--text);
+}
+.text__title--about {
+  font-size: 1.5rem;
+}
+@container (min-width: 28rem) {
+  .text__title--about {
+    font-size: clamp(1.5rem, 1.5rem + (1.625rem) * (100cqw - 28rem) / 19rem, 3.125rem);
+  }
+}
+@container (min-width: 47rem) {
+  .text__title--about {
+    font-size: clamp(3.125rem, 3.125rem + (0.875rem) * (100cqw - 47rem) / 33rem, 4rem);
+  }
+}
+@container (min-width: 80rem) {
+  .text__title--about {
+    font-size: clamp(4rem, 4rem + (1.25rem) * (100cqw - 80rem) / 40rem, 5.25rem);
+  }
+}
+@container (min-width: 120rem) {
+  .text__title--about {
+    font-size: 5.25rem;
+  }
+}
+@media (max-height: 480px) {
+  .text__title--about {
+    font-size: clamp(1.1875rem, 1.1875rem + (1.3125rem) * (100cqw - 28rem) / 19rem, 2.5rem);
+  }
+}
+.text__title--about {
+  text-align: left;
 }
 .text__subtitle {
   font-size: 1.25rem;

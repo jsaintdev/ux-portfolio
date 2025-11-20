@@ -15,6 +15,11 @@
         font-family: var(--font-display);
         font-weight: 700;
         color: var(--text);
+
+        &--about {
+            @include mixins.text(about);
+            text-align: left;
+        }
     }
 
     &__subtitle {
