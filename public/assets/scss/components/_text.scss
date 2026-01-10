@@ -79,6 +79,7 @@
         @include mixins.text(body);
         margin-inline: 0;
         margin-block: 1em;
+        text-wrap: pretty;
     }
 
     &__big {

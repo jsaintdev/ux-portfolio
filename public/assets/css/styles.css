@@ -1154,6 +1154,9 @@ a {
   border-radius: 2rem;
   position: relative;
 }
+.about__frame--headshot {
+  object-position: top center;
+}
 .about__frame--landscape {
   width: min(var(--container), 748.8px);
   height: min(var(--container), 499.2px);
@@ -1166,6 +1169,20 @@ a {
   width: min(var(--container), 499.2px);
   height: min(var(--container), 748.8px);
 }
+.about__text {
+  margin-block: var(--margin-h);
+  width: min(var(--container), 748.8px);
+  height: auto;
+  padding: var(--margin);
+}
+.about__headshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 0;
+  object-position: top center;
+}
 
 @media (orientation: landscape) and (min-width: 768px) {
   .about__hero-inner {
@@ -1173,6 +1190,8 @@ a {
   }
   .about__section {
     flex-direction: row;
+    justify-content: space-between;
+    inline-size: var(--project-section);
   }
   .about__frame--landscape {
     width: min(var(--container), 1872px);
@@ -1185,6 +1204,9 @@ a {
   .about__frame--portrait {
     width: min(var(--col-half), 499.2px);
     aspect-ratio: 4/5;
+  }
+  .about__text {
+    width: var(--col-half);
   }
 }
 .creative {
@@ -2432,6 +2454,7 @@ a {
 .text__body {
   margin-inline: 0;
   margin-block: 1em;
+  text-wrap: pretty;
 }
 .text__big {
   font-size: 1.125rem;
